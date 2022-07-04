@@ -80,6 +80,7 @@ export default function Content() {
     axios.get(`${api}/alunos?limit=200`).then(response=>{
       setStudents(response.data.data)
     })
+    document.getElementById(':r5:').innerText = 'Itens por página'
   }, [])
 
 
