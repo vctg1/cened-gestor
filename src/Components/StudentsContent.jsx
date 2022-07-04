@@ -42,7 +42,7 @@ const columns = [
   },
 ];
 
-export default function Content() {
+export default function StudentsContent() {
   const api = process.env.REACT_APP_API_KEY
   const [rows, setRows] = useState([
     {
@@ -80,7 +80,6 @@ export default function Content() {
     axios.get(`${api}/alunos?limit=200`).then(response=>{
       setStudents(response.data.data)
     })
-    document.getElementById(':r5:').innerText = 'Itens por página'
   }, [])
 
 

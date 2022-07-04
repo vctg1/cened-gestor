@@ -6,9 +6,9 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import Navigator from './Navigator';
-import Content from './StudentsContent';
 import Header from './Header';
 import {Routes, Route} from 'react-router-dom'
+import StudentsContent from './StudentsContent';
 
 function Copyright() {
   return (
@@ -196,7 +196,7 @@ export default function Paperbase() {
           <Box component="main" sx={{ flex: 1, py: 6, px: 4, bgcolor: '#eaeff1' }}>
             <Routes>
               <Route path='/' element={<h2 className='text-3xl m-auto font-semibold'>Página Inicial</h2>}/>
-              <Route path='/Cadastros/Alunos' element={<Content/>}/>
+              <Route path='/Cadastros/Alunos' element={<StudentsContent/>}/>
               <Route path='/Cadastros/Matriculas' element={<h2 className='text-3xl m-auto font-semibold'>Matriculas</h2>}/>
               <Route path='/Cadastros/Penitenciarias' element={<h2 className='text-3xl m-auto font-semibold'>Penitenciárias</h2>}/>
               <Route path='/Cadastros/Representantes' element={<h2 className='text-3xl m-auto font-semibold'>Representantes</h2>}/>
