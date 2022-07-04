@@ -8,6 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import axios from 'axios';
+import { TextField } from '@mui/material';
 
 const columns = [
   { 
@@ -69,23 +70,18 @@ export default function Content() {
         cpf: st.cpf,
         agent: st.nomePreposto,
         cpfAgent: st.cpfPreposto,
-        ufPeni: st.nacionalidade
+        ufPeni: `${st.penitenciaria.ufDescricao} / ${st.penitenciaria.nome}`
       })
     })
     setRows(rowsProvisory)
   }
 
   useEffect(()=>{
-    axios.get(`${api}/alunos?page=1`).then(response=>{
+    axios.get(`${api}/alunos?limit=200`).then(response=>{
       setStudents(response.data.data)
     })
   }, [])
 
-  useEffect(()=>{
-    axios.get(`${api}/alunos?page=${page}`).then(response=>{
-      setStudents(response.data.data)
-    })
-  }, [page])
 
   useEffect(()=>{
     addStudentRow()
@@ -97,63 +93,66 @@ export default function Content() {
   };
 
   return (
-    <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-      <TableContainer sx={{ maxHeight: 740 }}>
-        <Table stickyHeader aria-label="sticky table">
-          <TableHead>
-            <TableRow>
-              <TableCell>
-                Nome
-              </TableCell>
+    <div className='flex flex-col items-center'>
+      <TextField id="standard-basic" className='w-1/2' label="Pesquisar por Nome ou CPF" variant="standard" />
+      <Paper className='mt-5' sx={{ width: '100%', overflow: 'hidden' }}>
+        <TableContainer sx={{ maxHeight: 740 }}>
+          <Table stickyHeader aria-label="sticky table">
+            <TableHead>
+              <TableRow>
+                <TableCell>
+                  Nome
+                </TableCell>
 
-              <TableCell>
-                CPF
-              </TableCell>
+                <TableCell>
+                  CPF
+                </TableCell>
 
-              <TableCell>
-                Preposto
-              </TableCell>
+                <TableCell>
+                  Preposto
+                </TableCell>
 
-              <TableCell>
-                CPF Preposto
-              </TableCell>
+                <TableCell>
+                  CPF Preposto
+                </TableCell>
 
-              <TableCell>
-                UF / Penitenciária
-              </TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => {
-                return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
-                    {columns.map((column) => {
-                      const value = row[column.id];
-                      return (
-                        <TableCell key={column.id} align={column.align}>
-                          {column.format && typeof value === 'number'
-                            ? column.format(value)
-                            : value}
-                        </TableCell>
-                      );
-                    })}
-                  </TableRow>
-                );
-              })}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
-        component="div"
-        count={rows.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
-    </Paper>
+                <TableCell>
+                  UF / Penitenciária
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {rows
+                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                .map((row) => {
+                  return (
+                    <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                      {columns.map((column) => {
+                        const value = row[column.id];
+                        return (
+                          <TableCell key={column.id} align={column.align}>
+                            {column.format && typeof value === 'number'
+                              ? column.format(value)
+                              : value}
+                          </TableCell>
+                        );
+                      })}
+                    </TableRow>
+                  );
+                })}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <TablePagination
+          rowsPerPageOptions={[10, 25, 100]}
+          component="div"
+          count={rows.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
+      </Paper>
+    </div>
   );
 }
