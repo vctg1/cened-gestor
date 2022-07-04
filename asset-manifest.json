@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/cened-gestor/static/css/main.640a576a.css",
-    "main.js": "/cened-gestor/static/js/main.ea791d13.js",
+    "main.js": "/cened-gestor/static/js/main.cb24c97b.js",
     "index.html": "/cened-gestor/index.html",
     "main.640a576a.css.map": "/cened-gestor/static/css/main.640a576a.css.map",
-    "main.ea791d13.js.map": "/cened-gestor/static/js/main.ea791d13.js.map"
+    "main.cb24c97b.js.map": "/cened-gestor/static/js/main.cb24c97b.js.map"
   },
   "entrypoints": [
     "static/css/main.640a576a.css",
-    "static/js/main.ea791d13.js"
+    "static/js/main.cb24c97b.js"
   ]
 }
