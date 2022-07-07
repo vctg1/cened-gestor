@@ -12,6 +12,7 @@ import {IoDocumentTextSharp} from 'react-icons/io5'
 import { Link } from 'react-router-dom';
 import { Collapse, Grid } from '@mui/material';
 import { useState } from 'react';
+import icon from '../images/favicon.ico'
 
 const categories = [
   {
@@ -42,17 +43,18 @@ const categories = [
 ];
 
 const item = {
-  py: '10px',
-  px: 5,
   color: '',
+  borderRadius:'10px',
   '&:hover, &:focus': {
     bgcolor: '#f3f4f6',
   },
+  marginY: '2px',
+  transitionProperty: 'all',
+  transitionDuration: '150ms'
 };
 
 const itemCategory = {
   boxShadow: '0 -1px 0 rgb(255,255,255,0.1) inset',
-  py: 1.5,
   px: 3,
 };
 
@@ -66,7 +68,7 @@ export default function Navigator(props) {
       <List disablePadding>
         <Box display={'flex'} alignItems='center' className='border-b border-gray-400'>
           <Grid width={65} ml={2} >
-        <img src='favicon.ico' alt='' />
+        <img src={icon} alt='' />
           </Grid>
         <h2 className='py-5 text-center text-xl font-bold'>
           CENED
@@ -82,7 +84,8 @@ export default function Navigator(props) {
         </Link>
         {categories.map(({ id, children, icon }) => (
           <Box key={id}>
-            <ListItem className='hover:bg-[#f3f4f6] cursor-pointer' onClick={()=>{openId===id? setOpen(!open) : setOpen(true) ;setOpenId(id)}} sx={{ py: 2, px: 3 }}>
+            <ListItem className='rounded-lg transition hover:bg-[#f3f4f6] cursor-pointer' 
+            onClick={()=>{openId===id? setOpen(!open) : setOpen(true) ;setOpenId(id)}} sx={{ my:0.2, px: 3 }}>
               <ListItemIcon>
                 {icon}
               </ListItemIcon>
