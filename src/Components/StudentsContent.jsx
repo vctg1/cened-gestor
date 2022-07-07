@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -8,9 +9,20 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import axios from 'axios';
-import { TextField } from '@mui/material';
+import SearchInput from './input-fields/SearchInput'
+import { Button } from "@mui/material";
+import { Grid } from '@mui/material';
+import FlexBetween from './flexbox/FlexBetween'
+import {AiOutlineMore} from 'react-icons/ai'
+import {Add} from '@mui/icons-material'
+import BasicMenu from './others/BasicMenu';
 
 const columns = [
+  {
+    id: 'more',
+    label: '',
+    minWidth: 100
+  },
   { 
     id: 'name', 
     label: 'Nome', 
@@ -24,16 +36,17 @@ const columns = [
   },
 
   {
+    id: 'infopen',
+    label: 'Infopen',
+    minWidth: 170
+  },
+
+  {
     id: 'agent',
     label: 'Preposto',
     minWidth: 170,
   },
 
-  {
-    id: 'cpfAgent',
-    label: 'CPF Preposto',
-    minWidth: 170,
-  },
 
   {
     id: 'ufPeni',
@@ -44,19 +57,13 @@ const columns = [
 
 export default function StudentsContent() {
   const api = process.env.REACT_APP_API_KEY
-  const [rows, setRows] = useState([
-    {
-      id: '0004',
-      name: 'Lucas',
-      cpf: '00000',
-      agent: 'ASDASDASDASD',
-      cpfAgent: '020340214',
-      ufPeni: 'Acre'
-    }
-  ])
+  const Navigate = useNavigate()
+  const [rows, setRows] = useState([])
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [students, setStudents] = useState([])
+  const [searchValue, setSearchValue] = useState('')
+  const navigateAddUser = ()=> Navigate('AdicionarAluno')
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -69,8 +76,9 @@ export default function StudentsContent() {
         id: st.id,
         cpf: st.cpf,
         agent: st.nomePreposto,
-        cpfAgent: st.cpfPreposto,
-        ufPeni: `${st.penitenciaria.ufDescricao} / ${st.penitenciaria.nome}`
+        infopen: '999999',
+        ufPeni: `${st.penitenciaria.ufDescricao} / ${st.penitenciaria.nome}`,
+        more: <BasicMenu><AiOutlineMore size={30} color='black'/></BasicMenu>
       })
     })
     setRows(rowsProvisory)
@@ -93,13 +101,25 @@ export default function StudentsContent() {
   };
 
   return (
-    <div className='flex flex-col items-center'>
-      <TextField id="standard-basic" className='w-1/2' label="Pesquisar por Nome ou CPF" variant="standard" />
+    <Grid>
+      <FlexBetween>
+        <SearchInput
+          placeholder="Pesquisar"
+          onChange={(e) => setSearchValue(e.target.value)}/>
+
+        <Button onClick={navigateAddUser} startIcon={<Add/>} variant="contained">
+          Adicionar Novo Usuário
+        </Button>
+      </FlexBetween>
       <Paper className='mt-5' sx={{ width: '100%', overflow: 'hidden' }}>
         <TableContainer sx={{ maxHeight: 740 }}>
           <Table stickyHeader aria-label="sticky table">
             <TableHead>
               <TableRow>
+                <TableCell>
+
+                </TableCell>
+
                 <TableCell>
                   Nome
                 </TableCell>
@@ -109,11 +129,11 @@ export default function StudentsContent() {
                 </TableCell>
 
                 <TableCell>
-                  Preposto
+                  Infopen
                 </TableCell>
 
                 <TableCell>
-                  CPF Preposto
+                  Preposto
                 </TableCell>
 
                 <TableCell>
@@ -153,6 +173,6 @@ export default function StudentsContent() {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Paper>
-    </div>
+    </Grid>
   );
 }
