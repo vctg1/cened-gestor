@@ -45,7 +45,7 @@ const itemCategory = {
 };
 
 export default function Navigator(props) {
-  let open = useState(false);
+  let [open, setOpen] = useState(false);
   const { ...other } = props;
 
   return (
@@ -69,13 +69,13 @@ export default function Navigator(props) {
         </Link>
         {categories.map(({ id, children, icon }) => (
           <Box key={id}>
-            <ListItem sx={{ py: 2, px: 3 }}>
+            <ListItem className='hover:bg-[#f3f4f6] cursor-pointer' onClick={()=>setOpen(!open)} sx={{ py: 2, px: 3 }}>
               <ListItemIcon>
                 {icon}
               </ListItemIcon>
               <ListItemText>{id}</ListItemText>
             </ListItem>
-            <Collapse in={!open}>
+            <Collapse in={open}>
             {children.map(({ id: childId, icon, active }) => (
               <Link key={childId} to={`${id}/${childId.replace(/\s/g, '').normalize('NFD').replace(/[\u0300-\u036f]/g, "")}`}>
                 <ListItem onClick={()=> active = true} disablePadding>
