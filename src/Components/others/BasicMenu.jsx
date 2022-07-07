@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useNavigate } from 'react-router';
 import {IconButton} from '@mui/material';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -6,6 +7,7 @@ import MenuItem from '@mui/material/MenuItem';
 export default function BasicMenu(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const Navigate = useNavigate()
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -33,8 +35,8 @@ export default function BasicMenu(props) {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={handleClose}>Cadastro</MenuItem>
-        <MenuItem onClick={handleClose}>Cursos</MenuItem>
+        <MenuItem onClick={()=> Navigate(`${props.id}`)}>Cadastro</MenuItem>
+        <MenuItem onClick={()=> Navigate(`${props.id}/Cursos`)}>Cursos</MenuItem>
       </Menu>
     </div>
   );
