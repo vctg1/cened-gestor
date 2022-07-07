@@ -91,7 +91,7 @@ export default function Navigator(props) {
               </ListItemIcon>
               <ListItemText>{id}</ListItemText>
             </ListItem>
-            <Collapse in={openId===id ? open : false}>
+            <Collapse in={openId===id ? open : ''}>
             {children.map(({ id: childId, icon, active }) => (
               <Link key={childId} to={`${id}/${childId.replace(/\s/g, '').normalize('NFD').replace(/[\u0300-\u036f]/g, "")}`}>
                 <ListItem onClick={()=> active = true} disablePadding>

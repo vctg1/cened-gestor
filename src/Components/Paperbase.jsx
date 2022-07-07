@@ -7,14 +7,15 @@ import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import Navigator from './Navigator';
 import {Routes, Route} from 'react-router-dom'
-import StudentsContent from './StudentsContent';
+import StudentsContent from '../Pages/StudentsContent';
+import Register from '../Pages/Register';
 
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://lucas-010.github.io/cened/">
-        CENED Qualificando
+      <Link color="inherit" href="https://mui.com/">
+        Your Website
       </Link>{' '}
       {new Date().getFullYear()}.
     </Typography>
@@ -193,7 +194,7 @@ export default function Paperbase() {
         <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
           <Box component="main" sx={{ flex: 1, py: 6, px: 4, bgcolor: '#eaeff1' }}>
             <Routes>
-              <Route path='/' element={<h2 className='text-3xl m-auto font-semibold'>Início</h2>}/>
+              <Route path='/' element={<h2 className='text-3xl m-auto font-semibold'>Iníco</h2>}/>
               <Route path='/Cadastros/Alunos' element={<StudentsContent/>}/>
               <Route path='/Cadastros/Matriculas' element={<h2 className='text-3xl m-auto font-semibold'>Matriculas</h2>}/>
               <Route path='/Cadastros/Penitenciarias' element={<h2 className='text-3xl m-auto font-semibold'>Penitenciárias</h2>}/>
@@ -201,10 +202,8 @@ export default function Paperbase() {
               <Route path='/Cadastros/FiscaisdeSala' element={<h2 className='text-3xl m-auto font-semibold'>Fiscais de Sala</h2>}/>
               <Route path='/Cadastros/CursosCENED' element={<h2 className='text-3xl m-auto font-semibold'>Cursos CENED</h2>}/>
               <Route path='/Cadastros/UsuariosdoSistema' element={<h2 className='text-3xl m-auto font-semibold'>Usuários do Sistema</h2>}/>
+              <Route path='/Cadastros/Alunos/adicionar-aluno' element={<Register/>}/>
             </Routes> 
-          </Box>
-          <Box component="footer" sx={{ p: 2, bgcolor: '#eaeff1' }}>
-            <Copyright />
           </Box>
         </Box>
       </Box>

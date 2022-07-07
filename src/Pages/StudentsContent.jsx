@@ -9,13 +9,13 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import axios from 'axios';
-import SearchInput from './input-fields/SearchInput'
+import SearchInput from '../Components/input-fields/SearchInput'
 import { Button } from "@mui/material";
 import { Grid } from '@mui/material';
-import FlexBetween from './flexbox/FlexBetween'
+import FlexBetween from '../Components/flexbox/FlexBetween'
 import {AiOutlineMore} from 'react-icons/ai'
 import {Add} from '@mui/icons-material'
-import BasicMenu from './others/BasicMenu';
+import BasicMenu from '../Components/others/BasicMenu';
 
 const columns = [
   {
@@ -63,7 +63,7 @@ export default function StudentsContent() {
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [students, setStudents] = useState([])
   const [searchValue, setSearchValue] = useState('')
-  const navigateAddUser = ()=> Navigate('AdicionarAluno')
+  const navigateAddUser = ()=> Navigate('adicionar-aluno')
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
