@@ -26,6 +26,18 @@ const categories = [
       {active: false, id: 'Cursos CENED'},
       {active: false, id: 'Usuários do Sistema'}
     ],
+  },{
+    id: '2',
+    icon: <IoDocumentTextSharp/>,
+    children: [
+      {active: false, id: 'Alunos'},
+      {active: false, id: 'Matriculas'},
+      {active: false, id: 'Penitenciárias'},
+      {active: false, id: 'Representantes'},
+      {active: false, id: 'Fiscais de Sala'},
+      {active: false, id: 'Cursos CENED'},
+      {active: false, id: 'Usuários do Sistema'}
+    ],
   },
 ];
 
@@ -45,6 +57,7 @@ const itemCategory = {
 };
 
 export default function Navigator(props) {
+  let [openId, setOpenId] = useState('');
   let [open, setOpen] = useState(false);
   const { ...other } = props;
 
@@ -69,13 +82,13 @@ export default function Navigator(props) {
         </Link>
         {categories.map(({ id, children, icon }) => (
           <Box key={id}>
-            <ListItem className='hover:bg-[#f3f4f6] cursor-pointer' onClick={()=>setOpen(!open)} sx={{ py: 2, px: 3 }}>
+            <ListItem className='hover:bg-[#f3f4f6] cursor-pointer' onClick={()=>{openId===id? setOpen(!open) : setOpen(true) ;setOpenId(id)}} sx={{ py: 2, px: 3 }}>
               <ListItemIcon>
                 {icon}
               </ListItemIcon>
               <ListItemText>{id}</ListItemText>
             </ListItem>
-            <Collapse in={open}>
+            <Collapse in={openId===id ? open : ''}>
             {children.map(({ id: childId, icon, active }) => (
               <Link key={childId} to={`${id}/${childId.replace(/\s/g, '').normalize('NFD').replace(/[\u0300-\u036f]/g, "")}`}>
                 <ListItem onClick={()=> active = true} disablePadding>
@@ -87,8 +100,6 @@ export default function Navigator(props) {
               </Link>
             ))}
                 </Collapse>
-
-            <Divider sx={{ mt: 2 }} />
           </Box>
         ))}
       </List>
