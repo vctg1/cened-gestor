@@ -6,7 +6,6 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import Navigator from './Navigator';
-import Header from './Header';
 import {Routes, Route} from 'react-router-dom'
 import StudentsContent from './StudentsContent';
 
@@ -192,10 +191,9 @@ export default function Paperbase() {
           />
         </Box>
         <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-          <Header onDrawerToggle={handleDrawerToggle} />
           <Box component="main" sx={{ flex: 1, py: 6, px: 4, bgcolor: '#eaeff1' }}>
             <Routes>
-              <Route path='/' element={<h2 className='text-3xl m-auto font-semibold'>Página Inicial</h2>}/>
+              <Route path='/' element={<h2 className='text-3xl m-auto font-semibold'>Início</h2>}/>
               <Route path='/Cadastros/Alunos' element={<StudentsContent/>}/>
               <Route path='/Cadastros/Matriculas' element={<h2 className='text-3xl m-auto font-semibold'>Matriculas</h2>}/>
               <Route path='/Cadastros/Penitenciarias' element={<h2 className='text-3xl m-auto font-semibold'>Penitenciárias</h2>}/>
@@ -204,9 +202,6 @@ export default function Paperbase() {
               <Route path='/Cadastros/CursosCENED' element={<h2 className='text-3xl m-auto font-semibold'>Cursos CENED</h2>}/>
               <Route path='/Cadastros/UsuariosdoSistema' element={<h2 className='text-3xl m-auto font-semibold'>Usuários do Sistema</h2>}/>
             </Routes> 
-          </Box>
-          <Box component="footer" sx={{ p: 2, bgcolor: '#eaeff1', textAlign: 'center' }}>
-            ESCOLA CENED © 2022. Todos os direitos reservados.
           </Box>
         </Box>
       </Box>

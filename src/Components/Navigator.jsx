@@ -10,6 +10,8 @@ import ListItemText from '@mui/material/ListItemText';
 import HomeIcon from '@mui/icons-material/Home';
 import {IoDocumentTextSharp} from 'react-icons/io5'
 import { Link } from 'react-router-dom';
+import { Collapse, Grid } from '@mui/material';
+import { useState } from 'react';
 
 const categories = [
   {
@@ -43,14 +45,20 @@ const itemCategory = {
 };
 
 export default function Navigator(props) {
+  let open = useState(false);
   const { ...other } = props;
 
   return (
     <Drawer className='text-black' variant="permanent" {...other}>
       <List disablePadding>
-        <h2 className='py-5 border-b border-gray-400 text-center text-xl font-bold'>
-          CENED Qualificando
+        <Box display={'flex'} alignItems='center' className='border-b border-gray-400'>
+          <Grid width={65} ml={2} >
+        <img src='favicon.ico' alt='' />
+          </Grid>
+        <h2 className='py-5 text-center text-xl font-bold'>
+          CENED
         </h2>
+        </Box>
         <Link to={'/'}>
           <ListItem className='cursor-pointer' sx={{ ...item, ...itemCategory }}>
             <ListItemIcon>
@@ -67,6 +75,7 @@ export default function Navigator(props) {
               </ListItemIcon>
               <ListItemText>{id}</ListItemText>
             </ListItem>
+            <Collapse in={!open}>
             {children.map(({ id: childId, icon, active }) => (
               <Link key={childId} to={`${id}/${childId.replace(/\s/g, '').normalize('NFD').replace(/[\u0300-\u036f]/g, "")}`}>
                 <ListItem onClick={()=> active = true} disablePadding>
@@ -77,6 +86,7 @@ export default function Navigator(props) {
                 </ListItem>
               </Link>
             ))}
+                </Collapse>
 
             <Divider sx={{ mt: 2 }} />
           </Box>
