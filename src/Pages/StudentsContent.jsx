@@ -78,7 +78,7 @@ export default function StudentsContent() {
         agent: st.nomePreposto,
         infopen: '999999',
         ufPeni: `${st.penitenciaria.ufDescricao} / ${st.penitenciaria.nome}`,
-        more: <BasicMenu id={st.id}><AiOutlineMore size={30} color='black'/></BasicMenu>
+        more: <BasicMenu id={st.id}><AiOutlineMore size={25} color='black'/></BasicMenu>
       })
     })
     setRows(rowsProvisory)
