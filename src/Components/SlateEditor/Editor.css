@@ -6,9 +6,7 @@ blockquote{
     color: #aaa;
     font-style: italic;
 }
-table, th, td {
-    border: 1px solid black;
-}
+
 table{
     border-collapse: collapse;
 }

@@ -120,10 +120,7 @@ const toolbarGroups = [
     }
   ],
   [
-    {
-      id: 23,
-      type: "table"
-    }
+    
   ],
 
   [
