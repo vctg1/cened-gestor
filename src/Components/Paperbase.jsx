@@ -10,7 +10,9 @@ import {Routes, Route} from 'react-router-dom'
 import StudentsContent from '../Pages/StudentsContent';
 import Register from '../Pages/Register';
 import RegisterCourse from '../Pages/RegisterCourse';
-import RegisterCourse2 from '../Pages/RegisterCourse2';
+import RegisterTax from '../Pages/RegisterTax';
+import RegisterPeni from '../Pages/RegisterPeni';
+import RegisterRepre from '../Pages/RegisterRepre';
 
 function Copyright() {
   return (
@@ -199,11 +201,10 @@ export default function Paperbase() {
               <Route path='/' element={<h2 className='text-3xl m-auto font-semibold'>Iníco</h2>}/>
               <Route path='/Cadastros/Alunos' element={<StudentsContent/>}/>
               <Route path='/Cadastros/Matriculas' element={<h2 className='text-3xl m-auto font-semibold'>Matriculas</h2>}/>
-              <Route path='/Cadastros/Penitenciarias' element={<h2 className='text-3xl m-auto font-semibold'>Penitenciárias</h2>}/>
-              <Route path='/Cadastros/Representantes' element={<h2 className='text-3xl m-auto font-semibold'>Representantes</h2>}/>
-              <Route path='/Cadastros/FiscaisdeSala' element={<h2 className='text-3xl m-auto font-semibold'>Fiscais de Sala</h2>}/>
+              <Route path='/Cadastros/Penitenciarias' element={<RegisterPeni/>}/>
+              <Route path='/Cadastros/Representantes' element={<RegisterRepre/>}/>
+              <Route path='/Cadastros/FiscaisdeSala' element={<RegisterTax/>}/>
               <Route path='/Cadastros/CursosCENED' element={<RegisterCourse/>}/>
-              <Route path='/2/CursosCENED' element={<RegisterCourse2/>}/>
               <Route path='/Cadastros/UsuariosdoSistema' element={<h2 className='text-3xl m-auto font-semibold'>Usuários do Sistema</h2>}/>
               <Route path='/Cadastros/Alunos/adicionar-aluno' element={<Register/>}/>
             </Routes> 

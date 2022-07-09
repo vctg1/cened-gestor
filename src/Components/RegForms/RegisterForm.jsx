@@ -7,7 +7,6 @@ import RegForm1 from "./RegForm1";
 import RegForm2 from "./RegForm2";
 import RegForm3 from "./RegForm3";
 import RegForm4 from "./RegForm4";
-import { stringify } from "postcss";
 
 export default function RegisterForm() {
   let api = process.env.REACT_APP_API_KEY;

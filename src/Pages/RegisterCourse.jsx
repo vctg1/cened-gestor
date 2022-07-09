@@ -1,8 +1,10 @@
 import { FormControl, Grid, MenuItem, TextField } from '@mui/material'
-import React, {useState, useEffect} from 'react'
-import InputBasic from '../Components/input-fields/InputBasic'
+import React from 'react'
+import { useEffect } from 'react'
+import { useState } from 'react'
+import AppTextField from '../Components/input-fields/AppTextField'
 import SlateEditor from '../Components/SlateEditor/Editor'
-
+import {AiFillBook} from 'react-icons/ai'
 
 export default function RegisterCourse() {
     const [codeCourse, setCodeCourse] = useState('')
@@ -18,40 +20,44 @@ export default function RegisterCourse() {
     }, [codeCourse, nameCourse, workloadCourse, valueCourse, rateCourse, valueTotalCourse, activeCourse])
     return (
         <FormControl>
-            <Grid container spacing={4}>
+            <Grid className='bg-white p-4 rounded-xl max-w-6xl' container spacing={2}>
+                <Grid className='flex items-center justify-center' item xs={20} md={10}>
+                    <AiFillBook size={30}/>
+                    <h1 className='text-xl font-bold'>Novo Curso CENED</h1>
+                </Grid>
                 <Grid item xs={10} md={4}>
                     <FormControl className='w-full'>
-                        <InputBasic onChange={(e)=> setCodeCourse(e.target.value)} value={codeCourse} type="number" placeholder="Código"/>
+                        <AppTextField onChange={(e)=> setCodeCourse(e.target.value)} value={codeCourse} type="number" label="Código"/>
                     </FormControl>
                 </Grid>
 
                 <Grid item xs={10} md={6}>
                     <FormControl className='w-full'>
-                        <InputBasic onChange={(e)=> setNameCourse(e.target.value)}  value={nameCourse} type="text" placeholder="Nome do Curso"/>
+                        <AppTextField onChange={(e)=> setNameCourse(e.target.value)}  value={nameCourse} type="text" label="Nome do Curso"/>
                     </FormControl>
                 </Grid>
 
                 <Grid item xs={10} md={4}>
                     <FormControl className='w-full'>
-                        <InputBasic onChange={(e)=> setWorkloadCourse(e.target.value)}  value={workloadCourse} type="number" placeholder="Carga Horária"/>
+                        <AppTextField onChange={(e)=> setWorkloadCourse(e.target.value)}  value={workloadCourse} type="number" label="Carga Horária"/>
                     </FormControl>
                 </Grid>
 
                 <Grid item xs={6} md={2}>
                     <FormControl className='w-full'>
-                        <InputBasic onChange={(e)=> setValueCourse(e.target.value)}  value={valueCourse} type="number" placeholder="Valor"/>
+                        <AppTextField onChange={(e)=> setValueCourse(e.target.value)}  value={valueCourse} type="number" label="Valor"/>
                     </FormControl>
                 </Grid>
 
                 <Grid item xs={6} md={2}>
                     <FormControl className='w-full'>
-                        <InputBasic onChange={(e)=> setRateCourse(e.target.value)}  value={rateCourse} type="number" placeholder="Taxa"/>
+                        <AppTextField onChange={(e)=> setRateCourse(e.target.value)}  value={rateCourse} type="number" label="Taxa"/>
                     </FormControl>
                 </Grid>
 
                 <Grid item xs={6} md={2}>
                     <FormControl className='w-full'>
-                        <InputBasic onChange={(e)=> setValueTotalCourse(e.target.value)}  value={valueTotalCourse} disabled type="number" placeholder="Valor Total"/>
+                        <AppTextField onChange={(e)=> setValueTotalCourse(e.target.value)}  value={valueTotalCourse} disabled type="number" label="Valor Total"/>
                     </FormControl>
                 </Grid>
 
@@ -66,10 +72,10 @@ export default function RegisterCourse() {
                         </MenuItem>
                     </TextField>
                 </Grid>
-
                 <Grid item xs={20} md={10}>
                     <SlateEditor/>
                 </Grid>
+
             </Grid>
         </FormControl>
     )
