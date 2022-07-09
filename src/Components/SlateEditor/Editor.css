@@ -10,7 +10,8 @@ blockquote{
 table{
     border-collapse: collapse;
 }
-button{
+
+button.lol{
     background-color: white;
     border:none;
     opacity: 0.5;

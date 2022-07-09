@@ -19,7 +19,7 @@ export default function RegisterCourse2() {
     }, [codeCourse, nameCourse, workloadCourse, valueCourse, rateCourse, valueTotalCourse, activeCourse])
     return (
         <FormControl>
-            <Grid className='bg-white p-4 rounded-xl' container width={'91.666667%'} margin={'auto'} spacing={4}>
+            <Grid className='bg-white p-4 rounded-xl' maxWidth={'80%'} container margin={'auto'} spacing={4}>
                 <Grid item xs={10} md={4}>
                     <FormControl className='w-full'>
                         <AppTextField onChange={(e)=> setCodeCourse(e.target.value)} value={codeCourse} type="number" label="Código"/>
