@@ -1,16 +1,15 @@
 {
   "files": {
-    "main.css": "/cened-gestor/static/css/main.a660692d.css",
-    "main.js": "/cened-gestor/static/js/main.69a750ef.js",
+    "main.css": "/cened-gestor/static/css/main.75f8c868.css",
+    "main.js": "/cened-gestor/static/js/main.eee413fb.js",
     "static/media/favicon.ico": "/cened-gestor/static/media/favicon.3ffa65bfb56898df688c.ico",
     "static/media/unlink.svg": "/cened-gestor/static/media/unlink.b8761030d4a17499149d2d61adc064b3.svg",
     "index.html": "/cened-gestor/index.html",
-    "static/media/index.cjs": "/cened-gestor/static/media/index.cd351d7c31d0d3fccf96.cjs",
-    "main.a660692d.css.map": "/cened-gestor/static/css/main.a660692d.css.map",
-    "main.69a750ef.js.map": "/cened-gestor/static/js/main.69a750ef.js.map"
+    "main.75f8c868.css.map": "/cened-gestor/static/css/main.75f8c868.css.map",
+    "main.eee413fb.js.map": "/cened-gestor/static/js/main.eee413fb.js.map"
   },
   "entrypoints": [
-    "static/css/main.a660692d.css",
-    "static/js/main.69a750ef.js"
+    "static/css/main.75f8c868.css",
+    "static/js/main.eee413fb.js"
   ]
 }
