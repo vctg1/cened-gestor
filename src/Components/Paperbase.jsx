@@ -200,16 +200,16 @@ export default function Paperbase() {
         <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
           <Box component="main" sx={{ flex: 1, py: 6, px: 4, bgcolor: '#eaeff1' }}>
             <Routes>
-              <Route path='/' element={<h2 className='text-3xl m-auto font-semibold'>Iníco</h2>}/>
-              <Route path='/Cadastros/Alunos' element={<StudentsContent/>}/>
-              <Route path='/Cadastros/Matriculas' element={<h2 className='text-3xl m-auto font-semibold'>Matriculas</h2>}/>
-              <Route path='/Cadastros/Penitenciarias' element={<RegisterPeni/>}/>
-              <Route path='/Cadastros/Representantes' element={<RegisterRepre/>}/>
-              <Route path='/Cadastros/FiscaisdeSala' element={<RegisterTax/>}/>
-              <Route path='/Cadastros/CursosCENED' element={<RegisterCourse/>}/>
-              <Route path='/Cadastros/TaxaDeEntrega' element={<DeliveryFee/>}/>
-              <Route path='/Cadastros/UsuariosdoSistema' element={<RegisterUser/>}/>
-              <Route path='/Cadastros/Alunos/adicionar-aluno' element={<Register/>}/>
+              <Route path='/' element={<h2 className='text-3xl m-auto font-semibold'>Início</h2>}/>
+              <Route path='/cadastros/alunos' element={<StudentsContent/>}/>
+              <Route path='/cadastros/matriculas' element={<h2 className='text-3xl m-auto font-semibold'>Matriculas</h2>}/>
+              <Route path='/cadastros/penitenciarias' element={<RegisterPeni/>}/>
+              <Route path='/cadastros/representantes' element={<RegisterRepre/>}/>
+              <Route path='/cadastros/fiscais-de-Sala' element={<RegisterTax/>}/>
+              <Route path='/cadastros/cursos-cened' element={<RegisterCourse/>}/>
+              <Route path='/cadastros/taxa-de-entrega' element={<DeliveryFee/>}/>
+              <Route path='/cadastros/usuarios-do-sistema' element={<RegisterUser/>}/>
+              <Route path='/cadastros/alunos/adicionar-aluno' element={<Register/>}/>
             </Routes> 
           </Box>
         </Box>
