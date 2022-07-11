@@ -21,7 +21,7 @@ export default function RegisterPeni() {
   return (
     <FormControl>
         <Grid className='bg-white p-4 rounded-xl max-w-6xl' container spacing={2}>
-            <Grid className='flex items-center justify-center' item xs={20} md={10}>
+            <Grid className='flex items-center' item xs={20} md={10}>
                 <FaBuilding size={30}/>
                 <h1 className='text-xl font-bold'>Nova Penitenciária</h1>
             </Grid>
@@ -94,7 +94,7 @@ export default function RegisterPeni() {
             </Grid>
 
             <Grid item xs={10} md={10}>
-                <h2 className='text-base lg:text-xl text-center font-bold'>Dados do Núcleo de Ensino da Penitenciária</h2>
+                <h2 className='text-base lg:text-xl font-bold'>Dados do Núcleo de Ensino da Penitenciária</h2>
             </Grid>
 
             <Grid item xs={20} md={6}>
