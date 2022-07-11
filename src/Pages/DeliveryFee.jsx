@@ -1,11 +1,10 @@
 import { FormControl, Grid } from '@mui/material'
 import React from 'react'
-import {FaUserTie} from 'react-icons/fa'
+import {FaTruck} from 'react-icons/fa'
 import {TextField, MenuItem} from '@mui/material'
-import InputMask from 'react-input-mask'
 import { useState } from 'react'
 
-export default function RegisterTax() {
+export default function DeliveryFee() {
     const [nameTax, setNameTax] = useState('')
     const [cpfTax, setCpfTax] = useState('')
     const [rgTax, setRgTax] = useState('')    
@@ -14,32 +13,11 @@ export default function RegisterTax() {
     <FormControl>
             <Grid className='bg-white p-4 rounded-xl max-w-6xl' container spacing={2}>
                 <Grid className='flex items-center justify-center' item xs={20} md={10}>
-                    <FaUserTie size={30}/>
-                    <h1 className='text-xl font-bold'>Novo Fiscal De Sala</h1>
-                </Grid>
-                <Grid item xs={20} md={4}>
-                    <FormControl className='w-full'>
-                        <TextField value={nameTax} onChange={(e)=> setNameTax(e.target.value)} type="text" label="Nome"/>
-                    </FormControl>
+                    <FaTruck size={30}/>
+                    <h1 className='text-xl font-bold'>Nova Taxa de Entrega (Frete)</h1>
                 </Grid>
 
-                <Grid item xs={10} md={4}>
-                    <FormControl className='w-full'>
-                        <InputMask value={cpfTax} onChange={(e)=> setCpfTax(e.target.value)} mask="999.999.999-99" maskChar={''}>
-                            {()=> <TextField label='CPF'/>}
-                        </InputMask>
-                    </FormControl>
-                </Grid>
-
-                <Grid item xs={10} md={4}>
-                    <FormControl className='w-full'>
-                        <InputMask mask="999999999999999" value={rgTax} onChange={(e)=> setRgTax(e.target.value)}  maskChar={''}>
-                            {()=> <TextField label='RG'/>}
-                        </InputMask>
-                    </FormControl>
-                </Grid>
-
-                <Grid item xs={8} md={3}>
+                <Grid item xs={8} md={4}>
                     <TextField value={ufTax} onChange={(e)=> setUfTax(e.target.value)} className='w-11/12 bg-white border-none outline-none rounded-xl' select label='UF'>
                         <MenuItem value="AC">Acre</MenuItem>
 						<MenuItem value="AL">Alagoas</MenuItem>
@@ -69,6 +47,10 @@ export default function RegisterTax() {
 						<MenuItem value="SE">Sergipe</MenuItem>
 						<MenuItem value="TO">Tocantins</MenuItem>
                     </TextField>
+                </Grid>
+                
+                <Grid item xs={8} md={8}>
+                    <TextField type={'number'} className='w-full' label='Taxa'/>
                 </Grid>
 
                 <Grid item xs={20} md={10}>

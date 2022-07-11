@@ -98,7 +98,7 @@ const Leaf = ({ attributes, children, leaf }) => {
     }
     return <span {...attributes}>{children}</span>
 }
-const SlateEditor = ()=>{
+const SlateEditor = ({setContentCourse})=>{
     const editor = useMemo(() => withHistory(withEmbeds(withTables(withLinks(withReact(createEditor()))))), []);
     
     const [value,setValue] = useState([
@@ -117,7 +117,7 @@ const SlateEditor = ()=>{
 
     
     return (
-            <Slate editor = {editor} value = {value} onChange = {newValue => setValue(newValue)} >
+            <Slate editor = {editor} value = {value} onChange={newValue => setValue(newValue) }>
                 <Toolbar />
                 <div className="editor-wrapper" style={{border:'1px solid black',padding:'5px'}}>
                     <Editable

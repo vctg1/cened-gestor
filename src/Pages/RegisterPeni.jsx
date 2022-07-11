@@ -7,7 +7,17 @@ import InputMask from 'react-input-mask'
 import { useState } from 'react'
 
 export default function RegisterPeni() {
+    const [namePeni, setNamePeni] = useState('')
+    const [addresPeni, setAddresPeni] = useState('')
+    const [cityPeni, setCityPeni] = useState('')
+    const [cepPeni, setCepPeni] = useState('')
+    const [ufPeni, setUfPeni] = useState('')
     const [checked, setChecked] = useState(false)
+    const [nameDepart, setNameDepart] = useState('')
+    const [nameRespon, setNameRespon] = useState('')
+    const [titleOffice, setTitleOffice] = useState('')
+    const [emailContact, setEmailContact] = useState('')
+
   return (
     <FormControl>
         <Grid className='bg-white p-4 rounded-xl max-w-6xl' container spacing={2}>
@@ -15,34 +25,34 @@ export default function RegisterPeni() {
                 <FaBuilding size={30}/>
                 <h1 className='text-xl font-bold'>Nova Penitenciária</h1>
             </Grid>
-            <Grid item xs={20} md={10}>
+            <Grid item xs={20} md={4}>
                 <FormControl className='w-full'>
-                    <TextField label='Nome da Penitenciária'/>
+                    <TextField value={namePeni} onChange={(e)=> setNamePeni(e.target.value)} label='Nome da Penitenciária'/>
                 </FormControl>
             </Grid>
 
-            <Grid item xs={20} md={10}>
+            <Grid item xs={20} md={6}>
                 <FormControl className='w-full'>
-                    <TextField label='Endereço'/>
+                    <TextField value={addresPeni} onChange={(e)=> setAddresPeni(e.target.value)} label='Endereço'/>
                 </FormControl>
             </Grid>
 
             <Grid item xs={10} md={4}>
                 <FormControl className='w-full'>
-                   <TextField label='Cidade'/>
+                   <TextField value={cityPeni} onChange={(e)=> setCityPeni(e.target.value)} label='Cidade'/>
                 </FormControl>
             </Grid>
 
             <Grid item xs={5} md={2}>
                 <FormControl className='w-full'>
-                    <InputMask mask="99999-999" maskChar={''}>
+                    <InputMask value={cepPeni} onChange={(e)=> setCepPeni(e.target.value)} mask="99999-999" maskChar={''}>
                         {()=> <TextField label='CEP'/>}
                     </InputMask>
                 </FormControl>
             </Grid>
 
             <Grid item xs={8} md={2.5}>
-                <TextField className='w-11/12 bg-white border-none outline-none rounded-xl' select label='UF'>
+                <TextField value={ufPeni} onChange={(e)=> setUfPeni(e.target.value)} className='w-11/12 bg-white border-none outline-none rounded-xl' select label='UF'>
                     <MenuItem value="AC">Acre</MenuItem>
                     <MenuItem value="AL">Alagoas</MenuItem>
                     <MenuItem value="AP">Amapá</MenuItem>
@@ -87,20 +97,20 @@ export default function RegisterPeni() {
                 <h2 className='text-base lg:text-xl text-center font-bold'>Dados do Núcleo de Ensino da Penitenciária</h2>
             </Grid>
 
-            <Grid item xs={20} md={10}>
-                <TextField className='w-full' label='Nome do Departamento de Ensino'/>
+            <Grid item xs={20} md={6}>
+                <TextField className='w-full' value={nameDepart} onChange={(e)=> setNameDepart(e.target.value)} label='Nome do Departamento de Ensino'/>
+            </Grid>
+
+            <Grid item xs={20} md={4}>
+                <TextField className='w-full' value={nameRespon} onChange={(e)=> setNameRespon(e.target.value)} label='Responsável pelo Departamento de Ensino'/>
             </Grid>
 
             <Grid item xs={20} md={5}>
-                <TextField className='w-full' label='Responsável pelo Departamento de Ensino'/>
+                <TextField className='w-full' value={titleOffice} onChange={(e)=> setTitleOffice(e.target.value)} label='Título do Cargo do Departamento de Ensino'/>
             </Grid>
 
             <Grid item xs={20} md={5}>
-                <TextField className='w-full' label='Título do Cargo do Departamento de Ensino'/>
-            </Grid>
-
-            <Grid item xs={20} md={5}>
-                <TextField className='w-full' label='E-mail de Contato'/>
+                <TextField className='w-full' value={emailContact} onChange={(e)=> setEmailContact(e.target.value)} label='E-mail de Contato'/>
             </Grid>
 
             <Grid item xs={20} md={10}>

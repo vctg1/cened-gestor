@@ -13,6 +13,8 @@ import RegisterCourse from '../Pages/RegisterCourse';
 import RegisterTax from '../Pages/RegisterTax';
 import RegisterPeni from '../Pages/RegisterPeni';
 import RegisterRepre from '../Pages/RegisterRepre';
+import DeliveryFee from '../Pages/DeliveryFee';
+import RegisterUser from '../Pages/RegisterUser';
 
 function Copyright() {
   return (
@@ -205,7 +207,8 @@ export default function Paperbase() {
               <Route path='/Cadastros/Representantes' element={<RegisterRepre/>}/>
               <Route path='/Cadastros/FiscaisdeSala' element={<RegisterTax/>}/>
               <Route path='/Cadastros/CursosCENED' element={<RegisterCourse/>}/>
-              <Route path='/Cadastros/UsuariosdoSistema' element={<h2 className='text-3xl m-auto font-semibold'>Usuários do Sistema</h2>}/>
+              <Route path='/Cadastros/TaxaDeEntrega' element={<DeliveryFee/>}/>
+              <Route path='/Cadastros/UsuariosdoSistema' element={<RegisterUser/>}/>
               <Route path='/Cadastros/Alunos/adicionar-aluno' element={<Register/>}/>
             </Routes> 
           </Box>

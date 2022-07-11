@@ -1,45 +1,72 @@
 import { FormControl, Grid } from '@mui/material'
 import React from 'react'
-import {FaUserTie} from 'react-icons/fa'
+import {FaUserAlt} from 'react-icons/fa'
 import {TextField, MenuItem} from '@mui/material'
 import InputMask from 'react-input-mask'
 import { useState } from 'react'
 
-export default function RegisterRepre() {
-    const [nameRepre, setNameRepre] = useState('')
-    const [emailRepre, setEmailRepre] = useState('')
-    const [phoneRepre, setPhoneRepre] = useState('')    
-    const [ufRepre, setUfRepre] = useState('')
-    const [activeRepre, setActiveRepre] = useState(false)
+export default function RegisterUser() {
+    const [nameUser, setNameUser] = useState('')
+    const [cpfUser, setCpfUser] = useState('')
+    const [emailUser, setEmailUser] = useState('')
+    const [phoneUser, setPhoneUser] = useState('')    
+    const [ufUser, setUfUser] = useState('')
+    const [activeUser, setActiveUser] = useState(false)
   return (
     <FormControl>
         <Grid className='bg-white p-4 rounded-xl max-w-6xl' container spacing={2}>
             <Grid className='flex items-center justify-center' item xs={20} md={10}>
-                <FaUserTie size={30}/>
-                <h1 className='text-xl font-bold'>Novo Representante</h1>
+                <FaUserAlt size={30}/>
+                <h1 className='text-xl font-bold'>Novo Usuário</h1>
             </Grid>
             <Grid item xs={20} md={6}>
                 <FormControl className='w-full'>
-                    <TextField value={nameRepre} onChange={(e)=> setNameRepre(e.target.value)} type="text" label="Nome"/>
+                    <TextField value={nameUser} onChange={(e)=> setNameUser(e.target.value)} type="text" label="Nome"/>
+                </FormControl>
+            </Grid>
+
+            <Grid item xs={10} md={6}>
+                <FormControl className='w-full'>
+                    <InputMask value={cpfUser} onChange={(e)=> setCpfUser(e.target.value)} mask="999.999.999-99" maskChar={''}>
+                        {()=> <TextField label='CPF'/>}
+                    </InputMask>
+                </FormControl>
+            </Grid>
+
+
+            <Grid item xs={10} md={6}>
+                <FormControl className='w-full'>
+                    <TextField className='w-full' label='Login'/>
+                </FormControl>
+            </Grid>
+
+            <Grid item xs={10} md={6}>
+                <FormControl className='w-full'>
+                    <TextField className='w-full' label='E-mail'/>
+                </FormControl>
+            </Grid>
+            <Grid item xs={10} md={6}>
+                <FormControl className='w-full'>
+                    <TextField label='Senha'/>
+                </FormControl>
+            </Grid>
+
+            <Grid item xs={10} md={6}>
+                <FormControl className='w-full'>
+                    <TextField label='Confirmar Senha'/>
                 </FormControl>
             </Grid>
 
             <Grid item xs={10} md={4}>
                 <FormControl className='w-full'>
-                  <TextField label='E-mail' value={emailRepre} onChange={(e)=> setEmailRepre(e.target.value)}/>
-                </FormControl>
-            </Grid>
-
-            <Grid item xs={10} md={4}>
-                <FormControl className='w-full'>
-                    <InputMask mask="(99)99999-9999" value={phoneRepre} onChange={(e)=> setPhoneRepre(e.target.value)}  maskChar={''}>
+                    <InputMask mask="(99)99999-9999" value={phoneUser} onChange={(e)=> setPhoneUser(e.target.value)}  maskChar={''}>
                         {()=> <TextField label='Telefone'/>}
                     </InputMask>
                 </FormControl>
             </Grid>
 
             <Grid item xs={8} md={4}>
-                <TextField value={ufRepre} onChange={(e)=> setUfRepre(e.target.value)} className='w-11/12 bg-white border-none outline-none rounded-xl' select label='UF'>
+                <TextField value={ufUser} onChange={(e)=> setUfUser(e.target.value)} className='w-11/12 bg-white border-none outline-none rounded-xl' select label='UF'>
                     <MenuItem value="AC">Acre</MenuItem>
                     <MenuItem value="AL">Alagoas</MenuItem>
                     <MenuItem value="AP">Amapá</MenuItem>
@@ -70,14 +97,26 @@ export default function RegisterRepre() {
                 </TextField>
             </Grid>
 
-            <Grid item xs={8} md={2}>
-              <TextField value={activeRepre} onChange={(e)=> setActiveRepre(e.target.value)} className='w-full' select label='Ativo'>
+            <Grid item xs={8} md={3}>
+              <TextField className='w-full' select label='Ativo'>
                 <MenuItem value={true}>
                   Sim
                 </MenuItem>
 
                 <MenuItem value={false}>
                   Não
+                </MenuItem>
+              </TextField>
+            </Grid>
+
+            <Grid item xs={8} md={4}>
+              <TextField className='w-full' select label='Grupo de Permissões'>
+                <MenuItem value={true}>
+                  ZZZZZ
+                </MenuItem>
+
+                <MenuItem value={false}>
+                  ZZZZZ
                 </MenuItem>
               </TextField>
             </Grid>

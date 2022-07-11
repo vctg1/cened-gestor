@@ -25,7 +25,8 @@ const categories = [
       {active: false, id: 'Representantes'},
       {active: false, id: 'Fiscais de Sala'},
       {active: false, id: 'Cursos CENED'},
-      {active: false, id: 'Usuários do Sistema'}
+      {active: false, id: 'Usuários do Sistema'},
+      {active: false, id: 'Taxa de Entrega'}
     ],
   },{
     id: '2',

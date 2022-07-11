@@ -14,10 +14,11 @@ export default function RegisterCourse() {
     const [rateCourse, setRateCourse] = useState('')
     const [valueTotalCourse, setValueTotalCourse] = useState('')
     const [activeCourse, setActiveCourse] = useState('')
+    const [contentCourse, setContentCourse] = useState('')
 
     useEffect(()=>{
-        console.log(`Código: ${codeCourse}, Nome: ${nameCourse}, Carga: ${workloadCourse}, Valor: ${valueCourse}, Taxa: ${rateCourse}, Total: ${valueTotalCourse}, Ativo: ${activeCourse}`)
-    }, [codeCourse, nameCourse, workloadCourse, valueCourse, rateCourse, valueTotalCourse, activeCourse])
+        console.log(contentCourse)
+    }, [contentCourse])
     return (
         <FormControl>
             <Grid className='bg-white p-4 rounded-xl max-w-6xl' container spacing={2}>
@@ -73,7 +74,7 @@ export default function RegisterCourse() {
                     </TextField>
                 </Grid>
                 <Grid item xs={20} md={10}>
-                    <SlateEditor/>
+                    <SlateEditor setContentCourse={setContentCourse}/>
                 </Grid>
 
             </Grid>
