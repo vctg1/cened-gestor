@@ -201,7 +201,7 @@ export default function Paperbase() {
           <Box component="main" sx={{ flex: 1, py: 6, px: 4, bgcolor: '#eaeff1' }}>
             <Routes>
               <Route path='/' element={<h2 className='text-3xl m-auto font-semibold'>Início</h2>}/>
-              <Route path='/cadastros/alunos' element={<StudentsContent/>}/>
+              <Route path='/home/alunos-e-cursos' element={<StudentsContent/>}/>
               <Route path='/cadastros/matriculas' element={<h2 className='text-3xl m-auto font-semibold'>Matriculas</h2>}/>
               <Route path='/cadastros/penitenciarias' element={<RegisterPeni/>}/>
               <Route path='/cadastros/representantes' element={<RegisterRepre/>}/>
@@ -209,7 +209,7 @@ export default function Paperbase() {
               <Route path='/cadastros/cursos-cened' element={<RegisterCourse/>}/>
               <Route path='/cadastros/taxa-de-entrega' element={<DeliveryFee/>}/>
               <Route path='/cadastros/usuarios-do-sistema' element={<RegisterUser/>}/>
-              <Route path='/cadastros/alunos/adicionar-aluno' element={<Register/>}/>
+              <Route path='/cadastros/adicionar-aluno' element={<Register/>}/>
             </Routes> 
           </Box>
         </Box>

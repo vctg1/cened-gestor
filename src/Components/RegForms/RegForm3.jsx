@@ -33,7 +33,7 @@ export default function RegForm3({data, setData, penitenciaria}){
             <Collapse in={open}>
             <div className='w-full flex gap-5'>
             <button onClick={()=>{setOpen(false);setData((data)=>({...data, penitenciaria:{...data.penitenciaria,'idPenitenciaria':''}}));
-            setData((data)=>({...data, observacoes:''}))}} className='w-fit rounded-md text-sm'>VOLTAR</button>
+            setData((data)=>({...data, observacoes:null}))}} className='w-fit rounded-md text-sm'>VOLTAR</button>
             <div className='flex w-full'>
             <TextField size='small' style={{width:'100%'}} onChange={(e) => setData((data)=>({...data,'observacoes':e.target.value.toUpperCase()}))} value={data.observacoes} variant="outlined" label='Nome e endereço da penitenciaria' /></div>
             </div>

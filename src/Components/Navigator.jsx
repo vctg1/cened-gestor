@@ -27,7 +27,7 @@ const categories = [
     icon: <HomeIcon/>,
     children: [
       {active: false, id: 'Alertas do dia', route:'/'},
-      {active: false, id: 'Alunos e cursos', route:'/'}
+      {active: false, id: 'Alunos e cursos', route:'alunos-e-cursos'}
     ],
   },
   {
@@ -91,7 +91,7 @@ const categories = [
     id: 'CADASTROS',
     icon: <SwitchAccountIcon/>,
     children: [
-      {active: false, id: 'Cad. Alunos e cursos', route:'alunos'},
+      {active: false, id: 'Cad. Alunos e cursos', route:'adicionar-aluno'},
       {active: false, id: 'Cad. CH Diária LEP', route:'/'},
       {active: false, id: 'Cad. Cursos', route:'cursos-cened'},
       {active: false, id: 'Cad. Fiscais de sala', route:'fiscais-de-sala'},
