@@ -20,20 +20,20 @@ export default function RegisterCourse() {
         console.log(contentCourse)
     }, [contentCourse])
     return (
-        <div className='flex justify-center'>
-            <Grid className='bg-white p-4 rounded-xl max-w-6xl' container spacing={2}>
+        <div className='flex justify-center bg-white p-4 rounded-xl'>
+            <Grid className='' marginLeft={'10%'} container spacing={2}>
                 <Grid className='flex items-center' item xs={20} md={12}>
                     <AiFillBook size={30}/>
                     <h1 className='text-xl font-bold'>Novo Curso CENED</h1>
                 </Grid>
-                <Grid item xs={10} md={2}>
+                <Grid item xs={10} md={1.5}>
                     <TextField onChange={(e)=> setCodeCourse(e.target.value)} value={codeCourse} type="number" label="Código"/>
                 </Grid>
 
-                <Grid item xs={10} md={6}>
+                <Grid item xs={10} md={8.5}>
                     <TextField className='w-full' onChange={(e)=> setNameCourse(e.target.value)} value={nameCourse} type="text" label="Nome do Curso"/>
                 </Grid>
-                <Grid item xs={10} md={4}>
+                <Grid item xs={10} md={2}>
 
                 </Grid>
                 <Grid item xs={10} md={2}>
