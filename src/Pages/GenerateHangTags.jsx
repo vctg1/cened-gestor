@@ -1,13 +1,15 @@
-import { Grid, TextField, MenuItem } from '@mui/material'
+import { Grid, TextField, MenuItem, useMediaQuery } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search';
 import React from 'react'
 import {AiFillTag} from 'react-icons/ai'
 
 export default function GenerateHangTags() {
+    let isDesktop = useMediaQuery('(min-width:800px)')
   return (
-    <div className='flex justify-center'>
-        <Grid className='bg-white p-4 rounded-xl max-w-6xl' container spacing={2}>
+    <div className='flex justify-center bg-white p-4 rounded-xl'>
+        <Grid marginLeft={`${isDesktop ? '10%' : '0'}`} container spacing={2}>
             <Grid className='flex items-center' item xs={20} md={10}>
+                <AiFillTag size={30}/>
                 <h1 className='text-xl font-bold'>Gerar Etiquetas</h1>
             </Grid>
             <Grid item xs={10} md={3}>

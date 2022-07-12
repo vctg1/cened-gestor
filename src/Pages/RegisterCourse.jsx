@@ -5,6 +5,7 @@ import { useState } from 'react'
 import AppTextField from '../Components/input-fields/AppTextField'
 import {AiFillBook} from 'react-icons/ai'
 import Editor from '../Components/Editor'
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 export default function RegisterCourse() {
     const [codeCourse, setCodeCourse] = useState('')
@@ -15,13 +16,13 @@ export default function RegisterCourse() {
     const [valueTotalCourse, setValueTotalCourse] = useState('')
     const [activeCourse, setActiveCourse] = useState('')
     const [contentCourse, setContentCourse] = useState('')
-
+    let isDesktop = useMediaQuery('(min-width:800px)')
     useEffect(()=>{
         console.log(contentCourse)
     }, [contentCourse])
     return (
         <div className='flex justify-center bg-white p-4 rounded-xl'>
-            <Grid className='' marginLeft={'10%'} container spacing={2}>
+            <Grid marginLeft={`${isDesktop ? '10%' : '0'}`} container spacing={2}>
                 <Grid className='flex items-center' item xs={20} md={12}>
                     <AiFillBook size={30}/>
                     <h1 className='text-xl font-bold'>Novo Curso CENED</h1>

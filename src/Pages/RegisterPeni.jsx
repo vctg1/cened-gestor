@@ -1,4 +1,4 @@
-import { FormControl } from '@mui/material'
+import { FormControl, useMediaQuery } from '@mui/material'
 import React from 'react'
 import {Grid, TextField, MenuItem} from '@mui/material'
 import {FaBuilding} from 'react-icons/fa'
@@ -18,10 +18,10 @@ export default function RegisterPeni() {
     const [titleOffice, setTitleOffice] = useState('')
     const [emailContact, setEmailContact] = useState('')
     const [activePeni, setActivePeni] = useState('')
-
+    let isDesktop = useMediaQuery('(min-width:800px)')
   return (
-    <div className='flex justify-center'>
-        <Grid className='bg-white p-4 rounded-xl max-w-6xl' container spacing={2}>
+    <div className='flex justify-center bg-white p-4 rounded-xl'>
+        <Grid marginLeft={`${isDesktop ? '10%' : '0'}`} container spacing={2}>
             <Grid className='flex items-center' item xs={20} md={10}>
                 {/*<FaBuilding size={30}/>*/}
                 <h1 className='text-xl font-bold'>Dados da Penitenciária</h1>

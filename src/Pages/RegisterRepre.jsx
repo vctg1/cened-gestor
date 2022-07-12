@@ -1,4 +1,4 @@
-import { FormControl, Grid } from '@mui/material'
+import { Grid, useMediaQuery } from '@mui/material'
 import React from 'react'
 import {FaUserTie} from 'react-icons/fa'
 import {TextField, MenuItem} from '@mui/material'
@@ -11,28 +11,33 @@ export default function RegisterRepre() {
     const [phoneRepre, setPhoneRepre] = useState('')    
     const [ufRepre, setUfRepre] = useState('')
     const [activeRepre, setActiveRepre] = useState(false)
+    let isDesktop = useMediaQuery('(min-width:800px)')
   return (
-    <div className='flex justify-center'>
-        <Grid className='bg-white p-4 rounded-xl max-w-6xl' container spacing={2}>
+    <div className='flex justify-center bg-white p-4 rounded-xl'>
+        <Grid marginLeft={`${isDesktop ? '10%' : '0'}`} container spacing={2}>
             <Grid className='flex items-center' item xs={20} md={10}>
                 <FaUserTie size={30}/>
                 <h1 className='text-xl font-bold'>Novo Representante</h1>
             </Grid>
-            <Grid item xs={20} md={10}>
+            <Grid item xs={20} md={9}>
                 <TextField className='w-full' value={nameRepre} onChange={(e)=> setNameRepre(e.target.value)} type="text" label="Nome"/>
             </Grid>
 
-            <Grid item xs={10} md={10}>
+            <Grid item xs={10} md={9}>
                 <TextField className='w-full' label='E-mail' value={emailRepre} onChange={(e)=> setEmailRepre(e.target.value)}/>
             </Grid>
 
-            <Grid item xs={10} md={4}>
+            <Grid item xs={10} md={3}>
+
+            </Grid>
+
+            <Grid item xs={10} md={2}>
                 <InputMask mask="(99)99999-9999" value={phoneRepre} onChange={(e)=> setPhoneRepre(e.target.value)}  maskChar={''}>
                     {()=> <TextField className='w-full' label='Telefone'/>}
                 </InputMask>
             </Grid>
 
-            <Grid item xs={8} md={4}>
+            <Grid item xs={8} md={3}>
                 <TextField value={ufRepre} onChange={(e)=> setUfRepre(e.target.value)} className='w-11/12 bg-white border-none outline-none rounded-xl' select label='UF'>
                     <MenuItem value="AC">Acre</MenuItem>
                     <MenuItem value="AL">Alagoas</MenuItem>

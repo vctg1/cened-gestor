@@ -1,10 +1,11 @@
-import { Grid, TextField, MenuItem } from '@mui/material'
+import { Grid, TextField, MenuItem, useMediaQuery } from '@mui/material'
 import React from 'react'
 
 export default function NewWorkLoad() {
+    let isDesktop = useMediaQuery('(min-width:800px)')
   return (
-    <div className='flex justify-center'>
-        <Grid className='bg-white p-4 rounded-xl max-w-6xl' container spacing={2}>
+    <div className='flex justify-center bg-white p-4 rounded-xl'>
+        <Grid marginLeft={`${isDesktop ? '30%' : '0'}`}  container spacing={2}>
             <Grid className='flex items-center' item xs={20} md={10}>
                 <h1 className='text-xl font-bold'>Nova Carga Horária Diária Padrão</h1>
             </Grid>
@@ -40,7 +41,7 @@ export default function NewWorkLoad() {
                 </TextField>
             </Grid>
 
-            <Grid item xs={10} md={7}>
+            <Grid item xs={10} md={3}>
                 <TextField type={'number'} className='w-full' label='Carga Horária'/>
             </Grid>
 

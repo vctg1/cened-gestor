@@ -1,20 +1,20 @@
-import { Grid } from '@mui/material'
+import { Grid, useMediaQuery } from '@mui/material'
 import React from 'react'
 import {IoDocumentTextSharp} from 'react-icons/io5'
 import {TextField, MenuItem} from '@mui/material'
 import { useState } from 'react'
 
 export default function TestGroups() {
-
+    let isDesktop = useMediaQuery('(min-width:800px)')
   return (
-    <div className='flex justify-center'>
-            <Grid className='bg-white p-4 rounded-xl max-w-6xl' container spacing={2}>
+    <div className='flex justify-center bg-white p-4 rounded-xl'>
+            <Grid container marginLeft={`${isDesktop ? '10%' : '0'}`} spacing={2}>
                 <Grid className='flex items-center' item xs={20} md={10}>
                     <IoDocumentTextSharp size={30}/>
                     <h1 className='text-xl font-bold'>Novo Grupo de Prova</h1>
                 </Grid>
                 
-                <Grid item xs={8} md={10}>
+                <Grid item xs={8} md={9}>
                     <TextField className='w-full' label='Nome'/>
                 </Grid>
 
@@ -34,19 +34,21 @@ export default function TestGroups() {
                     <h2 className='text-base lg:text-xl font-bold'>Tipos de Prova: </h2>
                 </Grid>
 
-                <Grid item xs={10} md={6}>
+                <Grid item xs={10} md={3}>
                     <TextField className='w-full' label='Prova 1'/>
                 </Grid>
 
-                <Grid item xs={10} md={6}>
+                <Grid item xs={10} md={3}>
                     <TextField className='w-full' label='Prova 2'/>
                 </Grid>
-
                 <Grid item xs={10} md={6}>
+
+                </Grid>
+                <Grid item xs={10} md={3}>
                     <TextField className='w-full' label='Prova 3'/>
                 </Grid>
 
-                <Grid item xs={10} md={6}>
+                <Grid item xs={10} md={3}>
                     <TextField className='w-full' label='Prova 4'/>
                 </Grid>
 

@@ -16,6 +16,9 @@ import RegisterRepre from '../Pages/RegisterRepre';
 import DeliveryFee from '../Pages/DeliveryFee';
 import RegisterUser from '../Pages/RegisterUser';
 import FlexRowAlign from './flexbox/FlexRowAlign';
+import NewWorkLoad from '../Pages/NewWorkLoad'
+import GenerateHangTags from '../Pages/GenerateHangTags';
+import TestGroups from '../Pages/TestGroups'
 
 function Copyright() {
   return (
@@ -212,6 +215,9 @@ export default function Paperbase() {
               <Route path='/cadastros/taxa-de-entrega' element={<DeliveryFee/>}/>
               <Route path='/cadastros/usuarios-do-sistema' element={<RegisterUser/>}/>
               <Route path='/cadastros/adicionar-aluno' element={<Register/>}/>
+              <Route path='/cadastros/carga-diaria' element={<NewWorkLoad/>}/>
+              <Route path='/cadastros/etiquetas-de-material' element={<GenerateHangTags/>}/>
+              <Route path='/cadastros/grupos-de-provas' element={<TestGroups/>}/>
             </Routes> 
           </Box>
         </Box>

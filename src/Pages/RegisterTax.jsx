@@ -1,4 +1,4 @@
-import { FormControl, Grid } from '@mui/material'
+import { Grid, useMediaQuery } from '@mui/material'
 import React from 'react'
 import {FaUserTie} from 'react-icons/fa'
 import {TextField, MenuItem} from '@mui/material'
@@ -10,15 +10,20 @@ export default function RegisterTax() {
     const [cpfTax, setCpfTax] = useState('')
     const [rgTax, setRgTax] = useState('')    
     const [ufTax, setUfTax] = useState('')
+    let isDesktop = useMediaQuery('(min-width:800px)')
   return (
-    <div className='flex justify-center'>
-            <Grid className='bg-white p-4 rounded-xl max-w-6xl' container spacing={2}>
+    <div className='flex justify-center bg-white p-4 rounded-xl'>
+            <Grid marginLeft={`${isDesktop ? '10%' : '0'}`} container spacing={2}>
                 <Grid className='flex items-center' item xs={20} md={10}>
                     <FaUserTie size={30}/>
                     <h1 className='text-xl font-bold'>Novo Fiscal De Sala</h1>
                 </Grid>
-                <Grid item xs={20} md={10}>
+                <Grid item xs={20} md={9}>
                     <TextField className='w-full' value={nameTax} onChange={(e)=> setNameTax(e.target.value)} type="text" label="Nome"/>
+                </Grid>
+
+                <Grid item xs={20} md={3}>
+
                 </Grid>
 
                 <Grid item xs={10} md={2}>
