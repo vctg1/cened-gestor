@@ -1,5 +1,6 @@
 import { Grid, TextField, MenuItem, useMediaQuery } from '@mui/material'
 import React from 'react'
+import {IoMdClock} from 'react-icons/io'
 
 export default function NewWorkLoad() {
     let isDesktop = useMediaQuery('(min-width:800px)')
@@ -7,6 +8,7 @@ export default function NewWorkLoad() {
     <div className='flex justify-center bg-white p-4 rounded-xl'>
         <Grid marginLeft={`${isDesktop ? '30%' : '0'}`}  container spacing={2}>
             <Grid className='flex items-center' item xs={20} md={10}>
+                <IoMdClock size={40}/>
                 <h1 className='text-xl font-bold'>Nova Carga Horária Diária Padrão</h1>
             </Grid>
             <Grid item xs={10} md={3}>
