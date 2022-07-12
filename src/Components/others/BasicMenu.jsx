@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router';
-import {IconButton} from '@mui/material';
+import {Grid, IconButton} from '@mui/material';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
@@ -16,7 +16,7 @@ export default function BasicMenu(props) {
   };
 
   return (
-    <div>
+    <Grid>
       <IconButton
         id="basic-button"
         aria-controls={open ? 'basic-menu' : undefined}
@@ -35,9 +35,9 @@ export default function BasicMenu(props) {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={()=> Navigate(`${props.id}`)}>Cadastro</MenuItem>
-        <MenuItem onClick={()=> Navigate(`${props.id}/Cursos`)}>Cursos</MenuItem>
+        <MenuItem onClick={()=> {props.setSelected(props.id); props.setBtn(1)}}>Cadastro</MenuItem>
+        <MenuItem onClick={()=> {props.setSelected(props.id); props.setBtn(2)}}>Cursos</MenuItem>
       </Menu>
-    </div>
+    </Grid>
   );
 }

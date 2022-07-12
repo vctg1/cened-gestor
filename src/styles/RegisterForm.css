@@ -1,8 +1,9 @@
 .titles{
     background-color: lightgrey;
-    width: 87%;
+    width: 86%;
     border-radius: 5px;
     padding: 5px;
+    margin-left: 1%;
 }
 .inputs{
     width: 20%;

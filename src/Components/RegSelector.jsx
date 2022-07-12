@@ -1,13 +1,12 @@
 import { Button, Grid } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import RegisterForm from "./RegisterForm";
-import FlexBox from '../flexbox/FlexBox'
+import RegisterForm from "./RegForms/RegisterForm";
+import FlexBox from './flexbox/FlexBox'
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 
-export default function RegSelector() {
+export default function RegSelector({selected, setSelected}) {
   let [forms, setForms] = useState([{}]);
-  let [selected, setSelected] = useState(1);
   let [openedForm, setOpenedForm] = useState({});
   useEffect(() => {
     setForms([

@@ -9,7 +9,7 @@ import RegForm3 from "./RegForm3";
 import FlexAround from '../flexbox/FlexAround'
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 
-export default function RegisterForm({setSelected}) {
+export default function RegisterForm() {
   let [muiAlert, setAlert] = useState(false);
   let api = process.env.REACT_APP_API_KEY;
   let [penitenciaria, setPenitenciaria] = useState([]);
@@ -37,7 +37,6 @@ export default function RegisterForm({setSelected}) {
 
   function Submit() {
     if (!emptyElements.length > 0) {
-      setSelected(2);
       NotificationManager.success('Aluno cadastrado', 'SUCESSO');
     }
     else {
