@@ -129,7 +129,7 @@ export default function StudentsContent() {
                 </TableCell>
 
                 <TableCell>
-                  Infopen
+                  INFOPEN
                 </TableCell>
 
                 <TableCell>

@@ -15,6 +15,9 @@ import RegisterPeni from '../Pages/RegisterPeni';
 import RegisterRepre from '../Pages/RegisterRepre';
 import DeliveryFee from '../Pages/DeliveryFee';
 import RegisterUser from '../Pages/RegisterUser';
+import TestGroups from '../Pages/TestGroups';
+import NewWorkLoad from '../Pages/NewWorkLoad';
+import GenerateHangTags from '../Pages/GenerateHangTags';
 
 function Copyright() {
   return (
@@ -202,7 +205,6 @@ export default function Paperbase() {
             <Routes>
               <Route path='/' element={<h2 className='text-3xl m-auto font-semibold'>Iníco</h2>}/>
               <Route path='/Cadastros/Alunos' element={<StudentsContent/>}/>
-              <Route path='/Cadastros/Matriculas' element={<h2 className='text-3xl m-auto font-semibold'>Matriculas</h2>}/>
               <Route path='/Cadastros/Penitenciarias' element={<RegisterPeni/>}/>
               <Route path='/Cadastros/Representantes' element={<RegisterRepre/>}/>
               <Route path='/Cadastros/FiscaisdeSala' element={<RegisterTax/>}/>
@@ -210,6 +212,9 @@ export default function Paperbase() {
               <Route path='/Cadastros/TaxaDeEntrega' element={<DeliveryFee/>}/>
               <Route path='/Cadastros/UsuariosdoSistema' element={<RegisterUser/>}/>
               <Route path='/Cadastros/Alunos/adicionar-aluno' element={<Register/>}/>
+              <Route path='/Cadastros/GruposDeProvas' element={<TestGroups/>}/>
+              <Route path='/Cadastros/CHDiariaLEP' element={<NewWorkLoad/>}/>
+              <Route path='/Cadastros/EtiquetasDeMateiral' element={<GenerateHangTags/>}/>
             </Routes> 
           </Box>
         </Box>

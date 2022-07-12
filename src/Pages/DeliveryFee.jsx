@@ -10,9 +10,9 @@ export default function DeliveryFee() {
     const [rgTax, setRgTax] = useState('')    
     const [ufTax, setUfTax] = useState('')
   return (
-    <FormControl>
+    <div className='flex justify-center'>
             <Grid className='bg-white p-4 rounded-xl max-w-6xl' container spacing={2}>
-                <Grid className='flex items-center justify-center' item xs={20} md={10}>
+                <Grid className='flex items-center' item xs={20} md={10}>
                     <FaTruck size={30}/>
                     <h1 className='text-xl font-bold'>Nova Taxa de Entrega (Frete)</h1>
                 </Grid>
@@ -49,7 +49,7 @@ export default function DeliveryFee() {
                     </TextField>
                 </Grid>
                 
-                <Grid item xs={8} md={8}>
+                <Grid item xs={8} md={4}>
                     <TextField type={'number'} className='w-full' label='Taxa'/>
                 </Grid>
 
@@ -58,6 +58,6 @@ export default function DeliveryFee() {
                     <button className='p-4 px-6 hover:bg-green-700 transition-colors bg-green-400 text-white rounded-xl ml-5'>Salvar</button>
                 </Grid>
             </Grid>
-    </FormControl>
+    </div>
   )
 }

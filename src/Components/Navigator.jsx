@@ -26,7 +26,10 @@ const categories = [
       {active: false, id: 'Fiscais de Sala'},
       {active: false, id: 'Cursos CENED'},
       {active: false, id: 'Usuários do Sistema'},
-      {active: false, id: 'Taxa de Entrega'}
+      {active: false, id: 'Taxa de Entrega'},
+      {active: false, id: 'Grupos De Provas'},
+      {active: false, id: 'CH Diária LEP'},
+      {active: false, id: 'Etiquetas De Mateiral'}
     ],
   },{
     id: '2',
