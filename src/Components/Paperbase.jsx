@@ -15,9 +15,7 @@ import RegisterPeni from '../Pages/RegisterPeni';
 import RegisterRepre from '../Pages/RegisterRepre';
 import DeliveryFee from '../Pages/DeliveryFee';
 import RegisterUser from '../Pages/RegisterUser';
-import TestGroups from '../Pages/TestGroups';
-import NewWorkLoad from '../Pages/NewWorkLoad';
-import GenerateHangTags from '../Pages/GenerateHangTags';
+import FlexRowAlign from './flexbox/FlexRowAlign';
 
 function Copyright() {
   return (
@@ -201,6 +199,7 @@ export default function Paperbase() {
           />
         </Box>
         <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+        <FlexRowAlign className='bg-blue-500 text-white font-bold' fontSize='30px' height='5vh' >GESTOR ESCOLAR - CURSOS PPL</FlexRowAlign>
           <Box component="main" sx={{ flex: 1, py: 6, px: 4, bgcolor: '#eaeff1' }}>
             <Routes>
               <Route path='/' element={<h2 className='text-3xl m-auto font-semibold'>Início</h2>}/>
