@@ -25,7 +25,7 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
 }));
 
 const AppTextField = (props) => {
-  return <StyledTextField {...props} />;
+  return <StyledTextField  {...props} />;
 };
 
 export default AppTextField;

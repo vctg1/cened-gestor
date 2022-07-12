@@ -17,42 +17,35 @@ export default function RegisterPeni() {
     const [nameRespon, setNameRespon] = useState('')
     const [titleOffice, setTitleOffice] = useState('')
     const [emailContact, setEmailContact] = useState('')
+    const [activePeni, setActivePeni] = useState('')
 
   return (
-    <FormControl>
+    <div className='flex justify-center'>
         <Grid className='bg-white p-4 rounded-xl max-w-6xl' container spacing={2}>
             <Grid className='flex items-center' item xs={20} md={10}>
-                <FaBuilding size={30}/>
-                <h1 className='text-xl font-bold'>Nova Penitenciária</h1>
+                {/*<FaBuilding size={30}/>*/}
+                <h1 className='text-xl font-bold'>Dados da Penitenciária</h1>
             </Grid>
-            <Grid item xs={20} md={4}>
-                <FormControl className='w-full'>
-                    <TextField value={namePeni} onChange={(e)=> setNamePeni(e.target.value)} label='Nome da Penitenciária'/>
-                </FormControl>
+            <Grid item xs={20} md={10}>
+                <TextField className='w-full' value={namePeni} onChange={(e)=> setNamePeni(e.target.value)} label='Nome da Penitenciária'/>
             </Grid>
 
-            <Grid item xs={20} md={6}>
-                <FormControl className='w-full'>
-                    <TextField value={addresPeni} onChange={(e)=> setAddresPeni(e.target.value)} label='Endereço'/>
-                </FormControl>
+            <Grid item xs={20} md={10}>
+                <TextField className='w-full' value={addresPeni} onChange={(e)=> setAddresPeni(e.target.value)} label='Endereço'/>
             </Grid>
 
-            <Grid item xs={10} md={4}>
-                <FormControl className='w-full'>
-                   <TextField value={cityPeni} onChange={(e)=> setCityPeni(e.target.value)} label='Cidade'/>
-                </FormControl>
+            <Grid item xs={10} md={5}>
+                   <TextField className='w-full' value={cityPeni} onChange={(e)=> setCityPeni(e.target.value)} label='Cidade'/>
             </Grid>
 
             <Grid item xs={5} md={2}>
-                <FormControl className='w-full'>
                     <InputMask value={cepPeni} onChange={(e)=> setCepPeni(e.target.value)} mask="99999-999" maskChar={''}>
-                        {()=> <TextField label='CEP'/>}
+                        {()=> <TextField className='w-full' label='CEP'/>}
                     </InputMask>
-                </FormControl>
             </Grid>
 
-            <Grid item xs={8} md={2.5}>
-                <TextField value={ufPeni} onChange={(e)=> setUfPeni(e.target.value)} className='w-11/12 bg-white border-none outline-none rounded-xl' select label='UF'>
+            <Grid item xs={8} md={3.3}>
+                <TextField value={ufPeni} onChange={(e)=> setUfPeni(e.target.value)} className='w-11/12' select label='UF'>
                     <MenuItem value="AC">Acre</MenuItem>
                     <MenuItem value="AL">Alagoas</MenuItem>
                     <MenuItem value="AP">Amapá</MenuItem>
@@ -82,26 +75,26 @@ export default function RegisterPeni() {
                     <MenuItem value="TO">Tocantins</MenuItem>
                 </TextField>
             </Grid>
-            <Grid item xs={8} md={1.6}>
-                <TextField className='w-11/12 bg-white border-none outline-none rounded-xl' label={'Ativo'} select>
-                <MenuItem>
+            <Grid item xs={8} md={3}>
+                <TextField value={activePeni} onChange={(e)=> setActivePeni(e.target.value)} className='w-11/12 bg-white border-none outline-none rounded-xl' label={'Ativo'} select>
+                <MenuItem value={true}>
                     Sim
                 </MenuItem>
-                <MenuItem>
+                <MenuItem value={false}>
                     Não
                 </MenuItem>
                 </TextField>
             </Grid>
 
-            <Grid item xs={10} md={10}>
-                <h2 className='text-base lg:text-xl font-bold'>Dados do Núcleo de Ensino da Penitenciária</h2>
+            <Grid item xs={10} md={12}>
+                <h2 className='text-base lg:text-xl font-bold'>Dados do Núcleo de Ensino</h2>
             </Grid>
 
-            <Grid item xs={20} md={6}>
+            <Grid item xs={20} md={10}>
                 <TextField className='w-full' value={nameDepart} onChange={(e)=> setNameDepart(e.target.value)} label='Nome do Departamento de Ensino'/>
             </Grid>
 
-            <Grid item xs={20} md={4}>
+            <Grid item xs={20} md={5}>
                 <TextField className='w-full' value={nameRespon} onChange={(e)=> setNameRespon(e.target.value)} label='Responsável pelo Departamento de Ensino'/>
             </Grid>
 
@@ -131,6 +124,6 @@ export default function RegisterPeni() {
                 <button className='p-4 px-6 hover:bg-green-700 transition-colors bg-green-400 text-white rounded-xl ml-5'>Salvar</button>
             </Grid>
         </Grid>
-    </FormControl>
+    </div>
   )
 }

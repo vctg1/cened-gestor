@@ -12,30 +12,24 @@ export default function RegisterRepre() {
     const [ufRepre, setUfRepre] = useState('')
     const [activeRepre, setActiveRepre] = useState(false)
   return (
-    <FormControl>
+    <div className='flex justify-center'>
         <Grid className='bg-white p-4 rounded-xl max-w-6xl' container spacing={2}>
-            <Grid className='flex items-center justify-center' item xs={20} md={10}>
+            <Grid className='flex items-center' item xs={20} md={10}>
                 <FaUserTie size={30}/>
                 <h1 className='text-xl font-bold'>Novo Representante</h1>
             </Grid>
-            <Grid item xs={20} md={6}>
-                <FormControl className='w-full'>
-                    <TextField value={nameRepre} onChange={(e)=> setNameRepre(e.target.value)} type="text" label="Nome"/>
-                </FormControl>
+            <Grid item xs={20} md={10}>
+                <TextField className='w-full' value={nameRepre} onChange={(e)=> setNameRepre(e.target.value)} type="text" label="Nome"/>
+            </Grid>
+
+            <Grid item xs={10} md={10}>
+                <TextField className='w-full' label='E-mail' value={emailRepre} onChange={(e)=> setEmailRepre(e.target.value)}/>
             </Grid>
 
             <Grid item xs={10} md={4}>
-                <FormControl className='w-full'>
-                  <TextField label='E-mail' value={emailRepre} onChange={(e)=> setEmailRepre(e.target.value)}/>
-                </FormControl>
-            </Grid>
-
-            <Grid item xs={10} md={4}>
-                <FormControl className='w-full'>
-                    <InputMask mask="(99)99999-9999" value={phoneRepre} onChange={(e)=> setPhoneRepre(e.target.value)}  maskChar={''}>
-                        {()=> <TextField label='Telefone'/>}
-                    </InputMask>
-                </FormControl>
+                <InputMask mask="(99)99999-9999" value={phoneRepre} onChange={(e)=> setPhoneRepre(e.target.value)}  maskChar={''}>
+                    {()=> <TextField className='w-full' label='Telefone'/>}
+                </InputMask>
             </Grid>
 
             <Grid item xs={8} md={4}>
@@ -87,6 +81,6 @@ export default function RegisterRepre() {
                 <button className='p-4 px-6 hover:bg-green-700 transition-colors bg-green-400 text-white rounded-xl ml-5'>Salvar</button>
             </Grid>
         </Grid>
-    </FormControl>
+    </div>
     )
 }

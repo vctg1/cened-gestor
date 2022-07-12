@@ -13,56 +13,42 @@ export default function RegisterUser() {
     const [ufUser, setUfUser] = useState('')
     const [activeUser, setActiveUser] = useState(false)
   return (
-    <FormControl>
+    <div className='flex justify-center'>
         <Grid className='bg-white p-4 rounded-xl max-w-6xl' container spacing={2}>
-            <Grid className='flex items-center justify-center' item xs={20} md={10}>
+            <Grid className='flex items-center' item xs={20} md={10}>
                 <FaUserAlt size={30}/>
                 <h1 className='text-xl font-bold'>Novo Usuário</h1>
             </Grid>
-            <Grid item xs={20} md={6}>
-                <FormControl className='w-full'>
-                    <TextField value={nameUser} onChange={(e)=> setNameUser(e.target.value)} type="text" label="Nome"/>
-                </FormControl>
+            <Grid item xs={20} md={10}>
+                <TextField className='w-full' value={nameUser} onChange={(e)=> setNameUser(e.target.value)} type="text" label="Nome"/>
             </Grid>
 
-            <Grid item xs={10} md={6}>
-                <FormControl className='w-full'>
-                    <InputMask value={cpfUser} onChange={(e)=> setCpfUser(e.target.value)} mask="999.999.999-99" maskChar={''}>
-                        {()=> <TextField label='CPF'/>}
-                    </InputMask>
-                </FormControl>
+            <Grid item xs={10} md={2}>
+                <InputMask value={cpfUser} onChange={(e)=> setCpfUser(e.target.value)} mask="999.999.999-99" maskChar={''}>
+                    {()=> <TextField className='w-full' label='CPF'/>}
+                </InputMask>
             </Grid>
 
 
             <Grid item xs={10} md={6}>
-                <FormControl className='w-full'>
-                    <TextField className='w-full' label='Login'/>
-                </FormControl>
+                <TextField className='w-full' label='Login'/>
             </Grid>
 
             <Grid item xs={10} md={6}>
-                <FormControl className='w-full'>
-                    <TextField className='w-full' label='E-mail'/>
-                </FormControl>
+                <TextField className='w-full' label='E-mail'/>
             </Grid>
             <Grid item xs={10} md={6}>
-                <FormControl className='w-full'>
-                    <TextField label='Senha'/>
-                </FormControl>
+                <TextField className='w-full' label='Senha'/>
             </Grid>
 
             <Grid item xs={10} md={6}>
-                <FormControl className='w-full'>
-                    <TextField label='Confirmar Senha'/>
-                </FormControl>
+                <TextField className='w-full' label='Confirmar Senha'/>
             </Grid>
 
             <Grid item xs={10} md={4}>
-                <FormControl className='w-full'>
-                    <InputMask mask="(99)99999-9999" value={phoneUser} onChange={(e)=> setPhoneUser(e.target.value)}  maskChar={''}>
-                        {()=> <TextField label='Telefone'/>}
-                    </InputMask>
-                </FormControl>
+                <InputMask mask="(99)99999-9999" value={phoneUser} onChange={(e)=> setPhoneUser(e.target.value)}  maskChar={''}>
+                    {()=> <TextField className='w-full' label='Telefone'/>}
+                </InputMask>
             </Grid>
 
             <Grid item xs={8} md={4}>
@@ -126,6 +112,6 @@ export default function RegisterUser() {
                 <button className='p-4 px-6 hover:bg-green-700 transition-colors bg-green-400 text-white rounded-xl ml-5'>Salvar</button>
             </Grid>
         </Grid>
-    </FormControl>
+    </div>
     )
 }

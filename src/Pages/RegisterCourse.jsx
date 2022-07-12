@@ -1,10 +1,10 @@
-import { FormControl, Grid, MenuItem, TextField } from '@mui/material'
+import { Grid, MenuItem, TextField } from '@mui/material'
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import AppTextField from '../Components/input-fields/AppTextField'
-import SlateEditor from '../Components/SlateEditor/Editor'
 import {AiFillBook} from 'react-icons/ai'
+import Editor from '../Components/Editor'
 
 export default function RegisterCourse() {
     const [codeCourse, setCodeCourse] = useState('')
@@ -20,46 +20,36 @@ export default function RegisterCourse() {
         console.log(contentCourse)
     }, [contentCourse])
     return (
-        <FormControl>
-            <Grid className='bg-white p-4 rounded-xl max-w-6xl' container spacing={2}>
-                <Grid className='flex items-center justify-center' item xs={20} md={10}>
+        <div className='flex justify-center bg-white p-4 rounded-xl'>
+            <Grid className='' marginLeft={'10%'} container spacing={2}>
+                <Grid className='flex items-center' item xs={20} md={12}>
                     <AiFillBook size={30}/>
                     <h1 className='text-xl font-bold'>Novo Curso CENED</h1>
                 </Grid>
-                <Grid item xs={10} md={4}>
-                    <FormControl className='w-full'>
-                        <AppTextField onChange={(e)=> setCodeCourse(e.target.value)} value={codeCourse} type="number" label="Código"/>
-                    </FormControl>
+                <Grid item xs={10} md={1.5}>
+                    <TextField onChange={(e)=> setCodeCourse(e.target.value)} value={codeCourse} type="number" label="Código"/>
                 </Grid>
 
-                <Grid item xs={10} md={6}>
-                    <FormControl className='w-full'>
-                        <AppTextField onChange={(e)=> setNameCourse(e.target.value)}  value={nameCourse} type="text" label="Nome do Curso"/>
-                    </FormControl>
+                <Grid item xs={10} md={8.5}>
+                    <TextField className='w-full' onChange={(e)=> setNameCourse(e.target.value)} value={nameCourse} type="text" label="Nome do Curso"/>
                 </Grid>
+                <Grid item xs={10} md={2}>
 
-                <Grid item xs={10} md={4}>
-                    <FormControl className='w-full'>
-                        <AppTextField onChange={(e)=> setWorkloadCourse(e.target.value)}  value={workloadCourse} type="number" label="Carga Horária"/>
-                    </FormControl>
+                </Grid>
+                <Grid item xs={10} md={2}>
+                    <AppTextField  onInput = {(e) =>{e.target.value = Math.max(0, parseInt(e.target.value) ).toString().slice(0,5)}}  onChange={(e)=> setWorkloadCourse(e.target.value)}  value={workloadCourse} type="number" label="Carga Horária"/>
                 </Grid>
 
                 <Grid item xs={6} md={2}>
-                    <FormControl className='w-full'>
-                        <AppTextField onChange={(e)=> setValueCourse(e.target.value)}  value={valueCourse} type="number" label="Valor"/>
-                    </FormControl>
+                    <AppTextField onChange={(e)=> setValueCourse(e.target.value)}  value={valueCourse} type="number" label="Valor"/>
                 </Grid>
 
                 <Grid item xs={6} md={2}>
-                    <FormControl className='w-full'>
-                        <AppTextField onChange={(e)=> setRateCourse(e.target.value)}  value={rateCourse} type="number" label="Taxa"/>
-                    </FormControl>
+                    <AppTextField onChange={(e)=> setRateCourse(e.target.value)}  value={rateCourse} type="number" label="Taxa"/>
                 </Grid>
 
                 <Grid item xs={6} md={2}>
-                    <FormControl className='w-full'>
-                        <AppTextField onChange={(e)=> setValueTotalCourse(e.target.value)}  value={valueTotalCourse} disabled type="number" label="Valor Total"/>
-                    </FormControl>
+                    <AppTextField onChange={(e)=> setValueTotalCourse(e.target.value)}  value={valueTotalCourse} disabled type="number" label="Valor Total"/>
                 </Grid>
 
                 <Grid item xs={8} md={3}>
@@ -74,10 +64,9 @@ export default function RegisterCourse() {
                     </TextField>
                 </Grid>
                 <Grid item xs={20} md={10}>
-                    <SlateEditor setContentCourse={setContentCourse}/>
+                    <Editor/>
                 </Grid>
-
             </Grid>
-        </FormControl>
+        </div>
     )
 }

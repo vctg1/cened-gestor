@@ -11,32 +11,26 @@ export default function RegisterTax() {
     const [rgTax, setRgTax] = useState('')    
     const [ufTax, setUfTax] = useState('')
   return (
-    <FormControl>
+    <div className='flex justify-center'>
             <Grid className='bg-white p-4 rounded-xl max-w-6xl' container spacing={2}>
-                <Grid className='flex items-center justify-center' item xs={20} md={10}>
+                <Grid className='flex items-center' item xs={20} md={10}>
                     <FaUserTie size={30}/>
                     <h1 className='text-xl font-bold'>Novo Fiscal De Sala</h1>
                 </Grid>
-                <Grid item xs={20} md={4}>
-                    <FormControl className='w-full'>
-                        <TextField value={nameTax} onChange={(e)=> setNameTax(e.target.value)} type="text" label="Nome"/>
-                    </FormControl>
+                <Grid item xs={20} md={10}>
+                    <TextField className='w-full' value={nameTax} onChange={(e)=> setNameTax(e.target.value)} type="text" label="Nome"/>
                 </Grid>
 
-                <Grid item xs={10} md={4}>
-                    <FormControl className='w-full'>
-                        <InputMask value={cpfTax} onChange={(e)=> setCpfTax(e.target.value)} mask="999.999.999-99" maskChar={''}>
-                            {()=> <TextField label='CPF'/>}
-                        </InputMask>
-                    </FormControl>
+                <Grid item xs={10} md={2}>
+                    <InputMask className='w-full' value={cpfTax} onChange={(e)=> setCpfTax(e.target.value)} mask="999.999.999-99" maskChar={''}>
+                        {()=> <TextField className='w-full' label='CPF'/>}
+                    </InputMask>
                 </Grid>
 
-                <Grid item xs={10} md={4}>
-                    <FormControl className='w-full'>
-                        <InputMask mask="999999999999999" value={rgTax} onChange={(e)=> setRgTax(e.target.value)}  maskChar={''}>
-                            {()=> <TextField label='RG'/>}
-                        </InputMask>
-                    </FormControl>
+                <Grid item xs={10} md={3}>
+                    <InputMask className='w-full' mask="999999999999999" value={rgTax} onChange={(e)=> setRgTax(e.target.value)}  maskChar={''}>
+                        {()=> <TextField className='w-full' label='RG'/>}
+                    </InputMask>
                 </Grid>
 
                 <Grid item xs={8} md={3}>
@@ -76,6 +70,6 @@ export default function RegisterTax() {
                     <button className='p-4 px-6 hover:bg-green-700 transition-colors bg-green-400 text-white rounded-xl ml-5'>Salvar</button>
                 </Grid>
             </Grid>
-    </FormControl>
+    </div>
   )
 }
