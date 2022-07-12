@@ -63,7 +63,7 @@ export default function StudentsContent() {
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [students, setStudents] = useState([])
   const [searchValue, setSearchValue] = useState('')
-  const navigateAddUser = ()=> Navigate('adicionar-aluno')
+  const navigateAddUser = ()=> Navigate('/cadastros/adicionar-aluno')
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
