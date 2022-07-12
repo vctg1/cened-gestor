@@ -21,12 +21,12 @@ export default function RegForm3({data, setData, penitenciaria}){
     {value:27,txt:'Tocantins'}];
     return(
         <div id='Form3'>
-            <InputMask mask={'999999999999'} maskChar={''} onChange={(e) => setData((data)=>({...data,'infopen':e.target.value.toUpperCase()}))} value={data.infopen} >{()=><TextField variant="outlined" style={{margin:'1%'}}  label='INFOPEN' className='inputs' id='infopen'></TextField>}</InputMask> 
-            <TextField onChange={(e) => setData((data)=>({...data, penitenciaria:{...data.penitenciaria,'uf':e.target.value}}))} value={data.penitenciaria.uf} select style={{margin:'1%'}} variant="outlined" label='UF' className='inputs' id='ufPris'>
+            <InputMask mask={'999999999999'} maskChar={''} onChange={(e) => setData((data)=>({...data,'infopen':e.target.value.toUpperCase()}))} value={data.infopen} >{()=><TextField size='small' variant="outlined" style={{margin:'1%'}}  label='INFOPEN' className='inputs' id='infopen'></TextField>}</InputMask> 
+            <TextField size='small' onChange={(e) => setData((data)=>({...data, penitenciaria:{...data.penitenciaria,'uf':e.target.value}}))} value={data.penitenciaria.uf} select style={{margin:'1%'}} variant="outlined" label='UF' className='inputs' id='ufPris'>
             {uf.map(item=><MenuItem value={item.value}>{item.txt}</MenuItem>)}</TextField>
             <div className='penitenciaria'>
             <Collapse in={!open}>
-            <TextField style={{width:'100%'}} select onChange={(e) => {setData((data)=>({...data, penitenciaria:{...data.penitenciaria,'idPenitenciaria':e.target.value}}))}} type='number' value={data.penitenciaria.idPenitenciaria} variant="outlined" label='Penitenciária' id='penitenciaria'>
+            <TextField size='small' style={{width:'100%'}} select onChange={(e) => {setData((data)=>({...data, penitenciaria:{...data.penitenciaria,'idPenitenciaria':e.target.value}}))}} type='number' value={data.penitenciaria.idPenitenciaria} variant="outlined" label='Penitenciária' id='penitenciaria'>
             {penitenciaria.length>0 ?<MenuItem value={2} onClick={()=>setOpen(true)}>Minha penitenciaria não consta na lista</MenuItem> :<MenuItem>SELECIONE A UF PRIMEIRO</MenuItem>}
             {penitenciaria.map(item=><MenuItem value={item.id}>{item.nome}</MenuItem>)}</TextField>
             </Collapse>
@@ -35,16 +35,16 @@ export default function RegForm3({data, setData, penitenciaria}){
             <button onClick={()=>{setOpen(false);setData((data)=>({...data, penitenciaria:{...data.penitenciaria,'idPenitenciaria':''}}));
             setData((data)=>({...data, observacoes:''}))}} className='w-fit rounded-md text-sm'>VOLTAR</button>
             <div className='flex w-full'>
-            <TextField style={{width:'100%'}} onChange={(e) => setData((data)=>({...data,'observacoes':e.target.value.toUpperCase()}))} value={data.observacoes} variant="outlined" label='Nome e endereço da penitenciaria' /></div>
+            <TextField size='small' style={{width:'100%'}} onChange={(e) => setData((data)=>({...data,'observacoes':e.target.value.toUpperCase()}))} value={data.observacoes} variant="outlined" label='Nome e endereço da penitenciaria' /></div>
             </div>
             </Collapse>
             </div>
-            <TextField onChange={(e) => setData((data)=>({...data,'bloco':e.target.value.toUpperCase()}))} value={data.bloco} style={{margin:'1%'}} variant="outlined" label='Bloco' className='line5' id='bloco'></TextField>  
-            <TextField onChange={(e) => setData((data)=>({...data,'ala':e.target.value.toUpperCase()}))} value={data.ala} style={{margin:'1%'}} variant="outlined" label='Ala' className='line5' id='ala'></TextField>  
-            <TextField type='number' onChange={(e) => setData((data)=>({...data,'cela':e.target.value}))} value={data.cela} style={{margin:'1%'}} variant="outlined" label='Cela' className='line5' id='cela'></TextField>  
-            <TextField onChange={(e) => setData((data)=>({...data,'condicaoPreso':e.target.value}))} value={data.condicaoPreso} select style={{margin:'1%'}} variant="outlined" label='Condição' className='line5' id='condicao'>
+            <TextField size='small' onChange={(e) => setData((data)=>({...data,'bloco':e.target.value.toUpperCase()}))} value={data.bloco} style={{margin:'1%', marginBottom:0}} variant="outlined" label='Bloco' className='line5' id='bloco'></TextField>  
+            <TextField size='small' onChange={(e) => setData((data)=>({...data,'ala':e.target.value.toUpperCase()}))} value={data.ala} style={{margin:'1%', marginBottom:0}} variant="outlined" label='Ala' className='line5' id='ala'></TextField>  
+            <TextField size='small' type='number' onChange={(e) => setData((data)=>({...data,'cela':e.target.value}))} value={data.cela} style={{margin:'1%', marginBottom:0}} variant="outlined" label='Cela' className='line5' id='cela'></TextField>  
+            <TextField size='small' onChange={(e) => setData((data)=>({...data,'condicaoPreso':e.target.value}))} value={data.condicaoPreso} select style={{margin:'1%', marginBottom:0}} variant="outlined" label='Condição' className='line5' id='condicao'>
             <MenuItem value={1}>Sentenciado</MenuItem><MenuItem value={2}>Aguardando Sentença</MenuItem></TextField>  
-            <TextField onChange={(e) => setData((data)=>({...data,'regime':e.target.value}))} value={data.regime} select style={{margin:'1%'}} variant="outlined" label='Regime' className='line5' id='regime'><MenuItem value={1}>Fechado</MenuItem><MenuItem value={2}>Semiaberto</MenuItem><MenuItem value={3}>Aberto</MenuItem></TextField>  
+            <TextField size='small' onChange={(e) => setData((data)=>({...data,'regime':e.target.value}))} value={data.regime} select style={{margin:'1%', marginBottom:0}} variant="outlined" label='Regime' className='line5' id='regime'><MenuItem value={1}>Fechado</MenuItem><MenuItem value={2}>Semiaberto</MenuItem><MenuItem value={3}>Aberto</MenuItem></TextField>  
         </div>
     )
 }

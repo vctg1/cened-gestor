@@ -6,7 +6,6 @@ import axios from "axios";
 import RegForm1 from "./RegForm1";
 import RegForm2 from "./RegForm2";
 import RegForm3 from "./RegForm3";
-import RegForm4 from "./RegForm4";
 
 export default function RegisterForm() {
   let api = process.env.REACT_APP_API_KEY;
@@ -16,7 +15,7 @@ export default function RegisterForm() {
     [data, setData] = useState({
         nome: "",sexo: "",cpf: "",rg: "",orgaoExpedidor: "",dataNascimento: "",
         naturalidade: "",ufNaturalidade: "",nacionalidade: "",endereco: "",
-        bairro: "",cidade: "",ufResidencial: "",cep: "",senha: "",confirmarSenha: "",
+        bairro: "",cidade: "",ufResidencial: "",cep: "",
         celular: "",foneResidencial: "",foneComercial: "",email: "",
         nomePreposto: "",vinculo: "",sexoPreposto: "",cpfPreposto: "",
         rgPreposto: "",orgaoExpedidorPreposto: "",grauInstrucao: "",atuacaoHabilitacao: "",
@@ -47,8 +46,7 @@ export default function RegisterForm() {
   }
 
   function Submit() {
-    let confirmarSenha = data.senha === data.confirmarSenha;
-    if (confirmarSenha && !emptyElements.length > 0 && generalClauses) {
+    if (!emptyElements.length > 0) {
       //setData((data)=>({...data, penitenciaria:{res.data}}))
       //axios.post(`${apialunos`,data)
       window.location.href = `login`;
@@ -56,20 +54,11 @@ export default function RegisterForm() {
         alert("Registrado com sucesso!");
       }, 200);
     }
-    if (emptyElements.length > 0) {
+    else {
       setAlert(true);
-      setAlertTxt(`Itens incompletos: ${emptyElements}`);
-    }
-    if (!confirmarSenha && !emptyElements.length > 0) {
-      setAlert(true);
-      setAlertTxt("As senhas não coincidem!");
-    }
-    if (!emptyElements.length > 0 && !generalClauses) {
-      setAlert(true);
-      setAlertTxt("Você deve aceitar as cláusulas gerais para continuar");
+      setAlertTxt(`Há itens incompletos`);
     }
   }
-
 
   useEffect(()=>{
     axios.get(`${api}penitenciarias?Limit=400`).then(res=>{
@@ -95,8 +84,6 @@ export default function RegisterForm() {
         <RegForm2 data={data} setData={setData} />
         <h3 className="titles">3 - DADOS PRISIONAIS</h3>
         <RegForm3 data={data} setData={setData} penitenciaria={penitenciaria} />
-        <h4 className="titles">4 - DADOS GERAIS</h4>
-        <RegForm4 data={data} setData={setData} generalClauses={generalClauses} setGeneralClauses={setGeneralClauses} />
       </FormControl>
       <Collapse in={alert}>
         <div className="flex justify-center">
