@@ -1,19 +1,19 @@
 import React, { useEffect } from "react";
 import "../../styles/RegisterForm.css";
 import { useState } from "react";
-import { FormControl, Collapse, Alert, Grid } from "@mui/material";
+import { FormControl, Grid } from "@mui/material";
 import axios from "axios";
 import RegForm1 from "./RegForm1";
 import RegForm2 from "./RegForm2";
 import RegForm3 from "./RegForm3";
 import FlexAround from '../flexbox/FlexAround'
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 
-export default function RegisterForm() {
+export default function RegisterForm({setSelected}) {
+  let [muiAlert, setAlert] = useState(false);
   let api = process.env.REACT_APP_API_KEY;
   let [penitenciaria, setPenitenciaria] = useState([]);
-  let [alert, setAlert] = useState(false),
-  [alertTxt, setAlertTxt] = useState(""),
-    [data, setData] = useState({
+  let [data, setData] = useState({
         nome: "",sexo: "",cpf: "",rg: "",orgaoExpedidor: "",dataNascimento: "",
         naturalidade: "",ufNaturalidade: "",nacionalidade: "",endereco: "",
         bairro: "",cidade: "",ufResidencial: "",cep: "", email:'',
@@ -25,43 +25,26 @@ export default function RegisterForm() {
       penitenciaria: { idPenitenciaria: "", uf: "" }
     });
 
-  let [generalClauses, setGeneralClauses] = useState(false),
-    keysPenitenciaria = Object.keys(data.penitenciaria),
+  let keysPenitenciaria = Object.keys(data.penitenciaria),
     keysAluno = Object.keys(data),
     valueElements = [...keysAluno,...keysPenitenciaria];
-  let [listElements, setListElements] = useState({});
   let emptyElements = [];
-  useEffect(() => {
-    setListElements(Object.assign(data));
-  }, []);
   valueElements.forEach((vl) => {
     if (data[vl] === "" || data.penitenciaria[vl] === "") {
-      emptyElements.push(vl.replace(/([A-Z])/g, " $1").replace('id Pen','pen').replace('condicao Preso','condicao'));
+      emptyElements.push(vl);
     }
   });
 
-  function clearElements() {
-    valueElements.forEach((vl) => {
-      setData(listElements);
-    });
-  }
-  console.log(data)
-
   function Submit() {
     if (!emptyElements.length > 0) {
-      //setData((data)=>({...data, penitenciaria:{res.data}}))
-      //axios.post(`${apialunos`,data)
-      window.location.href = `cursos-cened`;
-      setTimeout(function () {
-        alert("Registrado com sucesso!");
-      }, 200);
+      setSelected(2);
+      NotificationManager.success('Aluno cadastrado', 'SUCESSO');
     }
     else {
       setAlert(true);
-      setAlertTxt(`Há itens incompletos:${emptyElements}`);
+      NotificationManager.error('Há itens incompletos', 'ERRO');
     }
   }
-
   useEffect(()=>{
     axios.get(`${api}penitenciarias?Limit=400`).then(res=>{
       setPenitenciaria([]);
@@ -77,27 +60,14 @@ export default function RegisterForm() {
     <Grid className="bg-white rounded-md pl-20 py-5" >
       <FormControl style={{ fontSize: "20px", marginLeft: "40px"}}>
         <h1 className="titles"> 1 - DADOS DO REEDUCANDO</h1>
-        <RegForm1 alert={alert} data={data} setData={setData} />
+        <RegForm1 muiAlert={muiAlert} data={data} setData={setData} />
         <h2 className="titles">
           2 - DADOS DO RESPONSÁVEL: Familiar / Visitante / Advogado
         </h2>
-        <RegForm2 alert={alert} data={data} setData={setData} />
+        <RegForm2 muiAlert={muiAlert} data={data} setData={setData} />
         <h3 className="titles">3 - DADOS PRISIONAIS</h3>
-        <RegForm3 alert={alert} data={data} setData={setData} penitenciaria={penitenciaria} />
+        <RegForm3 muiAlert={muiAlert} data={data} setData={setData} penitenciaria={penitenciaria} />
       </FormControl>
-      <Collapse in={alert}>
-        <div className="flex justify-center">
-          <Alert
-            className="flex lg:w-1/2 mb-10"
-            severity="warning"
-            onClose={() => {
-              setAlert(false);
-            }}
-          >
-            {alertTxt}
-          </Alert>
-        </div>
-      </Collapse>
       <FlexAround>
         <button
           className="lg:w-1/5 h-fit p-2 rounded-sm bg-red-600 text-white font-bold"
