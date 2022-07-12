@@ -4,8 +4,9 @@ import RegisterForm from "./RegForms/RegisterForm";
 import FlexBox from './flexbox/FlexBox'
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
+import axios from "axios";
 
-export default function RegSelector({selected, setSelected}) {
+export default function RegSelector(props) {
   let [forms, setForms] = useState([{}]);
   let [openedForm, setOpenedForm] = useState({});
   useEffect(() => {
@@ -13,7 +14,7 @@ export default function RegSelector({selected, setSelected}) {
       {
         id: 1,
         name: "CADASTRO",
-        child: <RegisterForm setSelected={setSelected} />,
+        child: <RegisterForm selectedStudent={props.selectedStudent} />,
       },
       {
         id: 2,
@@ -39,17 +40,17 @@ export default function RegSelector({selected, setSelected}) {
   }, []);
   useEffect(()=>{
     forms.map((item)=>{
-      if(selected === item.id){
+      if(props.selected === item.id){
         setOpenedForm(item);
       }
     })
-  },[selected, forms])
+  },[props.selected, forms])
   return (
     <Grid>
       <NotificationContainer/>
       <FlexBox marginBottom='1vh' gap='1vw' >
         {forms.map((item) => {
-          return <Button variant={selected !== item.id ? 'outlined' : 'contained'} onClick={()=>setSelected(item.id)}>{item.name}</Button>
+          return <Button variant={props.selected !== item.id ? 'outlined' : 'contained'} onClick={()=>props.setSelected(item.id)}>{item.name}</Button>
         })},
       </FlexBox>
       <Grid>
