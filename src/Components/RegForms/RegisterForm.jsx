@@ -9,9 +9,10 @@ import RegForm3 from "./RegForm3";
 import FlexAround from '../flexbox/FlexAround'
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 
-export default function RegisterForm() {
+export default function RegisterForm(props) {
+  let [selectedStudent, setSelectedStudent] = useState({});
   let [muiAlert, setAlert] = useState(false);
-  let api = process.env.REACT_APP_API_KEY;
+  let API = process.env.REACT_APP_API_KEY;
   let [penitenciaria, setPenitenciaria] = useState([]);
   let [data, setData] = useState({
         nome: "",sexo: "",cpf: "",rg: "",orgaoExpedidor: "",dataNascimento: "",
@@ -23,20 +24,24 @@ export default function RegisterForm() {
         profissao: "",bloco: "",ala: "",cela: "",condicaoPreso: "",
         regime: "",infopen: "",mae: "",pai: "",
       penitenciaria: { idPenitenciaria: "", uf: "" }
-    });
-
-  let keysPenitenciaria = Object.keys(data.penitenciaria),
+    })
+  useEffect(()=>{if(props.selectedStudent){axios.get(`${API}/alunos/${props.selectedStudent}`).then(res=> setSelectedStudent(res.data))}},[])
+  console.log(selectedStudent);
+  useEffect(()=>{setData((data)=>({...data, ...selectedStudent}))},[selectedStudent])
+  let keysPenitenciaria = Object.keys(data.penitenciaria ? data.penitenciaria : ''),
     keysAluno = Object.keys(data),
     valueElements = [...keysAluno,...keysPenitenciaria];
   let emptyElements = [];
   valueElements.forEach((vl) => {
-    if (data[vl] === "" || data.penitenciaria[vl] === "") {
-      emptyElements.push(vl);
+    if (data[vl] === "" || data[vl] === null) {
+      emptyElements++;
+    }
+    else if(data.penitenciaria && data.penitenciaria[vl]){
+      emptyElements++;
     }
   });
-
   function Submit() {
-    if (!emptyElements.length > 0) {
+    if (!emptyElements > 0) {
       NotificationManager.success('Aluno cadastrado', 'SUCESSO');
     }
     else {
@@ -45,7 +50,7 @@ export default function RegisterForm() {
     }
   }
   useEffect(()=>{
-    axios.get(`${api}penitenciarias?Limit=400`).then(res=>{
+    axios.get(`${API}penitenciarias?Limit=400`).then(res=>{
       setPenitenciaria([]);
       let dataPenitenciaria = res.data.data;
       dataPenitenciaria.forEach((item)=>{
