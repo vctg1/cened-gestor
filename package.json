@@ -42,6 +42,8 @@
     "slate-history": "^0.62.0",
     "slate-hyperscript": "^0.62.0",
     "slate-react": "^0.65.2",
+    "suneditor": "^2.43.14",
+    "suneditor-react": "^3.4.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

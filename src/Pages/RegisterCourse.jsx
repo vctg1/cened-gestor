@@ -1,10 +1,10 @@
-import { FormControl, Grid, MenuItem, TextField } from '@mui/material'
+import { Grid, MenuItem, TextField } from '@mui/material'
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import AppTextField from '../Components/input-fields/AppTextField'
-import SlateEditor from '../Components/SlateEditor/Editor'
 import {AiFillBook} from 'react-icons/ai'
+import Editor from '../Components/Editor'
 
 export default function RegisterCourse() {
     const [codeCourse, setCodeCourse] = useState('')
@@ -64,7 +64,7 @@ export default function RegisterCourse() {
                     </TextField>
                 </Grid>
                 <Grid item xs={20} md={10}>
-                    <SlateEditor setContentCourse={setContentCourse}/>
+                    <Editor/>
                 </Grid>
             </Grid>
         </div>
