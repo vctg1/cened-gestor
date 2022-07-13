@@ -10,7 +10,7 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import axios from 'axios';
 import SearchInput from '../Components/input-fields/SearchInput'
-import { Button } from "@mui/material";
+import { Button, MenuItem, TextField } from "@mui/material";
 import { Grid } from '@mui/material';
 import FlexBetween from '../Components/flexbox/FlexBetween'
 import {AiOutlineMore} from 'react-icons/ai'
@@ -64,6 +64,7 @@ export default function StudentsContent({setSelectedStudent, setSelectedBtn}) {
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [students, setStudents] = useState([])
   const [searchValue, setSearchValue] = useState('')
+  const [typeSearch, setTypeSearch] = useState(1)
   const navigateAddUser = ()=> Navigate('/cadastros/adicionar-aluno')
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -86,9 +87,15 @@ export default function StudentsContent({setSelectedStudent, setSelectedBtn}) {
   }
 
   const searchStudent = ()=>{
-    axios.get(`${api}/alunos?Search=${searchValue}&limit=200`).then(response=>{
-      setStudents(response.data.data)
-    })
+    if(typeSearch === 1){
+      axios.get(`${api}/alunos?Search=${searchValue}&limit=200`).then(response=>{
+        setStudents(response.data.data)
+      })
+    }else{
+      axios.get(`${api}/alunos?Cpf=${searchValue}&limit=200`).then(response=>{
+        setStudents(response.data.data)
+      })
+    }
   }
 
   useEffect(()=>{
@@ -110,7 +117,7 @@ export default function StudentsContent({setSelectedStudent, setSelectedBtn}) {
   return (
     <Grid>
       <FlexBetween>
-        <div className='flex items-center w-1/2'>
+        <div className='flex items-center w-3/4'>
           <SearchInput
             value={searchValue}
             placeholder="Pesquisar por Nome ou CPF"
@@ -119,6 +126,18 @@ export default function StudentsContent({setSelectedStudent, setSelectedBtn}) {
               <Button startIcon={<SearchIcon/>} onClick={searchStudent} className='ml-10' variant='contained'>
                 Buscar
               </Button>
+            </div>
+
+            <div className='w-1/6 ml-5'>
+              <TextField select value={typeSearch} onChange={(e)=> setTypeSearch(e.target.value)} className='w-full' label='Pesquisar por'>
+                <MenuItem value={1}>
+                  Nome
+                </MenuItem>
+
+                <MenuItem value={2}>
+                  CPF
+                </MenuItem>
+              </TextField>
             </div>
         </div>
 
