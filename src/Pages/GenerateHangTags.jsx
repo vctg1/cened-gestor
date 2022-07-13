@@ -8,11 +8,11 @@ export default function GenerateHangTags() {
   return (
     <div className='flex justify-center bg-white p-4 rounded-xl'>
         <Grid marginLeft={`${isDesktop ? '10%' : '0'}`} container spacing={2}>
-            <Grid className='flex items-center' item xs={20} md={10}>
+            <Grid className='flex items-center' item xs={20} md={12}>
                 <AiFillTag size={30}/>
                 <h1 className='text-xl font-bold'>Gerar Etiquetas</h1>
             </Grid>
-            <Grid item xs={10} md={3}>
+            <Grid item xs={10} md={2}>
                 <TextField className='w-full' select label='UF'>
                         <MenuItem value="AC">Acre</MenuItem>
                         <MenuItem value="AL">Alagoas</MenuItem>
@@ -44,7 +44,7 @@ export default function GenerateHangTags() {
                 </TextField>
             </Grid>
 
-            <Grid item xs={10} md={4}>
+            <Grid item xs={10} md={3}>
                 <TextField select className='w-full' label='Tipo de Etiqueta'>
                     <MenuItem value={1}>
                         Etiqueta Material

@@ -19,25 +19,26 @@ export default function RegisterRepre() {
                 <FaUserTie size={30}/>
                 <h1 className='text-xl font-bold'>Novo Representante</h1>
             </Grid>
-            <Grid item xs={20} md={9}>
+            <Grid item xs={20} md={7}>
                 <TextField className='w-full' value={nameRepre} onChange={(e)=> setNameRepre(e.target.value)} type="text" label="Nome"/>
             </Grid>
 
-            <Grid item xs={10} md={9}>
+            <Grid item xs={0} md={3}>
+
+            </Grid>
+
+            <Grid item xs={10} md={5}>
                 <TextField className='w-full' label='E-mail' value={emailRepre} onChange={(e)=> setEmailRepre(e.target.value)}/>
             </Grid>
 
-            <Grid item xs={10} md={3}>
 
-            </Grid>
-
-            <Grid item xs={10} md={2}>
+            <Grid item xs={10} md={1.5}>
                 <InputMask mask="(99)99999-9999" value={phoneRepre} onChange={(e)=> setPhoneRepre(e.target.value)}  maskChar={''}>
                     {()=> <TextField className='w-full' label='Telefone'/>}
                 </InputMask>
             </Grid>
 
-            <Grid item xs={8} md={3}>
+            <Grid item xs={8} md={2}>
                 <TextField value={ufRepre} onChange={(e)=> setUfRepre(e.target.value)} className='w-11/12 bg-white border-none outline-none rounded-xl' select label='UF'>
                     <MenuItem value="AC">Acre</MenuItem>
                     <MenuItem value="AL">Alagoas</MenuItem>
@@ -69,7 +70,7 @@ export default function RegisterRepre() {
                 </TextField>
             </Grid>
 
-            <Grid item xs={8} md={2}>
+            <Grid item xs={8} md={1}>
               <TextField value={activeRepre} onChange={(e)=> setActiveRepre(e.target.value)} className='w-full' select label='Ativo'>
                 <MenuItem value={true}>
                   Sim

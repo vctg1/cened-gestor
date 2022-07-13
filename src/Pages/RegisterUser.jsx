@@ -20,7 +20,7 @@ export default function RegisterUser() {
                 <FaUserAlt size={30}/>
                 <h1 className='text-xl font-bold'>Novo Usuário</h1>
             </Grid>
-            <Grid item xs={20} md={9}>
+            <Grid item xs={20} md={7}>
                 <TextField className='w-full' value={nameUser} onChange={(e)=> setNameUser(e.target.value)} type="text" label="Nome"/>
             </Grid>
 
@@ -31,11 +31,11 @@ export default function RegisterUser() {
             </Grid>
 
 
-            <Grid item xs={10} md={5}>
+            <Grid item xs={10} md={5.5}>
                 <TextField className='w-full' label='Login'/>
             </Grid>
 
-            <Grid item xs={10} md={6}>
+            <Grid item xs={10} md={5.5}>
                 <TextField className='w-full' label='E-mail'/>
             </Grid>
             <Grid item xs={10} md={5.5}>
@@ -46,13 +46,13 @@ export default function RegisterUser() {
                 <TextField className='w-full' label='Confirmar Senha'/>
             </Grid>
 
-            <Grid item xs={10} md={4}>
+            <Grid item xs={10} md={1.5}>
                 <InputMask mask="(99)99999-9999" value={phoneUser} onChange={(e)=> setPhoneUser(e.target.value)}  maskChar={''}>
                     {()=> <TextField className='w-full' label='Telefone'/>}
                 </InputMask>
             </Grid>
 
-            <Grid item xs={8} md={4}>
+            <Grid item xs={8} md={2}>
                 <TextField value={ufUser} onChange={(e)=> setUfUser(e.target.value)} className='w-11/12 bg-white border-none outline-none rounded-xl' select label='UF'>
                     <MenuItem value="AC">Acre</MenuItem>
                     <MenuItem value="AL">Alagoas</MenuItem>
@@ -84,7 +84,7 @@ export default function RegisterUser() {
                 </TextField>
             </Grid>
 
-            <Grid item xs={8} md={3}>
+            <Grid item xs={8} md={1}>
               <TextField className='w-full' select label='Ativo'>
                 <MenuItem value={true}>
                   Sim

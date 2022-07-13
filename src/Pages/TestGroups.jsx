@@ -14,7 +14,7 @@ export default function TestGroups() {
                     <h1 className='text-xl font-bold'>Novo Grupo de Prova</h1>
                 </Grid>
                 
-                <Grid item xs={8} md={9}>
+                <Grid item xs={8} md={7}>
                     <TextField className='w-full' label='Nome'/>
                 </Grid>
 
@@ -34,21 +34,18 @@ export default function TestGroups() {
                     <h2 className='text-base lg:text-xl font-bold'>Tipos de Prova: </h2>
                 </Grid>
 
-                <Grid item xs={10} md={3}>
+                <Grid item xs={10} md={4.5}>
                     <TextField className='w-full' label='Prova 1'/>
                 </Grid>
 
-                <Grid item xs={10} md={3}>
+                <Grid item xs={10} md={4.5}>
                     <TextField className='w-full' label='Prova 2'/>
                 </Grid>
-                <Grid item xs={10} md={6}>
-
-                </Grid>
-                <Grid item xs={10} md={3}>
+                <Grid item xs={10} md={4.5}>
                     <TextField className='w-full' label='Prova 3'/>
                 </Grid>
 
-                <Grid item xs={10} md={3}>
+                <Grid item xs={10} md={4.5}>
                     <TextField className='w-full' label='Prova 4'/>
                 </Grid>
 

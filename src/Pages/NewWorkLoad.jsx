@@ -7,11 +7,11 @@ export default function NewWorkLoad() {
   return (
     <div className='flex justify-center bg-white p-4 rounded-xl'>
         <Grid marginLeft={`${isDesktop ? '30%' : '0'}`}  container spacing={2}>
-            <Grid className='flex items-center' item xs={20} md={10}>
+            <Grid className='flex items-center' item xs={20} md={12}>
                 <IoMdClock size={40}/>
                 <h1 className='text-xl font-bold'>Nova Carga Horária Diária Padrão</h1>
             </Grid>
-            <Grid item xs={10} md={3}>
+            <Grid item xs={10} md={2.5}>
                 <TextField className='w-full' select label='UF'>
                         <MenuItem value="AC">Acre</MenuItem>
                         <MenuItem value="AL">Alagoas</MenuItem>

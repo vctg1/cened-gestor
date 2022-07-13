@@ -34,18 +34,18 @@ export default function RegisterPeni() {
                 <TextField className='w-full' value={addresPeni} onChange={(e)=> setAddresPeni(e.target.value)} label='Endereço'/>
             </Grid>
 
-            <Grid item xs={10} md={5}>
+            <Grid item xs={20} md={3}>
                    <TextField className='w-full' value={cityPeni} onChange={(e)=> setCityPeni(e.target.value)} label='Cidade'/>
             </Grid>
 
-            <Grid item xs={5} md={2}>
+            <Grid item xs={6} md={1.5}>
                     <InputMask value={cepPeni} onChange={(e)=> setCepPeni(e.target.value)} mask="99999-999" maskChar={''}>
                         {()=> <TextField className='w-full' label='CEP'/>}
                     </InputMask>
             </Grid>
 
-            <Grid item xs={8} md={3.3}>
-                <TextField value={ufPeni} onChange={(e)=> setUfPeni(e.target.value)} className='w-11/12' select label='UF'>
+            <Grid item xs={10} md={2}>
+                <TextField value={ufPeni} onChange={(e)=> setUfPeni(e.target.value)} className='w-full' select label='UF'>
                     <MenuItem value="AC">Acre</MenuItem>
                     <MenuItem value="AL">Alagoas</MenuItem>
                     <MenuItem value="AP">Amapá</MenuItem>
@@ -75,8 +75,8 @@ export default function RegisterPeni() {
                     <MenuItem value="TO">Tocantins</MenuItem>
                 </TextField>
             </Grid>
-            <Grid item xs={8} md={3}>
-                <TextField value={activePeni} onChange={(e)=> setActivePeni(e.target.value)} className='w-11/12 bg-white border-none outline-none rounded-xl' label={'Ativo'} select>
+            <Grid item xs={8} md={1}>
+                <TextField value={activePeni} onChange={(e)=> setActivePeni(e.target.value)} className='bg-white w-full border-none outline-none rounded-xl' label={'Ativo'} select>
                 <MenuItem value={true}>
                     Sim
                 </MenuItem>
@@ -90,7 +90,7 @@ export default function RegisterPeni() {
                 <h2 className='text-base lg:text-xl font-bold'>Dados do Núcleo de Ensino</h2>
             </Grid>
 
-            <Grid item xs={20} md={10}>
+            <Grid item xs={20} md={5}>
                 <TextField className='w-full' value={nameDepart} onChange={(e)=> setNameDepart(e.target.value)} label='Nome do Departamento de Ensino'/>
             </Grid>
 

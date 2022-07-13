@@ -31,29 +31,29 @@ export default function RegisterCourse() {
                     <TextField onChange={(e)=> setCodeCourse(e.target.value)} value={codeCourse} type="number" label="Código"/>
                 </Grid>
 
-                <Grid item xs={10} md={8.5}>
+                <Grid item xs={10} md={7}>
                     <TextField className='w-full' onChange={(e)=> setNameCourse(e.target.value)} value={nameCourse} type="text" label="Nome do Curso"/>
                 </Grid>
-                <Grid item xs={10} md={2}>
+                <Grid item xs={10} md={3}>
 
                 </Grid>
-                <Grid item xs={10} md={2}>
+                <Grid item xs={10} md={1.5}>
                     <AppTextField  onInput = {(e) =>{e.target.value = Math.max(0, parseInt(e.target.value) ).toString().slice(0,5)}}  onChange={(e)=> setWorkloadCourse(e.target.value)}  value={workloadCourse} type="number" label="Carga Horária"/>
                 </Grid>
 
-                <Grid item xs={6} md={2}>
+                <Grid item xs={6} md={1.5}>
                     <AppTextField onChange={(e)=> setValueCourse(e.target.value)}  value={valueCourse} type="number" label="Valor"/>
                 </Grid>
 
-                <Grid item xs={6} md={2}>
+                <Grid item xs={6} md={1.5}>
                     <AppTextField onChange={(e)=> setRateCourse(e.target.value)}  value={rateCourse} type="number" label="Taxa"/>
                 </Grid>
 
-                <Grid item xs={6} md={2}>
+                <Grid item xs={6} md={1.5}>
                     <AppTextField onChange={(e)=> setValueTotalCourse(e.target.value)}  value={valueTotalCourse} disabled type="number" label="Valor Total"/>
                 </Grid>
 
-                <Grid item xs={8} md={3}>
+                <Grid item xs={8} md={1.5}>
                     <TextField onChange={(e)=> setActiveCourse(e.target.value)} value={activeCourse} className='w-1/2 bg-white border-none outline-none rounded-xl' select label='Ativo'>
                         <MenuItem value={true}>
                             Sim

@@ -18,27 +18,27 @@ export default function RegisterTax() {
                     <FaUserTie size={30}/>
                     <h1 className='text-xl font-bold'>Novo Fiscal De Sala</h1>
                 </Grid>
-                <Grid item xs={20} md={9}>
+                <Grid item xs={20} md={7}>
                     <TextField className='w-full' value={nameTax} onChange={(e)=> setNameTax(e.target.value)} type="text" label="Nome"/>
                 </Grid>
 
-                <Grid item xs={20} md={3}>
+                <Grid item xs={0} md={5}>
 
                 </Grid>
 
-                <Grid item xs={10} md={2}>
+                <Grid item xs={10} md={1.5}>
                     <InputMask className='w-full' value={cpfTax} onChange={(e)=> setCpfTax(e.target.value)} mask="999.999.999-99" maskChar={''}>
                         {()=> <TextField className='w-full' label='CPF'/>}
                     </InputMask>
                 </Grid>
 
-                <Grid item xs={10} md={3}>
+                <Grid item xs={10} md={1.5}>
                     <InputMask className='w-full' mask="999999999999999" value={rgTax} onChange={(e)=> setRgTax(e.target.value)}  maskChar={''}>
                         {()=> <TextField className='w-full' label='RG'/>}
                     </InputMask>
                 </Grid>
 
-                <Grid item xs={8} md={3}>
+                <Grid item xs={8} md={2}>
                     <TextField value={ufTax} onChange={(e)=> setUfTax(e.target.value)} className='w-11/12 bg-white border-none outline-none rounded-xl' select label='UF'>
                         <MenuItem value="AC">Acre</MenuItem>
 						<MenuItem value="AL">Alagoas</MenuItem>
