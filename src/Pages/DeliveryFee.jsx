@@ -5,20 +5,18 @@ import {TextField, MenuItem} from '@mui/material'
 import { useState } from 'react'
 
 export default function DeliveryFee() {
-    const [nameTax, setNameTax] = useState('')
-    const [cpfTax, setCpfTax] = useState('')
-    const [rgTax, setRgTax] = useState('')    
+    const [rate, setRate] = useState('')   
     const [ufTax, setUfTax] = useState('')
     let isDesktop = useMediaQuery('(min-width:800px)')
   return (
     <div className='flex justify-center bg-white p-4 rounded-xl'>
             <Grid container marginLeft={`${isDesktop ? '20%' : '0'}`}  spacing={2}>
-                <Grid className='flex items-center' item xs={20} md={10}>
+                <Grid className='flex items-center' item xs={20} md={12}>
                     <FaTruck size={30}/>
                     <h1 className='text-xl font-bold'>Nova Taxa de Entrega (Frete)</h1>
                 </Grid>
 
-                <Grid item xs={8} md={4}>
+                <Grid item xs={8} md={2.5}>
                     <TextField value={ufTax} onChange={(e)=> setUfTax(e.target.value)} className='w-11/12 bg-white border-none outline-none rounded-xl' select label='UF'>
                         <MenuItem value="AC">Acre</MenuItem>
 						<MenuItem value="AL">Alagoas</MenuItem>
@@ -50,8 +48,8 @@ export default function DeliveryFee() {
                     </TextField>
                 </Grid>
                 
-                <Grid item xs={8} md={4}>
-                    <TextField type={'number'} className='w-full' label='Taxa'/>
+                <Grid item xs={8} md={2.5}>
+                    <TextField type={'number'} value={rate} onChange={(e)=> setRate(e.target.value)} className='w-full' label='Taxa'/>
                 </Grid>
 
                 <Grid item xs={20} md={10}>

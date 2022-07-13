@@ -103,7 +103,7 @@ const categories = [
       {active: false, id: 'Cad. Grupos de Provas', route:'grupos-de-provas'},
       {active: false, id: 'Cad. Agentes Penitenciários', route:'/'},
       {active: false, id: 'Cad. Etiquetas de material', route:'etiquetas-de-material'},
-      {active: false, id: 'Cad. Cursos autorizados UF', route:'/'},
+      {active: false, id: 'Cad. Cursos autorizados UF', route:'cursos-autorizados-uf'},
     ],
   },
   {

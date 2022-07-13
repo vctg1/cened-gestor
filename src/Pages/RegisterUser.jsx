@@ -8,7 +8,11 @@ import { useState } from 'react'
 export default function RegisterUser() {
     const [nameUser, setNameUser] = useState('')
     const [cpfUser, setCpfUser] = useState('')
+    const [loginUser, setLoginUser] = useState('')
     const [emailUser, setEmailUser] = useState('')
+    const [passwordUser, setPassword] = useState('')
+    const [confirmPasswordUser, setConfirmPasswordUser] = useState('')
+
     const [phoneUser, setPhoneUser] = useState('')    
     const [ufUser, setUfUser] = useState('')
     const [activeUser, setActiveUser] = useState(false)
@@ -24,7 +28,7 @@ export default function RegisterUser() {
                 <TextField className='w-full' value={nameUser} onChange={(e)=> setNameUser(e.target.value)} type="text" label="Nome"/>
             </Grid>
 
-            <Grid item xs={10} md={2}>
+            <Grid item xs={10} md={1.5}>
                 <InputMask value={cpfUser} onChange={(e)=> setCpfUser(e.target.value)} mask="999.999.999-99" maskChar={''}>
                     {()=> <TextField className='w-full' label='CPF'/>}
                 </InputMask>
@@ -32,18 +36,18 @@ export default function RegisterUser() {
 
 
             <Grid item xs={10} md={5.5}>
-                <TextField className='w-full' label='Login'/>
+                <TextField className='w-full' value={loginUser} onChange={(e)=> setLoginUser(e.target.value)} label='Login'/>
             </Grid>
 
             <Grid item xs={10} md={5.5}>
-                <TextField className='w-full' label='E-mail'/>
+                <TextField className='w-full' value={emailUser} onChange={(e)=> setEmailUser(e.target.value)} label='E-mail'/>
             </Grid>
             <Grid item xs={10} md={5.5}>
-                <TextField className='w-full' label='Senha'/>
+                <TextField className='w-full' value={passwordUser} onChange={(e)=> setPassword(e.target.value)} label='Senha'/>
             </Grid>
 
             <Grid item xs={10} md={5.5}>
-                <TextField className='w-full' label='Confirmar Senha'/>
+                <TextField className='w-full' value={confirmPasswordUser} onChange={(e)=> setConfirmPasswordUser(e.target.value)} label='Confirmar Senha'/>
             </Grid>
 
             <Grid item xs={10} md={1.5}>
@@ -85,7 +89,7 @@ export default function RegisterUser() {
             </Grid>
 
             <Grid item xs={8} md={1}>
-              <TextField className='w-full' select label='Ativo'>
+              <TextField value={activeUser} onChange={(e)=> setActiveUser(e.target.value)} className='w-full' select label='Ativo'>
                 <MenuItem value={true}>
                   Sim
                 </MenuItem>

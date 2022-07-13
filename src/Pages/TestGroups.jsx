@@ -6,6 +6,12 @@ import { useState } from 'react'
 
 export default function TestGroups() {
     let isDesktop = useMediaQuery('(min-width:800px)')
+    const [name, setName] = useState('')
+    const [active, setActive] = useState(false)
+    const [test1, setTest1] = useState('')
+    const [test2, setTest2] = useState('')
+    const [test3, setTest3] = useState('')
+    const [test4, setTest4] = useState('')
   return (
     <div className='flex justify-center bg-white p-4 rounded-xl'>
             <Grid container marginLeft={`${isDesktop ? '10%' : '0'}`} spacing={2}>
@@ -15,11 +21,11 @@ export default function TestGroups() {
                 </Grid>
                 
                 <Grid item xs={8} md={7}>
-                    <TextField className='w-full' label='Nome'/>
+                    <TextField className='w-full' value={name} onChange={(e)=> setName(e.target.value)} label='Nome'/>
                 </Grid>
 
                 <Grid item xs={8} md={2}>
-                    <TextField select className='w-full' label='Ativo'>
+                    <TextField value={active} onChange={(e)=> setActive(e.target.value)} select className='w-full' label='Ativo'>
                         <MenuItem value={true}>
                             Sim
                         </MenuItem>
@@ -35,18 +41,18 @@ export default function TestGroups() {
                 </Grid>
 
                 <Grid item xs={10} md={4.5}>
-                    <TextField className='w-full' label='Prova 1'/>
+                    <TextField className='w-full' value={test1} onChange={(e)=> setTest1(e.target.value)} label='Prova 1'/>
                 </Grid>
 
                 <Grid item xs={10} md={4.5}>
-                    <TextField className='w-full' label='Prova 2'/>
+                    <TextField className='w-full' value={test2} onChange={(e)=> setTest2(e.target.value)} label='Prova 2'/>
                 </Grid>
                 <Grid item xs={10} md={4.5}>
-                    <TextField className='w-full' label='Prova 3'/>
+                    <TextField className='w-full' value={test3} onChange={(e)=> setTest3(e.target.value)} label='Prova 3'/>
                 </Grid>
 
                 <Grid item xs={10} md={4.5}>
-                    <TextField className='w-full' label='Prova 4'/>
+                    <TextField className='w-full' value={test4} onChange={(e)=> setTest4(e.target.value)} label='Prova 4'/>
                 </Grid>
 
                 <Grid item xs={20} md={10}>
