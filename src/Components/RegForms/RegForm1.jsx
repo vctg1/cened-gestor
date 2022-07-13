@@ -30,12 +30,12 @@ export default function RegForm1({data, setData, muiAlert}){
             <InputMask mask="999999999999999" maskChar={''} onChange={(e) => setData((data)=>({...data,'rg':e.target.value}))} value={data.rg} id='Identidade'>{() => <TextField error={muiAlert && !data.rg} size='small' style={{margin:'1%', marginBottom: 0}} label='Identidade' className='inputs'  />}</InputMask>
             <TextField error={muiAlert && !data.orgaoExpedidor} size='small' onChange={(e) => setData((data)=>({...data,'orgaoExpedidor':e.target.value.toUpperCase()}))} value={data.orgaoExpedidor} style={{margin:'1%', marginBottom: 0}} variant="outlined" label='Órgão Expedidor' className='inputs' id='orgaoExpedidor'></TextField>
             <DesktopDatePicker
-            size='small'
             label="Data de nascimento"
             inputFormat="dd/MM/yyyy"
             value={data.dataNascimento}
             onChange={(e)=>setData((data)=>({...data, dataNascimento: e}))}
-            renderInput={(params) => <TextField {...params} className='inputs' style={{margin:'1%', marginBottom:0}} size='small' />}
+            renderInput={(params) => <TextField {...params} error={muiAlert && !data.dataNascimento} 
+            className='inputs' style={{margin:'1%', marginBottom:0}} size='small' />}
             />
             <TextField error={muiAlert && !data.naturalidade} size='small' onChange={(e) => setData((data)=>({...data,'naturalidade':e.target.value.toUpperCase()}))} value={data.naturalidade} style={{margin:'1%', marginBottom: 0}} variant="outlined" label='Naturalidade' className='inputs' id='naturalidade'></TextField>
             <TextField error={muiAlert && !data.ufNaturalidade} size='small' onChange={(e) => setData((data)=>({...data,'ufNaturalidade':e.target.value}))} value={data.ufNaturalidade} select style={{margin:'1%', marginBottom: 0}} variant="outlined" label="UF Naturalidade" className='inputs' id='ufNaturalidade'>

@@ -22,11 +22,11 @@ export default function RegForm3({data, setData, penitenciaria, muiAlert}){
     return(
         <div id='Form3'>
             <InputMask mask={'999999999999'} maskChar={''} onChange={(e) => setData((data)=>({...data,'infopen':e.target.value.toUpperCase()}))} value={data.infopen} >{()=><TextField error={muiAlert && !data.infopen} size='small' variant="outlined" style={{margin:'1%'}}  label='INFOPEN' className='inputs' id='infopen'></TextField>}</InputMask> 
-            <TextField error={muiAlert && !data.penitenciaria} size='small' onChange={(e) => setData((data)=>({...data, penitenciaria:{...data.penitenciaria,'uf':e.target.value}}))} value={data.penitenciaria && data.penitenciaria.uf} select style={{margin:'1%'}} variant="outlined" label='UF' className='inputs' id='ufPris'>
+            <TextField error={muiAlert && !data.penitenciaria} size='small' onChange={(e) => setData((data)=>({...data, penitenciaria:{...data.penitenciaria,'uf':e.target.value}}))} value={data.penitenciaria ? data.penitenciaria.uf : data.ufResidencial} select style={{margin:'1%'}} variant="outlined" label='UF' className='inputs' id='ufPris'>
             {uf.map(item=><MenuItem value={item.value}>{item.txt}</MenuItem>)}</TextField>
             <div className='penitenciaria'>
             <Collapse in={!open}>
-            <TextField error={muiAlert && !data.penitenciaria} size='small' style={{width:'100%'}} select onChange={(e) => {setData((data)=>({...data, penitenciaria:{...data.penitenciaria,'idPenitenciaria':e.target.value}}))}} type='number' value={data.penitenciaria && data.penitenciaria.idPenitenciaria} variant="outlined" label='Penitenciária' id='penitenciaria'>
+            <TextField error={muiAlert && !data.penitenciaria} size='small' style={{width:'100%'}} select onChange={(e) => {setData((data)=>({...data, penitenciaria:{...data.penitenciaria,'idPenitenciaria':e.target.value}}))}} type='number' value={data.penitenciaria ? data.penitenciaria.idPenitenciaria : data.idPenitenciaria} variant="outlined" label='Penitenciária' id='penitenciaria'>
             {penitenciaria.length>0 ?<MenuItem value={2} onClick={()=>setOpen(true)}>Minha penitenciaria não consta na lista</MenuItem> :<MenuItem>SELECIONE A UF PRIMEIRO</MenuItem>}
             {penitenciaria.map(item=><MenuItem value={item.id}>{item.nome}</MenuItem>)}</TextField>
             </Collapse>

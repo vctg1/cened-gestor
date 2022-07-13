@@ -3,8 +3,6 @@ import React, { useEffect, useState } from "react";
 import RegisterForm from "./RegForms/RegisterForm";
 import FlexBox from './flexbox/FlexBox'
 import {NotificationContainer, NotificationManager} from 'react-notifications';
-import 'react-notifications/lib/notifications.css';
-import axios from "axios";
 
 export default function RegSelector(props) {
   let [forms, setForms] = useState([{}]);
@@ -14,7 +12,7 @@ export default function RegSelector(props) {
       {
         id: 1,
         name: "CADASTRO",
-        child: <RegisterForm selectedStudent={props.selectedStudent} />,
+        child: <RegisterForm selectedStudent={props.selectedStudent} setSelected={props.setSelected} />,
       },
       {
         id: 2,
@@ -47,7 +45,6 @@ export default function RegSelector(props) {
   },[props.selected, forms])
   return (
     <Grid>
-      <NotificationContainer/>
       <FlexBox marginBottom='1vh' gap='1vw' >
         {forms.map((item) => {
           return <Button variant={props.selected !== item.id ? 'outlined' : 'contained'} onClick={()=>props.setSelected(item.id)}>{item.name}</Button>
