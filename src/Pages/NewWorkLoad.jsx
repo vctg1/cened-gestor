@@ -1,9 +1,12 @@
 import { Grid, TextField, MenuItem, useMediaQuery } from '@mui/material'
 import React from 'react'
+import { useState } from 'react'
 import {IoMdClock} from 'react-icons/io'
 
 export default function NewWorkLoad() {
     let isDesktop = useMediaQuery('(min-width:800px)')
+    const [uf, setUf] = useState('')
+    const [workLoad, setWorkLoad] = useState('')
   return (
     <div className='flex justify-center bg-white p-4 rounded-xl'>
         <Grid marginLeft={`${isDesktop ? '30%' : '0'}`}  container spacing={2}>
@@ -12,7 +15,7 @@ export default function NewWorkLoad() {
                 <h1 className='text-xl font-bold'>Nova Carga Horária Diária Padrão</h1>
             </Grid>
             <Grid item xs={10} md={2.5}>
-                <TextField className='w-full' select label='UF'>
+                <TextField value={uf} onChange={(e)=> setUf(e.target.value)} className='w-full' select label='UF'>
                         <MenuItem value="AC">Acre</MenuItem>
                         <MenuItem value="AL">Alagoas</MenuItem>
                         <MenuItem value="AP">Amapá</MenuItem>
@@ -44,7 +47,7 @@ export default function NewWorkLoad() {
             </Grid>
 
             <Grid item xs={10} md={3}>
-                <TextField type={'number'} className='w-full' label='Carga Horária'/>
+                <TextField type={'number'} value={workLoad} onChange={(e)=> setWorkLoad(e.target.value)} className='w-full' label='Carga Horária'/>
             </Grid>
 
             <Grid item xs={20} md={10}>

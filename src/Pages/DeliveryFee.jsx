@@ -5,9 +5,7 @@ import {TextField, MenuItem} from '@mui/material'
 import { useState } from 'react'
 
 export default function DeliveryFee() {
-    const [nameTax, setNameTax] = useState('')
-    const [cpfTax, setCpfTax] = useState('')
-    const [rgTax, setRgTax] = useState('')    
+    const [rate, setRate] = useState('')   
     const [ufTax, setUfTax] = useState('')
     let isDesktop = useMediaQuery('(min-width:800px)')
   return (
@@ -51,7 +49,7 @@ export default function DeliveryFee() {
                 </Grid>
                 
                 <Grid item xs={8} md={2.5}>
-                    <TextField type={'number'} className='w-full' label='Taxa'/>
+                    <TextField type={'number'} value={rate} onChange={(e)=> setRate(e.target.value)} className='w-full' label='Taxa'/>
                 </Grid>
 
                 <Grid item xs={20} md={10}>

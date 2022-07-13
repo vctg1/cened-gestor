@@ -19,6 +19,7 @@ import FlexRowAlign from './flexbox/FlexRowAlign';
 import NewWorkLoad from '../Pages/NewWorkLoad'
 import GenerateHangTags from '../Pages/GenerateHangTags';
 import TestGroups from '../Pages/TestGroups'
+import AuthorizedCourses from '../Pages/AuthorizedCourses';
 
 function Copyright() {
   return (
@@ -218,6 +219,7 @@ export default function Paperbase() {
               <Route path='/cadastros/carga-diaria' element={<NewWorkLoad/>}/>
               <Route path='/cadastros/etiquetas-de-material' element={<GenerateHangTags/>}/>
               <Route path='/cadastros/grupos-de-provas' element={<TestGroups/>}/>
+              <Route path='/cadastros/cursos-autorizados-uf' element={<AuthorizedCourses/>}/>
             </Routes> 
           </Box>
         </Box>
