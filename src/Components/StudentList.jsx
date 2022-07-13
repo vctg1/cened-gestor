@@ -16,6 +16,7 @@ import FlexBetween from '../Components/flexbox/FlexBetween'
 import {AiOutlineMore} from 'react-icons/ai'
 import {Add} from '@mui/icons-material'
 import BasicMenu from '../Components/others/BasicMenu';
+import SearchIcon from '../icons/SearchIcon';
 
 const columns = [
   {
@@ -84,6 +85,12 @@ export default function StudentsContent({setSelectedStudent, setSelectedBtn}) {
     setRows(rowsProvisory)
   }
 
+  const searchStudent = ()=>{
+    axios.get(`${api}/alunos?Search=${searchValue}&limit=200`).then(response=>{
+      setStudents(response.data.data)
+    })
+  }
+
   useEffect(()=>{
     axios.get(`${api}/alunos?limit=200`).then(response=>{
       setStudents(response.data.data)
@@ -103,9 +110,17 @@ export default function StudentsContent({setSelectedStudent, setSelectedBtn}) {
   return (
     <Grid>
       <FlexBetween>
-        <SearchInput
-          placeholder="Pesquisar"
-          onChange={(e) => setSearchValue(e.target.value)}/>
+        <div className='flex items-center w-1/2'>
+          <SearchInput
+            value={searchValue}
+            placeholder="Pesquisar por Nome ou CPF"
+            onChange={(e) => setSearchValue(e.target.value)}/>
+            <div className='ml-5'>
+              <Button startIcon={<SearchIcon/>} onClick={searchStudent} className='ml-10' variant='contained'>
+                Buscar
+              </Button>
+            </div>
+        </div>
 
         <Button onClick={navigateAddUser} startIcon={<Add/>} variant="contained">
           Adicionar Novo Usuário
