@@ -24,7 +24,7 @@ export default function RegisterUser() {
                 <TextField className='w-full' value={nameUser} onChange={(e)=> setNameUser(e.target.value)} type="text" label="Nome"/>
             </Grid>
 
-            <Grid item xs={10} md={2}>
+            <Grid item xs={10} md={1.5}>
                 <InputMask value={cpfUser} onChange={(e)=> setCpfUser(e.target.value)} mask="999.999.999-99" maskChar={''}>
                     {()=> <TextField className='w-full' label='CPF'/>}
                 </InputMask>

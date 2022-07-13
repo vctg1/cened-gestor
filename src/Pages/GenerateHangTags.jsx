@@ -2,6 +2,7 @@ import { Grid, TextField, MenuItem, useMediaQuery } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search';
 import React from 'react'
 import {AiFillTag} from 'react-icons/ai'
+import {FaMinus, FaPlus} from 'react-icons/fa'
 
 export default function GenerateHangTags() {
     let isDesktop = useMediaQuery('(min-width:800px)')
@@ -77,9 +78,65 @@ export default function GenerateHangTags() {
                 <button className='bg-blue-400 w-full hover:bg-blue-600 transition-colors text-white p-3 text-xl font-bold rounded-xl'><SearchIcon/> Buscar</button>
             </Grid>
 
+            <Grid container className='border-2 border-gray-300 rounded-xl p-2' spacing={2} marginLeft={'17px'} marginTop={'20px'} xs={20} md={12}>
+                <Grid item xs={12} md={6}>
+                    <h2 className='flex text-gray-400 ml-1 items-center font-semibold'><FaMinus size={20}/>REMOVIDOS</h2>
+                    <div className='mt-5 flex flex-col p-2'>
+                        <p className='mb-2 ml-1'>Exibindo: 77</p>
+                        <TextField label='Pesquisar na lista abaixo...'/>
+                        <div className='w-full overflow-y-scroll h-80 border-2 border-gray-300 rounded-l-xl mt-5 p-2'>
+                            <ul>
+                                <li>309 - test test est - 0695468464</li>
+                                <li>309 - test test est - 0695468464</li>
+                                <li>309 - test test est - 0695468464</li>
+                                <li>309 - test test est - 0695468464</li>
+                                <li>309 - test test est - 0695468464</li>
+                                <li>309 - test test est - 0695468464</li>
+                                <li>309 - test test est - 0695468464</li>
+                                <li>309 - test test est - 0695468464</li>
+                                <li>309 - test test est - 0695468464</li>
+                                <li>309 - test test est - 0695468464</li>
+                                <li>309 - test test est - 0695468464</li>
+                                <li>309 - test test est - 0695468464</li>
+                                <li>309 - test test est - 0695468464</li>
+                                <li>309 - test test est - 0695468464</li>
+                                <li>309 - test test est - 0695468464</li>
+                                <li>309 - test test est - 0695468464</li>
+                                <li>309 - test test est - 0695468464</li>
+                                <li>309 - test test est - 0695468464</li>
+                                <li>309 - test test est - 0695468464</li>
+                                <li>309 - test test est - 0695468464</li>
+                                <li>309 - test test est - 0695468464</li>
+                                <li>309 - test test est - 0695468464</li>
+                                <li>309 - test test est - 0695468464</li>
+                                <li>309 - test test est - 0695468464</li>
+                            </ul>
+                        </div>
+                    </div>
+                </Grid>
+
+                <Grid item xs={12} md={6}>
+                    <h2 className='flex text-gray-400 ml-1 items-center font-semibold'><FaPlus size={20}/>ADICIONADOS</h2>
+                    <div className='mt-5 flex flex-col p-2'>
+                        <p className='mb-2 ml-1'>Lista Vazia</p>
+                        <TextField label='Pesquisar na lista abaixo...'/>
+                        <div className='w-full overflow-y-scroll h-80 border-2 border-gray-300 rounded-l-xl mt-5 p-2'>
+                            <ul>
+                                <li>309 - test test est - 0695468464</li>
+                                <li>309 - test test est - 0695468464</li>
+                                <li>309 - test test est - 0695468464</li>
+                                <li>309 - test test est - 0695468464</li>
+                                <li>309 - test test est - 0695468464</li>
+                                <li>309 - test test est - 0695468464</li>
+                            </ul>
+                        </div>
+                    </div>
+                </Grid>
+            </Grid>
+
             <Grid item xs={20} md={10}>
                 <button className='p-4 bg-red-500 hover:bg-red-700 transition-colors text-white rounded-xl'>Cancelar</button>
-                <button className='p-4 px-6 hover:bg-green-700 transition-colors bg-green-400 text-white rounded-xl ml-5'>Salvar</button>
+                <button className='p-4 px-6 hover:bg-green-700 transition-colors bg-green-400 text-white rounded-xl ml-5'>Gerar Etiquetas</button>
             </Grid>
         </Grid>
     </div>
