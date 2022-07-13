@@ -10,6 +10,7 @@ export default function RegisterTax() {
     const [cpfTax, setCpfTax] = useState('')
     const [rgTax, setRgTax] = useState('')    
     const [ufTax, setUfTax] = useState('')
+    const [ufTaxWork, setUfTaxWork] = useState('')
     let isDesktop = useMediaQuery('(min-width:800px)')
   return (
     <div className='flex justify-center bg-white p-4 rounded-xl'>
@@ -26,13 +27,45 @@ export default function RegisterTax() {
 
                 </Grid>
 
+                <Grid item xs={8} md={2}>
+                    <TextField value={ufTaxWork} onChange={(e)=> setUfTaxWork(e.target.value)} className='w-11/12 bg-white border-none outline-none rounded-xl' select label='UF / Trabalho'>
+                        <MenuItem value="AC">Acre</MenuItem>
+						<MenuItem value="AL">Alagoas</MenuItem>
+						<MenuItem value="AP">Amapá</MenuItem>
+						<MenuItem value="AM">Amazonas</MenuItem>
+						<MenuItem value="BA">Bahia</MenuItem>
+						<MenuItem value="CE">Ceará</MenuItem>
+						<MenuItem value="DF">Distrito Federal</MenuItem>
+						<MenuItem value="ES">Espírito Santo</MenuItem>
+						<MenuItem value="GO">Goiás</MenuItem>
+						<MenuItem value="MA">Maranhão</MenuItem>
+						<MenuItem value="MT">Mato Grosso</MenuItem>
+						<MenuItem value="MS">Mato Grosso do Sul</MenuItem>
+						<MenuItem value="MG">Minas Gerais</MenuItem>
+						<MenuItem value="PA">Pará</MenuItem>
+						<MenuItem value="PB">Paraíba</MenuItem>
+						<MenuItem value="PR">Paraná</MenuItem>
+						<MenuItem value="PE">Pernambuco</MenuItem>
+						<MenuItem value="PI">Piauí</MenuItem>
+						<MenuItem value="RJ">Rio de Janeiro</MenuItem>
+						<MenuItem value="RN">Rio Grande do Norte</MenuItem>
+						<MenuItem value="RS">Rio Grande do Sul</MenuItem>
+						<MenuItem value="RO">Rondônia</MenuItem>
+						<MenuItem value="RR">Roraima</MenuItem>
+						<MenuItem value="SC">Santa Catarina</MenuItem>
+						<MenuItem value="SP">São Paulo</MenuItem>
+						<MenuItem value="SE">Sergipe</MenuItem>
+						<MenuItem value="TO">Tocantins</MenuItem>
+                    </TextField>
+                </Grid>
+
                 <Grid item xs={10} md={1.5}>
                     <InputMask className='w-full' value={cpfTax} onChange={(e)=> setCpfTax(e.target.value)} mask="999.999.999-99" maskChar={''}>
                         {()=> <TextField className='w-full' label='CPF'/>}
                     </InputMask>
                 </Grid>
 
-                <Grid item xs={10} md={1.5}>
+                <Grid item xs={10} md={1.6}>
                     <InputMask className='w-full' mask="999999999999999" value={rgTax} onChange={(e)=> setRgTax(e.target.value)}  maskChar={''}>
                         {()=> <TextField className='w-full' label='RG'/>}
                     </InputMask>

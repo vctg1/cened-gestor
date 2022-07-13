@@ -102,7 +102,7 @@ export default function AuthorizedCourses() {
 
             <Grid item xs={20} md={10}>
                 <button className='p-4 bg-red-500 hover:bg-red-700 transition-colors text-white rounded-xl'>Cancelar</button>
-                <button className='p-4 px-6 hover:bg-green-700 transition-colors bg-green-400 text-white rounded-xl ml-5'>Gerar Etiquetas</button>
+                <button className='p-4 px-6 hover:bg-green-700 transition-colors bg-green-400 text-white rounded-xl ml-5'>Salvar</button>
             </Grid>
         </Grid>
     </div>
