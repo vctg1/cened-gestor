@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/cened-gestor/static/css/main.c9aeeaba.css",
-    "main.js": "/cened-gestor/static/js/main.61da52a6.js",
+    "main.js": "/cened-gestor/static/js/main.b9b242c3.js",
     "static/media/favicon.ico": "/cened-gestor/static/media/favicon.3ffa65bfb56898df688c.ico",
     "static/media/notification.svg?s3g3t9": "/cened-gestor/static/media/notification.5d0158671dd860c714c4.svg",
     "static/media/notification.eot": "/cened-gestor/static/media/notification.3657084dc0419605a91c.eot",
@@ -9,10 +9,10 @@
     "static/media/notification.ttf?s3g3t9": "/cened-gestor/static/media/notification.c5d9251ea82e42f75381.ttf",
     "index.html": "/cened-gestor/index.html",
     "main.c9aeeaba.css.map": "/cened-gestor/static/css/main.c9aeeaba.css.map",
-    "main.61da52a6.js.map": "/cened-gestor/static/js/main.61da52a6.js.map"
+    "main.b9b242c3.js.map": "/cened-gestor/static/js/main.b9b242c3.js.map"
   },
   "entrypoints": [
     "static/css/main.c9aeeaba.css",
-    "static/js/main.61da52a6.js"
+    "static/js/main.b9b242c3.js"
   ]
 }
