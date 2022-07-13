@@ -52,7 +52,7 @@ export default function RegForm1({data, setData, muiAlert}){
             <TextField error={muiAlert && !data.atuacaoHabilitacao} size='small' onChange={(e) => setData((data)=>({...data,'atuacaoHabilitacao':e.target.value.toUpperCase()}))} value={data.atuacaoHabilitacao} style={{margin:'1%', marginBottom: 0}} variant="outlined" label='Área de Atuação/Habilitação' className='inputs' id='habilitacao'></TextField>
             <TextField error={muiAlert && !data.pai} size='small' onChange={(e) => setData((data)=>({...data,'pai':e.target.value.toUpperCase()}))} value={data.pai} style={{margin:'1%', marginBottom: 0}} variant="outlined" label='Pai' className='pai' id='pai'></TextField>  
             <TextField error={muiAlert && !data.mae} size='small' onChange={(e) => setData((data)=>({...data,'mae':e.target.value.toUpperCase()}))} value={data.mae} style={{margin:'1%'}} variant="outlined" label='Mãe' className='mae' id='mae'></TextField>
-            <TextField error={muiAlert && !data.email} size='small' type='email' onChange={(e) => setData((data)=>({...data, 'email':e.target.value.toUpperCase()}))} value={data.email} placeholder="email@example.com" style={{margin:'1%'}} variant="outlined" label='Email' className='email' id='email'></TextField>  
+            <TextField error={muiAlert && !data.emailPreso} size='small' type='emailPreso' onChange={(e) => setData((data)=>({...data, 'emailPreso':e.target.value.toUpperCase()}))} value={data.emailPreso} placeholder="email@example.com" style={{margin:'1%'}} variant="outlined" label='Email' className='email' id='emailPreso'></TextField>  
             </LocalizationProvider>
         </Box>
     )

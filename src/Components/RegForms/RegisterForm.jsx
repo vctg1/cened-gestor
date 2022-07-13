@@ -19,7 +19,7 @@ export default function RegisterForm(props) {
         nome: "",sexo: "",cpf: "",rg: "",orgaoExpedidor: "",dataNascimento: "",
         naturalidade: "",ufNaturalidade: "",nacionalidade: "",endereco: "",
         bairro: "",cidade: "",ufResidencial: "",cep: "", email:'',
-        celular: "",foneResidencial: "",foneComercial: "",emailPreposto: "",
+        celular: "",foneResidencial: "",foneComercial: "",emailPreso: "",
         nomePreposto: "",vinculo: "",sexoPreposto: "",cpfPreposto: "",
         rgPreposto: "",orgaoExpedidorPreposto: "",grauInstrucao: "",atuacaoHabilitacao: "",
         profissao: "",bloco: "",ala: "",cela: "",condicaoPreso: "",
@@ -60,8 +60,9 @@ export default function RegisterForm(props) {
       if(data.penitenciaria && data.penitenciaria.uf===item.uf){
         setPenitenciaria((data)=>[...data,item])
       }
-      else if(data.ufResidencial === item.uf){
+      else if(data.idPenitenciaria && data.idPenitenciaria === item.id){
         setPenitenciaria((data)=>[...data,item])
+        setData((data)=>({...data, penitenciaria:{idPenitenciaria: item.id,uf: item.uf}}))
       }
     })
     })
