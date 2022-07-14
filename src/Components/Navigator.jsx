@@ -27,7 +27,7 @@ const categories = [
     icon: <HomeIcon/>,
     children: [
       {active: false, id: 'Alertas do dia', route:'/'},
-      {active: false, id: 'Alunos e cursos', route:'alunos-e-cursos'}
+      {active: false, id: 'Alunos e cursos', route:'/alunos-e-cursos'}
     ],
   },
   {
@@ -163,7 +163,7 @@ export default function Navigator(props) {
             </ListItem>
             <Collapse in={openId===id ? open : false}>
             {children.map(({ id: childId, icon, active, route }) => (
-              <Link key={childId} to={`${id.toLowerCase().replace(/\s/g, '').normalize('NFD').replace(/[\u0300-\u036f]/g, "")}/${route}`}>
+              <Link key={childId} to={`${id==='HOME' ? '/' : id.toLowerCase().replace(/\s/g, '').normalize('NFD').replace(/[\u0300-\u036f]/g, "")}/${route}`}>
                 <ListItem onClick={()=> active = true} disablePadding>
                   <ListItemButton style={{padding: '5px', margin:0}} selected={active} sx={item}>
                     <ListItemIcon>{icon}</ListItemIcon>
