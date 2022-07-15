@@ -18,7 +18,7 @@ const Editor = props => {
   ['save', 'template']]
   return (
     <div>
-      <SunEditor height='450px' width='1160px' setOptions={{height: 200, buttonList: listButtons}} lang={'pt_br'}/>
+      <SunEditor height='450px' width='900px' setOptions={{height: 200, buttonList: listButtons}} lang={'pt_br'}/>
     </div>
   );
 };
