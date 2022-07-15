@@ -14,15 +14,15 @@ export default function CousesList(props){
         {params:{IdAluno: props.selectedStudent}})
         .then(res=>{setStudent(res.data)})
     },[])
-    function Edit(e){
-        setIdMatricula(e);
+    useEffect(()=>{
+        if(idMatricula){
         student.map((item)=>{
             if(item.idMatricula === idMatricula){
-            console.log(item);
             window.localStorage.setItem('matricula', JSON.stringify(item))
         }})
-        Navigate('curso')
+        Navigate('curso');
     }
+    },[idMatricula])
     return(
         <Grid style={{borderRadius:'10px', padding:'5px', backgroundColor:'white'}}>
             <TableContainer style={{maxHeight:'70vh'}}>
@@ -83,7 +83,7 @@ export default function CousesList(props){
                                 <Typography>{item.statusCursoDescricao}</Typography>
                             </TableCell>
                             <TableCell>
-                                <Button variant='outlined' onClick={()=>{Edit(item.idMatricula)}} ><EditIcon/></Button>
+                                <Button variant='outlined' onClick={()=>{setIdMatricula(item.idMatricula)}} ><EditIcon/></Button>
                             </TableCell>
                         </TableRow>
                             )}
