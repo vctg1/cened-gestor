@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import RegisterForm from "./RegForms/RegisterForm";
 import FlexBox from './flexbox/FlexBox'
 import {NotificationContainer, NotificationManager} from 'react-notifications';
+import CoursesList from "./Courses/CoursesList";
 
 export default function RegSelector(props) {
   let [forms, setForms] = useState([{}]);
@@ -17,7 +18,7 @@ export default function RegSelector(props) {
       {
         id: 2,
         name: "CURSOS",
-        child: '',
+        child: <CoursesList selectedStudent={props.selectedStudent} />,
       },
       {
         id: 3,
