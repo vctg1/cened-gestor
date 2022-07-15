@@ -44,7 +44,7 @@ export default function RegForm3({data, setData, penitenciaria, muiAlert}){
             <TextField error={muiAlert && !data.cela} size='small' type='number' onChange={(e) => setData((data)=>({...data,'cela':e.target.value}))} value={data.cela} style={{margin:'0 1% 0 1%'}} variant="outlined" label='Cela' className='line5' id='cela'></TextField>  
             <TextField error={muiAlert && !data.condicaoPreso} size='small' onChange={(e) => setData((data)=>({...data,'condicaoPreso':e.target.value}))} value={data.condicaoPreso} select style={{margin:'0 1% 0 1%'}} variant="outlined" label='Condição' className='line5' id='condicao'>
             <MenuItem value={1}>Sentenciado</MenuItem><MenuItem value={2}>Aguardando Sentença</MenuItem></TextField>  
-            <TextField error={muiAlert && !data.regime} size='small' onChange={(e) => setData((data)=>({...data,'regime':e.target.value}))} value={data.regime} select style={{margin:'0 1% 0 1%'}} variant="outlined" label='Regime' className='line5' id='regime'><MenuItem value={1}>Fechado</MenuItem><MenuItem value={2}>Semiaberto</MenuItem><MenuItem value={3}>Aberto</MenuItem></TextField>  
+            <TextField error={muiAlert && !data.regime} size='small' onChange={(e) => setData((data)=>({...data,'regime':e.target.value}))} value={data.regime} select style={{margin:'1% 1% 0 1%'}} variant="outlined" label='Regime' className='line5' id='regime'><MenuItem value={1}>Fechado</MenuItem><MenuItem value={2}>Semiaberto</MenuItem><MenuItem value={3}>Aberto</MenuItem></TextField>  
         </div>
     )
 }

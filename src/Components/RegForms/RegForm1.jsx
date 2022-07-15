@@ -1,6 +1,7 @@
 import { Box, Grid, MenuItem, TextField } from '@mui/material';
 import React, {useState} from 'react';
 import InputMask from 'react-input-mask';
+import { ptBR } from 'date-fns/locale';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
@@ -23,7 +24,7 @@ export default function RegForm1({data, setData, muiAlert}){
     {value:27,txt:'Tocantins'}];
     return(
         <Box>
-            <LocalizationProvider dateAdapter={AdapterDateFns}>
+            <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={ptBR} >
             <TextField error={muiAlert && !data.nome} size='small' onChange={(e) => setData((data)=>({...data,'nome':e.target.value.toUpperCase()}))} value={data.nome} style={{margin:'1%', marginBottom: 0}} variant="outlined" label='Nome' className='nome' id='nome'></TextField>
             <TextField error={muiAlert && !data.sexo} size='small' onChange={(e) => setData((data)=>({...data,'sexo':e.target.value}))} value={data.sexo} select style={{margin:'1%', marginBottom: 0}} variant="outlined" label='Sexo' className='sexo' id='Sexo'><MenuItem value={1}>M</MenuItem><MenuItem value={2}>F</MenuItem></TextField>
             <InputMask mask="999.999.999-99" maskChar={''} onChange={(e) => setData((data)=>({...data,'cpf':e.target.value}))} value={data.cpf} id='cpf' >{() => <TextField error={muiAlert && !data.cpf} size='small' style={{margin:'1%', marginBottom: 0}} label='CPF' className='inputs'/>}</InputMask>

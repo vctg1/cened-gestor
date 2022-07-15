@@ -7,12 +7,22 @@ import { useNavigate } from 'react-router-dom';
 export default function CousesList(props){
     const Navigate = useNavigate();
     let [student, setStudent] = useState([])
+    let [idMatricula, setIdMatricula] = useState();
     let API = process.env.REACT_APP_API_KEY
     useEffect(()=>{
         axios.get(`${API}documentos/consultas/matriculas`,
         {params:{IdAluno: props.selectedStudent}})
-        .then(res=>{setStudent(res.data); console.log(res.data);})
+        .then(res=>{setStudent(res.data)})
     },[])
+    function Edit(e){
+        setIdMatricula(e);
+        student.map((item)=>{
+            if(item.idMatricula === idMatricula){
+            console.log(item);
+            window.localStorage.setItem('matricula', JSON.stringify(item))
+        }})
+        Navigate('curso')
+    }
     return(
         <Grid style={{borderRadius:'10px', padding:'5px', backgroundColor:'white'}}>
             <TableContainer style={{maxHeight:'70vh'}}>
@@ -73,7 +83,7 @@ export default function CousesList(props){
                                 <Typography>{item.statusCursoDescricao}</Typography>
                             </TableCell>
                             <TableCell>
-                                <Button variant='outlined' onClick={()=>{window.localStorage.setItem('matricula', JSON.stringify(item.idMatricula));Navigate('curso')}} ><EditIcon/></Button>
+                                <Button variant='outlined' onClick={()=>{Edit(item.idMatricula)}} ><EditIcon/></Button>
                             </TableCell>
                         </TableRow>
                             )}

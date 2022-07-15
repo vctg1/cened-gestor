@@ -68,9 +68,9 @@ export default function RegisterForm(props) {
     })
   },[data])
   return (
-    <Grid className="bg-white rounded-md pl-20 py-5" >
+    <Grid className="bg-white rounded-md p-2" >
       <NotificationContainer/>
-      <FormControl style={{ fontSize: "20px", marginLeft: "40px"}}>
+      <FormControl style={{ fontSize: "20px"}}>
         <h1 className="titles"> 1 - DADOS DO REEDUCANDO</h1>
         <RegForm1 muiAlert={muiAlert} data={data} setData={setData} />
         <h2 className="titles">
