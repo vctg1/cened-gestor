@@ -108,14 +108,14 @@ export default function RegisterPeni() {
 
             <Grid item xs={20} md={10}>
                 <div className='bg-gray-400 rounded-xl text-lg flex items-center p-2 text-white'>
-                    {checked ? <BiCheckboxChecked onClick={()=> setChecked(!checked)} className='cursor-pointer' size={30}/>
+                    {checked ? <BiCheckboxChecked onClick={()=> setChecked(!checked)} className='cursor-pointer' size={40}/>
                     : 
-                    <BiCheckbox className='cursor-pointer' onClick={()=> setChecked(!checked)} size={30}/>}
-                    <p>Ativar Bolsa Parceria Integral</p>
+                    <BiCheckbox className='cursor-pointer' onClick={()=> setChecked(!checked)} size={40}/>}
+                    <p className='mr-3'>Ativar Bolsa Parceria Integral</p>
 
                     |
 
-                    <p>Data de Início Parceria {}</p>
+                    <p className='ml-3'>Data de Início Parceria {}</p>
                 </div>
             </Grid>
 
