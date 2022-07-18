@@ -15,7 +15,7 @@ import { Grid } from '@mui/material';
 import FlexBetween from '../Components/flexbox/FlexBetween'
 import {AiOutlineMore} from 'react-icons/ai'
 import {Add} from '@mui/icons-material'
-import BasicMenu from '../Components/others/BasicMenu';
+import BasicMenu from './BasicMenu';
 import SearchIcon from '../icons/SearchIcon';
 
 const columns = [
