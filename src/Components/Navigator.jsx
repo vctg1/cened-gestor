@@ -84,7 +84,8 @@ const categories = [
     icon: <SettingsIcon/>,
     children: [
       {active: false, id: 'Autorizar curso por UF', route:'/'},
-      {active: false, id: 'Token de liberação', route:'/'}
+      {active: false, id: 'Token de liberação', route:'/'},
+      {active: false, id: 'Permissões do usuário', route:'grupo-de-permissoes'},
     ],
   },
   {
@@ -98,7 +99,6 @@ const categories = [
       {active: false, id: 'Cad. Penitenciárias', route:'penitenciarias'},
       {active: false, id: 'Cad. Representantes', route:'representantes'},
       {active: false, id: 'Cad. Taxa entrega/frete', route:'taxa-de-entrega'},
-      {active: false, id: 'Cad. Grupo de Permissões', route:'grupo-de-permissoes'},
       {active: false, id: 'Cad. Usuários do Sistema', route:'usuarios-do-sistema'},
       {active: false, id: 'Cad. Grupos de Provas', route:'grupos-de-provas'},
       {active: false, id: 'Cad. Agentes Penitenciários', route:'/'},

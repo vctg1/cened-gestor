@@ -9,6 +9,7 @@ const StyledInputBase = styled(InputBase)(({disable_border }) => ({
   fontWeight: 600,
   padding: "0 1rem",
   background: 'white',
+  border: '1px solid gray',
   borderRadius: "8px",
 })); // ------------------------------------------------------------
 

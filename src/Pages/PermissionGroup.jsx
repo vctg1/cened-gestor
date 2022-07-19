@@ -11,7 +11,7 @@ const groups = [
         lines: [
             {
                 title: 'Alertas do Dia',
-                consult: true,
+                consult: false,
                 edit: false,
                 delete: false
             },
@@ -29,14 +29,20 @@ const groups = [
         lines: [
             {
                 title: 'Autorizar Curso por UF',
-                consult: true,
+                consult: false,
                 edit: false,
                 delete: false
             },
 
             {
                 title: 'Token de Liberação',
-                consult: true,
+                consult: false,
+                edit: false,
+                delete: false
+            },
+            {
+                title: 'Permisões de Usuário',
+                consult: false,
                 edit: false,
                 delete: false
             }
@@ -48,21 +54,21 @@ const groups = [
         lines: [
             {
                 title: 'Transações Financeiras',
-                consult: true,
+                consult: false,
                 edit: false,
                 delete: false
             },
 
             {
                 title: 'Cursos Sintético',
-                consult: true,
+                consult: false,
                 edit: false,
                 delete: false
             },
 
             {
                 title: 'Cursos Analítico',
-                consult: true,
+                consult: false,
                 edit: false,
                 delete: false
             }
@@ -73,7 +79,7 @@ const groups = [
         lines: [
             {
                 title: 'Emitir Notas Fiscais',
-                consult: true,
+                consult: false,
                 edit: false,
                 delete: false
             },
@@ -84,21 +90,21 @@ const groups = [
         lines: [
             {
                 title: 'Enviar Mensagens',
-                consult: true,
+                consult: false,
                 edit: false,
                 delete: false
             },
 
             {
                 title: 'Cursos Sintético',
-                consult: true,
+                consult: false,
                 edit: false,
                 delete: false
             },
 
             {
                 title: 'Cursos Analítico',
-                consult: true,
+                consult: false,
                 edit: false,
                 delete: false
             }
@@ -295,13 +301,6 @@ const groups = [
 
             {
                 title: 'Taxa Entrega/Frete',
-                consult: false,
-                edit: false,
-                delete: false
-            },
-
-            {
-                title: 'Grupo de Permisões',
                 consult: false,
                 edit: false,
                 delete: false

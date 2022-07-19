@@ -223,7 +223,7 @@ export default function Paperbase() {
               <Route path='/cadastros/etiquetas-de-material' element={<GenerateHangTags/>}/>
               <Route path='/cadastros/grupos-de-provas' element={<TestGroups/>}/>
               <Route path='/cadastros/cursos-autorizados-uf' element={<AuthorizedCourses/>}/>
-              <Route path='/cadastros/grupo-de-permissoes' element={<PermissionGroup/>} />
+              <Route path='/configuracoes/grupo-de-permissoes' element={<PermissionGroup/>} />
             </Routes> 
           </Box>
         </Box>
