@@ -128,55 +128,57 @@ export default function StudentsContent({setSelectedStudent, setSelectedBtn}) {
       </FlexBetween>
       <Paper className='mt-5' sx={{ width: '100%', overflow: 'hidden' }}>
         <TableContainer sx={{ maxHeight: 740 }}>
-          <Table stickyHeader aria-label="sticky table">
-            <TableHead>
-              <TableRow>
-                <TableCell>
+          <table className='w-full'>
+            <thead>
+              <tr className='w-full text-sm'>
+                <td>
 
-                </TableCell>
-
-                <TableCell>
+                </td>
+                <td className='p-2 w-1/4'>
                   Nome
-                </TableCell>
+                </td>
 
-                <TableCell>
+                <td className='p-2 w-1/12'>
                   CPF
-                </TableCell>
+                </td>
 
-                <TableCell>
+                <td className='p-2 w-1/12'>
                   INFOPEN
-                </TableCell>
+                </td>
 
-                <TableCell>
+                <td className='p-2 w-1/4'>
                   Preposto
-                </TableCell>
+                </td>
 
-                <TableCell>
+                <td className='p-2 w-1/3'>
                   UF / Penitenciária
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {rows
+                </td>
+                <td>
+
+                </td>
+              </tr>
+            </thead>
+            <tbody>
+            {rows
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row) => {
                   return (
-                    <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                    <tr className='border-t border-b text-sm border-gray-300 w-full' tabIndex={-1} key={row.code}>
                       {columns.map((column) => {
                         const value = row[column.id];
                         return (
-                          <TableCell key={column.id} align={column.align}>
+                          <td className='p-2' key={column.id} align={column.align}>
                             {column.format && typeof value === 'number'
                               ? column.format(value)
                               : value}
-                          </TableCell>
+                          </td>
                         );
                       })}
-                    </TableRow>
+                    </tr>
                   );
                 })}
-            </TableBody>
-          </Table>
+            </tbody>
+          </table>
         </TableContainer>
         <TablePagination
           rowsPerPageOptions={[10, 25, 100]}
