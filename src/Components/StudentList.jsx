@@ -38,7 +38,7 @@ const columns = [
 
   {
     id: 'infopen',
-    label: 'Infopen',
+    label: 'INFOPEN',
     minWidth: 170
   },
 
@@ -144,7 +144,7 @@ export default function StudentsContent({setSelectedStudent, setSelectedBtn}) {
                 </TableCell>
 
                 <TableCell>
-                  Infopen
+                  INFOPEN
                 </TableCell>
 
                 <TableCell>
