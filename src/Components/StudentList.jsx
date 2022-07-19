@@ -128,29 +128,29 @@ export default function StudentsContent({setSelectedStudent, setSelectedBtn}) {
       </FlexBetween>
       <Paper className='mt-5' sx={{ width: '100%', overflow: 'hidden' }}>
         <TableContainer sx={{ maxHeight: 740 }}>
-          <table className='w-full'>
+          <table className='w-full table-auto'>
             <thead>
               <tr className='w-full text-sm'>
                 <td>
 
                 </td>
-                <td className='p-2 w-1/4'>
+                <td className='p-2'>
                   Nome
                 </td>
 
-                <td className='p-2 w-1/12'>
+                <td className='p-2'>
                   CPF
                 </td>
 
-                <td className='p-2 w-1/12'>
+                <td className='p-2'>
                   INFOPEN
                 </td>
 
-                <td className='p-2 w-1/4'>
+                <td className='p-2'>
                   Preposto
                 </td>
 
-                <td className='p-2 w-1/3'>
+                <td className='p-2'>
                   UF / Penitenciária
                 </td>
                 <td>
