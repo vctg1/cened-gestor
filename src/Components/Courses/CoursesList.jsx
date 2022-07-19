@@ -30,9 +30,6 @@ export default function CousesList(props){
                     <TableHead>
                         <TableRow>
                             <TableCell>
-                                <Typography>Matrícula</Typography>
-                            </TableCell>
-                            <TableCell>
                                 <Typography>Curso</Typography>
                             </TableCell>
                             <TableCell>
