@@ -134,23 +134,23 @@ export default function StudentsContent({setSelectedStudent, setSelectedBtn}) {
                 <td>
 
                 </td>
-                <td className='p-2'>
+                <td className='py-4 px-2'>
                   Nome
                 </td>
 
-                <td className='p-2'>
+                <td className='py-4 px-2'>
                   CPF
                 </td>
 
-                <td className='p-2'>
+                <td className='py-4 px-2'>
                   INFOPEN
                 </td>
 
-                <td className='p-2'>
+                <td className='py-4 px-2'>
                   Preposto
                 </td>
 
-                <td className='p-2'>
+                <td className='py-4 px-2'>
                   UF / Penitenciária
                 </td>
                 <td>
