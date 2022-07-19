@@ -35,8 +35,16 @@ export default function BasicMenu(props) {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={()=> {props.setSelected(props.id); props.setBtn(1)}}>Cadastro</MenuItem>
-        <MenuItem onClick={()=> {props.setSelected(props.id); props.setBtn(2)}}>Cursos</MenuItem>
+        <MenuItem onClick={()=> {
+          sessionStorage.setItem('button', 1);
+          sessionStorage.setItem('student', JSON.stringify(props.id));
+          Navigate('/contratos')}}
+          >Cadastro</MenuItem>
+        <MenuItem onClick={()=> {
+          sessionStorage.setItem('button', 2);
+          sessionStorage.setItem('student', JSON.stringify(props.id));
+          Navigate('/contratos')}}
+          >Cursos</MenuItem>
       </Menu>
     </Grid>
   );

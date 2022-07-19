@@ -7,7 +7,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 
 
-export default function(params){
+export default function CoursesForm(params){
     return(
         <Table> 
             <TableRow>

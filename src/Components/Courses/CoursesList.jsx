@@ -1,31 +1,41 @@
-import { Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, Button } from "@mui/material";
+import { Edit } from '@mui/icons-material';
+import { Button, Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import axios from 'axios';
-import React, { useState, useEffect } from "react";
-import EditIcon from '@mui/icons-material/Edit';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function CousesList(props){
-    const Navigate = useNavigate();
-    let [student, setStudent] = useState([])
-    let [idMatricula, setIdMatricula] = useState();
-    let API = process.env.REACT_APP_API_KEY
+export default function CousesList(params){
+    let Navigate = useNavigate();
+    let falseCourses = [
+    {
+    curso:{codigo:123}, 
+    dataMatricula:"2018-03-05T00:00:00", 
+    inicioCurso: "2018-03-13T00:00:00", 
+    terminoCurso:"2018-05-14T00:00:00",
+    dataPiso:"2018-04-27T00:00:00",
+    statusFinanceiroDescricao:"Pago",
+    statusCursoDescricao:"Aprovado"
+    },
+    {    
+    curso:{codigo:312},  
+    dataMatricula:"2018-07-01T00:00:00", 
+    inicioCurso: "2018-07-17T00:00:00", 
+    terminoCurso:"2018-09-26T00:00:00",
+    dataPiso:"2018-08-31T00:00:00",
+    statusFinanceiroDescricao:"Aguardando pagamento",
+    statusCursoDescricao:null
+    },
+    ]
+    let [cursos,setCursos] = useState(falseCourses);
+    /* let API = process.env.REACT_APP_API_KEY
     useEffect(()=>{
         axios.get(`${API}documentos/consultas/matriculas`,
-        {params:{IdAluno: props.selectedStudent}})
-        .then(res=>{setStudent(res.data)})
-    },[])
-    useEffect(()=>{
-        if(idMatricula){
-        student.map((item)=>{
-            if(item.idMatricula === idMatricula){
-            window.localStorage.setItem('matricula', JSON.stringify(item))
-        }})
-        Navigate('curso');
-    }
-    },[idMatricula])
+        {params:{IdAluno: params.selectedStudent}})
+        .then(res=>{setCursos(res.data)});
+    },[]) */
     return(
-        <Grid style={{borderRadius:'10px', padding:'5px', backgroundColor:'white'}}>
-            <TableContainer style={{maxHeight:'70vh'}}>
+        <Grid style={{backgroundColor:'white'}}>
+            <TableContainer>
                 <Table stickyHeader>
                     <TableHead>
                         <TableRow>
@@ -44,46 +54,37 @@ export default function CousesList(props){
                             <TableCell>
                                 <Typography>Data autorizada</Typography>
                             </TableCell>
-                            <TableCell>
-                                <Typography>Financeiro</Typography>
-                            </TableCell>
-                            <TableCell colspan={3}>
+                            <TableCell colSpan={2}>
                                 <Typography>Status</Typography>
                             </TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                            {student.map(item=>
+                    {cursos.map(item=>
                         <TableRow>
                             <TableCell>
-                                <Typography>{item.numeroMatricula ? item.numeroMatricula : 'N/D'}</Typography>
+                                <Typography>{item.curso.codigo}</Typography>
                             </TableCell>
                             <TableCell>
-                                <Typography>{item.curso && item.curso.codigo}</Typography>
+                                <Typography>{item.dataMatricula ? new Date(item.dataMatricula).toLocaleDateString('pt-BR') : 'N/D' }</Typography>
                             </TableCell>
                             <TableCell>
-                                <Typography>{new Date(item.dataMatricula).toLocaleDateString('pt-BR')}</Typography>
+                                <Typography>{item.inicioCurso ? new Date(item.inicioCurso).toLocaleDateString('pt-BR') : 'N/D' }</Typography>
                             </TableCell>
                             <TableCell>
-                                <Typography>{item.inicioCurso ? new Date(item.inicioCurso).toLocaleDateString('pt-BR'):'N/D'}</Typography>
+                                <Typography>{item.terminoCurso ? new Date(item.terminoCurso).toLocaleDateString('pt-BR') : 'N/D' }</Typography>
                             </TableCell>
                             <TableCell>
-                                <Typography>{item.terminoCurso ? new Date(item.terminoCurso).toLocaleDateString('pt-BR'):'N/D'}</Typography>
-                            </TableCell>
-                            <TableCell>
-                                <Typography>{item.dataPiso ? new Date(item.dataPiso).toLocaleDateString('pt-BR'):'N/D'}</Typography>
+                                <Typography>{item.dataPiso ? new Date(item.dataPiso).toLocaleDateString('pt-BR') : 'N/D' }</Typography>
                             </TableCell>
                             <TableCell>
                                 <Typography>{item.statusFinanceiroDescricao}</Typography>
                             </TableCell>
                             <TableCell>
-                                <Typography>{item.statusCursoDescricao}</Typography>
-                            </TableCell>
-                            <TableCell>
-                                <Button variant='outlined' onClick={()=>{setIdMatricula(item.idMatricula)}} ><EditIcon/></Button>
+                                <Button onClick={()=>{sessionStorage.setItem('matricula', JSON.stringify(item)); Navigate('curso')}}><Edit/></Button>
                             </TableCell>
                         </TableRow>
-                            )}
+                        )}
                     </TableBody>
                 </Table>
             </TableContainer>
