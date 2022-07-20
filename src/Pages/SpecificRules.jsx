@@ -97,29 +97,14 @@ export default function SpecificRules() {
             <Grid item xs={0} md={2}>
 
             </Grid>
-            <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={ptBR}> 
                 <Grid item xs={10} md={2}>
-                        <DesktopDatePicker
-                        className='w-full'
-                        label={'Início do Curso'}
-                        inputFormat="dd/MM/yyyy"
-                        value={dateInit}
-                        onChange={(e)=> setDateInit(e)}
-                        renderInput={(params) => <TextField {...params}/>}
-                        />
+                    <TextField className='w-full' label='Início do Curso'/>
                 </Grid>
 
                 <Grid item xs={10} md={2}>
-                        <DesktopDatePicker
-                        className='w-full'
-                        label={'Período do Curso'}
-                        inputFormat="dd/MM/yyyy"
-                        value={periodCourse}
-                        onChange={(e)=> setPeriodCourse(e)}
-                        renderInput={(params) => <TextField {...params}/>}
-                        />
+                    <TextField className='w-full' label='Período do Curso'/> 
                 </Grid>
-            </LocalizationProvider>
+            
 
         </Grid>
     </div>
