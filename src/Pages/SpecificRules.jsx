@@ -73,31 +73,25 @@ export default function SpecificRules() {
 
             <Grid item xs={10} md={5}>
                 <TextField className='w-full' select label='Local de Envio de Apostila'>
-                        <MenuItem value="1">AAAAAAAAAAAAAAAAAAAAAAAA</MenuItem>
-                        <MenuItem value="2">AAAAAAAAAAAAAAAAAAAAAAAA</MenuItem>
-                        <MenuItem value="3">AAAAAAAAAAAAAAAAAAAAAAAA</MenuItem>
-                        <MenuItem value="4">AAAAAAAAAAAAAAAAAAAAAAAA</MenuItem>
-                        <MenuItem value="5">AAAAAAAAAAAAAAAAAAAAAAAAA</MenuItem>
+                        <MenuItem value="1">Penitenciária</MenuItem>
+                        <MenuItem value="2">Residência</MenuItem>
+                        <MenuItem value="3">Representante</MenuItem>
                 </TextField>
             </Grid>
 
             <Grid item xs={10} md={5}>
                 <TextField className='w-full' select label='Local de Envio de Prova'>
-                        <MenuItem value="1">AAAAAAAAAAAAAAAAAAAAAAAA</MenuItem>
-                        <MenuItem value="2">AAAAAAAAAAAAAAAAAAAAAAAA</MenuItem>
-                        <MenuItem value="3">AAAAAAAAAAAAAAAAAAAAAAAA</MenuItem>
-                        <MenuItem value="4">AAAAAAAAAAAAAAAAAAAAAAAA</MenuItem>
-                        <MenuItem value="5">AAAAAAAAAAAAAAAAAAAAAAAAA</MenuItem>
+                        <MenuItem value="1">Penitenciária</MenuItem>
+                        <MenuItem value="2">Residência</MenuItem>
+                        <MenuItem value="3">Representantes</MenuItem>
                 </TextField>
             </Grid>
 
             <Grid item xs={10} md={5}>
                 <TextField className='w-full' select label='Local de Envio de Certificado'>
-                        <MenuItem value="1">AAAAAAAAAAAAAAAAAAAAAAAA</MenuItem>
-                        <MenuItem value="2">AAAAAAAAAAAAAAAAAAAAAAAA</MenuItem>
-                        <MenuItem value="3">AAAAAAAAAAAAAAAAAAAAAAAA</MenuItem>
-                        <MenuItem value="4">AAAAAAAAAAAAAAAAAAAAAAAA</MenuItem>
-                        <MenuItem value="5">AAAAAAAAAAAAAAAAAAAAAAAAA</MenuItem>
+                        <MenuItem value="1">Penitenciária</MenuItem>
+                        <MenuItem value="2">Residência</MenuItem>
+                        <MenuItem value="3">Representantes</MenuItem>
                 </TextField>
             </Grid>
             <Grid item xs={0} md={2}>
