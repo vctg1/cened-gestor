@@ -4,35 +4,43 @@ import React, { useState, useEffect } from "react";
 import EditIcon from '@mui/icons-material/Edit';
 import { useNavigate } from 'react-router-dom';
 import FlexBox from '../flexbox/FlexBox'
-import { KeyboardReturn } from "@mui/icons-material";
+import { Add, Delete, KeyboardReturn } from "@mui/icons-material";
+import StudentInfo from "./StudentInfo";
 
 
 
 export default function ContractsList(){
     let [selectedStudent, setSelectedStudent] = useState(null|sessionStorage.getItem('student'));
-    let falseCourses = [
-    {
-    curso:{codigo:123}, 
-    dataMatricula:"2018-03-05T00:00:00", 
-    inicioCurso: "2018-03-13T00:00:00", 
-    terminoCurso:"2018-05-14T00:00:00",
-    dataPiso:"2018-04-27T00:00:00",
-    statusFinanceiroDescricao:"Pago",
-    statusCursoDescricao:"Aprovado"
-    },
-    {    
-    curso:{codigo:312},  
-    dataMatricula:"2018-07-01T00:00:00", 
-    inicioCurso: "2018-07-17T00:00:00", 
-    terminoCurso:"2018-09-26T00:00:00",
-    dataPiso:"2018-08-31T00:00:00",
-    statusFinanceiroDescricao:"Aguardando pagamento",
-    statusCursoDescricao:null
-    },
-    ]
+    let [contractData, setContractData] = useState(JSON.parse(sessionStorage.getItem('matricula')));
     const Navigate = useNavigate();
     let [contratos, setContratos] = useState([])
     let [idMatricula, setIdMatricula] = useState();
+    let [falseCourses, setFalseCourses] = useState([
+        {
+            curso:{
+                codigo:123, 
+                nome: 'Almoxarifado'
+            }, 
+            dataMatricula:"2018-03-05T00:00:00", 
+            inicioCurso: "2018-03-13T00:00:00", 
+            terminoCurso:"2018-05-14T00:00:00",
+            dataPiso:"2018-04-27T00:00:00",
+            statusFinanceiroDescricao:"Pago",
+            statusCursoDescricao:"Aprovado"
+            },
+            {    
+            curso:{
+                codigo:312,
+                nome: 'Direito Penal'
+            },  
+            dataMatricula:"2018-07-01T00:00:00", 
+            inicioCurso: "2018-07-17T00:00:00", 
+            terminoCurso:"2018-09-26T00:00:00",
+            dataPiso:"2018-08-31T00:00:00",
+            statusFinanceiroDescricao:"Aguardando pagamento",
+            statusCursoDescricao:null
+            },
+    ])
     let API = process.env.REACT_APP_API_KEY
     useEffect(()=>{
         axios.get(`${API}documentos/consultas/matriculas`,
@@ -49,13 +57,34 @@ export default function ContractsList(){
     }
     },[idMatricula])
     return(
-        <Grid style={{borderRadius:'10px', padding:'5px', backgroundColor:'white'}}>
+        <Grid className="p-2 rounded-md bg-white">
+            <Typography marginY={2} fontWeight={'bold'} color={'rgb(100,100,100)'} >Dados gerais do contrato</Typography>
+            <FlexBox style={{marginBottom:'1em', gap:'10px', display:'grid', gridTemplateColumns:'1fr 1.5fr 1fr' }}>
+            <Button variant="contained" ><Add/><b>INCLUIR NOVO CONTRATO</b></Button>
+            <StudentInfo bgColor={'rgb(80,80,80)'} titleColor={'lightgray'} infoColor={'white'} title={'ALUNO:'} info={contractData.aluno.nome} />
+            <StudentInfo bgColor={'rgb(80,80,80)'} titleColor={'lightgray'} infoColor={'white'} title={'CPF:'} info={contractData.aluno.cpf} />
+            </FlexBox>
+            {contratos.map((item)=>
             <TableContainer style={{maxHeight:'70vh'}}>
+                {console.log(item)}
+                <FlexBox alignItems={'center'}>
+                    <Box>
+                    <Typography border='solid 1px' borderRadius='10px' margin='1em' padding={`.5em`} >CONTRATO: <b>{item.numeroMatricula ? item.numeroMatricula : 'N/D'}</b></Typography>
+                    </Box>
+                    <Box>
+                    <Typography border='solid 1px' borderRadius='10px' margin='1em' padding={`.5em`} >SITUAÇÃO: <b>{item.dataPrescricao ? 'PRESCRITO': 'VIGENTE'}</b></Typography>
+                    </Box>
+                <Button color="error" style={{height:'fit-content'}}><Delete/></Button>
+                <Button style={{height:'fit-content'}} onClick={()=>{setIdMatricula(item.idMatricula)}} ><EditIcon/></Button>
+                </FlexBox>
                 <Table stickyHeader>
                     <TableHead>
                         <TableRow>
                             <TableCell>
-                                <Typography>Contrato/Curso</Typography>
+                                <Typography>Código</Typography>
+                            </TableCell>
+                            <TableCell>
+                                <Typography>Curso</Typography>
                             </TableCell>
                             <TableCell>
                                 <Typography>Data matrícula</Typography>
@@ -77,16 +106,14 @@ export default function ContractsList(){
                             </TableCell>
                         </TableRow>
                     </TableHead>
-                    {contratos.map(item=>
                     <TableBody>
-                        <FlexBox alignItems={'center'} >
-                            <Typography style={{backgroundColor:'lightgreen'}} borderRadius='10px' margin='2%' padding={`4%`} >{item.numeroMatricula ? item.numeroMatricula : 'N/D'}</Typography>
-                            <Button style={{height:'fit-content'}} onClick={()=>{setIdMatricula(item.idMatricula)}} ><EditIcon/></Button>
-                        </FlexBox>
-                            {falseCourses.map(item=>
-                                <TableRow>
+                        {falseCourses.map(item=>
+                        <TableRow>
                             <TableCell>
                                 <Typography>{item.curso && item.curso.codigo}</Typography>
+                            </TableCell>
+                            <TableCell>
+                                <Typography>{item.curso && item.curso.nome}</Typography>
                             </TableCell>
                             <TableCell>
                                 <Typography>{new Date(item.dataMatricula).toLocaleDateString('pt-BR')}</Typography>
@@ -109,10 +136,10 @@ export default function ContractsList(){
                         </TableRow>
                         )}
                     </TableBody>
-                    )}
                 </Table>
             </TableContainer>
-            <Button onClick={()=>{window.history.back()}}>Voltar<KeyboardReturn/></Button>
+                    )}
+            <Button onClick={()=>{window.history.back()}}>VOLTAR<KeyboardReturn/></Button>
         </Grid>
     )
 }

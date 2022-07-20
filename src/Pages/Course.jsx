@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import CoursesForm from "../Components/Courses/CoursesForm";
 
 export default function Course(){
-    let [matricula, setMatricula] = useState(JSON.parse(sessionStorage.getItem('matricula')))
+    let [matricula, setMatricula] = useState(JSON.parse(sessionStorage.getItem('curso')))
     let startData = {
         'Nº Matrícula': matricula.numeroMatricula,
         'Curso': matricula.curso.codigo,

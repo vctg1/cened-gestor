@@ -8,7 +8,10 @@ export default function CousesList(params){
     let Navigate = useNavigate();
     let falseCourses = [
     {
-    curso:{codigo:123}, 
+    curso:{
+        codigo:123, 
+        nome: 'Almoxarifado'
+    }, 
     dataMatricula:"2018-03-05T00:00:00", 
     inicioCurso: "2018-03-13T00:00:00", 
     terminoCurso:"2018-05-14T00:00:00",
@@ -17,7 +20,10 @@ export default function CousesList(params){
     statusCursoDescricao:"Aprovado"
     },
     {    
-    curso:{codigo:312},  
+    curso:{
+        codigo:312,
+        nome: 'Direito Penal'
+    },  
     dataMatricula:"2018-07-01T00:00:00", 
     inicioCurso: "2018-07-17T00:00:00", 
     terminoCurso:"2018-09-26T00:00:00",
@@ -34,11 +40,15 @@ export default function CousesList(params){
         .then(res=>{setCursos(res.data)});
     },[]) */
     return(
-        <Grid style={{backgroundColor:'white'}}>
+        <Grid>
             <TableContainer>
                 <Table stickyHeader>
                     <TableHead>
                         <TableRow>
+                        <TableCell/>
+                            <TableCell>
+                                <Typography>Código</Typography>
+                            </TableCell>
                             <TableCell>
                                 <Typography>Curso</Typography>
                             </TableCell>
@@ -63,7 +73,13 @@ export default function CousesList(params){
                     {cursos.map(item=>
                         <TableRow>
                             <TableCell>
+                                <Button onClick={()=>{sessionStorage.setItem('curso', JSON.stringify(item)); Navigate('curso')}}><Edit/></Button>
+                            </TableCell>
+                            <TableCell>
                                 <Typography>{item.curso.codigo}</Typography>
+                            </TableCell>
+                            <TableCell>
+                                <Typography>{item.curso.nome}</Typography>
                             </TableCell>
                             <TableCell>
                                 <Typography>{item.dataMatricula ? new Date(item.dataMatricula).toLocaleDateString('pt-BR') : 'N/D' }</Typography>
@@ -79,9 +95,6 @@ export default function CousesList(params){
                             </TableCell>
                             <TableCell>
                                 <Typography>{item.statusFinanceiroDescricao}</Typography>
-                            </TableCell>
-                            <TableCell>
-                                <Button onClick={()=>{sessionStorage.setItem('matricula', JSON.stringify(item)); Navigate('curso')}}><Edit/></Button>
                             </TableCell>
                         </TableRow>
                         )}

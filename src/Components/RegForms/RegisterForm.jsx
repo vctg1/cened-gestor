@@ -72,7 +72,7 @@ export default function RegisterForm(props) {
     })
   },[data])
   return (
-    <Grid className="bg-white rounded-md p-2" >
+    <Grid>
       <NotificationContainer/>
       <FormControl style={{ fontSize: "20px"}}>
         <h1 className="titles"> 1 - DADOS DO REEDUCANDO</h1>

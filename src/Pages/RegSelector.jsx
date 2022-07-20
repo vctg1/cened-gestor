@@ -1,13 +1,18 @@
-import { Button, Grid } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import RegisterForm from "../Components/RegForms/RegisterForm";
 import FlexBox from '../Components/flexbox/FlexBox'
 import CoursesList from "../Components/Courses/CoursesList";
 import { KeyboardReturn } from "@mui/icons-material";
+import axios from "axios";
+import StudentInfo from "../Components/Contracts/StudentInfo";
 
 export default function RegSelector() {
+  let [studentData, setStudentData] = useState({});
+  let [contractData, setContractData] = useState(JSON.parse(sessionStorage.getItem('matricula')));
   let [selectedStudent, setSelectedStudent] = useState(null|sessionStorage.getItem('student'));
   let [selectedButton, setSelectedButton] = useState(null|sessionStorage.getItem('button'))
+  let API = process.env.REACT_APP_API_KEY;
   let [forms, setForms] = useState([{}]);
   let [openedForm, setOpenedForm] = useState({});
   useEffect(() => {
@@ -45,9 +50,17 @@ export default function RegSelector() {
         setOpenedForm(item);
       }
     })
+    axios.get(`${API}/alunos/${selectedStudent}`).then(res=> setStudentData(res.data));
   },[selectedButton, forms])
   return (
-    <Grid>
+    <Grid className="bg-white rounded-md p-2 ">
+      <Typography marginY={2} fontWeight={'bold'} color={'rgb(100,100,100)'} >Dados gerais do contrato</Typography>
+      <FlexBox style={{marginBottom:'1em', gap:'10px', display:'grid', gridTemplateColumns:'1.5fr 1fr 1fr 1fr' }}>
+        <StudentInfo bgColor={'rgb(80,80,80)'} titleColor={'lightgray'} infoColor={'white'} title={'ALUNO / CPF:'} info={`${contractData.aluno.nome} / ${contractData.aluno.cpf}`} />
+        <StudentInfo bgColor={'rgb(80,80,80)'} titleColor={'lightgray'} infoColor={'white'} title={'CONTRATO:'} info={contractData.numeroMatricula ? contractData.numeroMatricula :'N/D'} />
+        <StudentInfo bgColor={contractData.dataPrescricao ? 'red' : 'slategray'} titleColor={'lightgray'} infoColor={'white'} title={'SITUAÇÃO CONTRATO:'} info={contractData.dataPrescricao ? 'PRESCRITO' : 'VIGENTE'} />
+        <StudentInfo bgColor={'slategray'} titleColor={'lightgray'} infoColor={'white'} title={'FINANCEIRO:'} info={contractData.statusFinanceiroDescricao} />
+      </FlexBox>
       <FlexBox marginBottom='1vh' gap='1vw' >
         {forms.map((item) => {
           return <Button variant={selectedButton !== item.id ? 'outlined' : 'contained'} onClick={()=>setSelectedButton(item.id)}>{item.name}</Button>
