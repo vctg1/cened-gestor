@@ -8,7 +8,7 @@ import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 export default function SpecificRules() {
     let isDesktop = useMediaQuery('(min-width:800px)')
     const [uf, setUf] = useState('Acre')
-    const [peni, setPeni] = useState('Penitenciária Aruana')
+    const [peni, setPeni] = useState('Penitenciária Aruana 1')
     const [dateInit, setDateInit] = useState('')
     const [periodCourse, setPeriodCourse] = useState('')
   return (
