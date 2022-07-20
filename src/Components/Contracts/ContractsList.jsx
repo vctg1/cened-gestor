@@ -59,10 +59,11 @@ export default function ContractsList(){
     return(
         <Grid className="p-2 rounded-md bg-white">
             <Typography marginY={2} fontWeight={'bold'} color={'rgb(100,100,100)'} >Dados gerais do contrato</Typography>
-            <FlexBox style={{marginBottom:'1em', gap:'10px', display:'grid', gridTemplateColumns:'1fr 1.5fr 1fr' }}>
+            <FlexBox style={{marginBottom:'1em', gap:'10px', display:'grid', gridTemplateColumns:'1fr 1.5fr 1fr 1fr' }}>
             <Button variant="contained" ><Add/><b>INCLUIR NOVO CONTRATO</b></Button>
             <StudentInfo bgColor={'rgb(80,80,80)'} titleColor={'lightgray'} infoColor={'white'} title={'ALUNO:'} info={contractData.aluno.nome} />
             <StudentInfo bgColor={'rgb(80,80,80)'} titleColor={'lightgray'} infoColor={'white'} title={'CPF:'} info={contractData.aluno.cpf} />
+            <Button color='inherit' variant="contained" onClick={()=>{window.history.back()}}>VOLTAR<KeyboardReturn/></Button>
             </FlexBox>
             {contratos.map((item)=>
             <TableContainer style={{maxHeight:'70vh'}}>
@@ -138,7 +139,6 @@ export default function ContractsList(){
                 </Table>
             </TableContainer>
                     )}
-            <Button onClick={()=>{window.history.back()}}>VOLTAR<KeyboardReturn/></Button>
         </Grid>
     )
 }

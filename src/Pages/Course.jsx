@@ -41,6 +41,7 @@ export default function Course(){
     let [data, setData] = useState(startData)
     return(
         <Grid>
+            <Button onClick={()=>{sessionStorage.setItem('button', 2);window.history.back()}}>VOLTAR<KeyboardReturn/></Button>
             <Grid style={{backgroundColor:'white', borderRadius:'10px'}}>
             <TableContainer>
                 <CoursesForm data={data} setData={setData} title={'DADOS DO CURSO'} start={0} finish={11} />
@@ -61,7 +62,6 @@ export default function Course(){
                 </Grid>
             </TableContainer>
             </Grid>
-            <Button onClick={()=>{sessionStorage.setItem('button', 2);window.history.back()}}>VOLTAR<KeyboardReturn/></Button>
         </Grid>
     )
 }

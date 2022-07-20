@@ -55,11 +55,12 @@ export default function RegSelector() {
   return (
     <Grid className="bg-white rounded-md p-2 ">
       <Typography marginY={2} fontWeight={'bold'} color={'rgb(100,100,100)'} >Dados gerais do contrato</Typography>
-      <FlexBox style={{marginBottom:'1em', gap:'10px', display:'grid', gridTemplateColumns:'1.5fr 1fr 1fr 1fr' }}>
+      <FlexBox style={{marginBottom:'1em', gap:'10px', display:'grid', gridTemplateColumns:'2fr 1fr 1fr 1fr 1fr' }}>
         <StudentInfo bgColor={'rgb(80,80,80)'} titleColor={'lightgray'} infoColor={'white'} title={'ALUNO / CPF:'} info={`${contractData.aluno.nome} / ${contractData.aluno.cpf}`} />
         <StudentInfo bgColor={'rgb(80,80,80)'} titleColor={'lightgray'} infoColor={'white'} title={'CONTRATO:'} info={contractData.numeroMatricula ? contractData.numeroMatricula :'N/D'} />
         <StudentInfo bgColor={contractData.dataPrescricao ? 'red' : 'slategray'} titleColor={'lightgray'} infoColor={'white'} title={'SITUAÇÃO CONTRATO:'} info={contractData.dataPrescricao ? 'PRESCRITO' : 'VIGENTE'} />
         <StudentInfo bgColor={'slategray'} titleColor={'lightgray'} infoColor={'white'} title={'FINANCEIRO:'} info={contractData.statusFinanceiroDescricao} />
+        <Button color='inherit' variant='contained' onClick={()=>{window.history.back()}}>VOLTAR<KeyboardReturn/></Button>
       </FlexBox>
       <FlexBox marginBottom='1vh' gap='1vw' >
         {forms.map((item) => {
@@ -69,7 +70,6 @@ export default function RegSelector() {
       <Grid>
         {openedForm.child}
       </Grid>
-      <Button onClick={()=>{window.history.back()}}>VOLTAR<KeyboardReturn/></Button>
     </Grid>
   );
 }
