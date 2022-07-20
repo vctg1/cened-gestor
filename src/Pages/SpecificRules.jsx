@@ -98,11 +98,11 @@ export default function SpecificRules() {
 
             </Grid>
                 <Grid item xs={10} md={2}>
-                    <TextField className='w-full' label='Início do Curso'/>
+                    <TextField className='w-full' type={'number'} label='Início do Curso'/>
                 </Grid>
 
                 <Grid item xs={10} md={2}>
-                    <TextField className='w-full' label='Período do Curso'/> 
+                    <TextField className='w-full' type={'number'} label='Período do Curso'/> 
                 </Grid>
             
 
