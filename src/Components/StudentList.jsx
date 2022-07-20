@@ -51,7 +51,7 @@ const columns = [
   },
 ];
 
-export default function StudentsContent({setSelectedStudent, setSelectedBtn}) {
+export default function StudentsContent() {
   const api = process.env.REACT_APP_API_KEY
   const Navigate = useNavigate()
   const [rows, setRows] = useState([])
@@ -74,7 +74,7 @@ export default function StudentsContent({setSelectedStudent, setSelectedBtn}) {
         agent: st.nomePreposto,
         infopen: '999999',
         ufPeni: `${st.penitenciaria.ufDescricao} / ${st.penitenciaria.nome}`,
-        more: <BasicMenu setSelected={setSelectedStudent} setBtn={setSelectedBtn} id={st.id}><AiOutlineMore size={25} color='black'/></BasicMenu>
+        more: <BasicMenu id={st.id}><AiOutlineMore size={25} color='black'/></BasicMenu>
       })
     })
     setRows(rowsProvisory)

@@ -20,9 +20,12 @@ import NewWorkLoad from '../Pages/NewWorkLoad'
 import GenerateHangTags from '../Pages/GenerateHangTags';
 import TestGroups from '../Pages/TestGroups'
 import AuthorizedCourses from '../Pages/AuthorizedCourses';
-import Course from './../Pages/Course';
+import RegSelector from '../Pages/RegSelector'
 import PermissionGroup from '../Pages/PermissionGroup';
+import Contracts from '../Pages/Contracts';
+import Course from '../Pages/Course'
 import SpecificRules from '../Pages/SpecificRules';
+
 
 function Copyright() {
   return (
@@ -211,8 +214,9 @@ export default function Paperbase() {
             <Routes>
               <Route path='/' element={<h2 className='text-3xl m-auto font-semibold'>Início</h2>}/>
               <Route path='/alunos-e-cursos' element={<StudentsContent/>}/>
-              <Route path='/alunos-e-cursos/curso' element={<Course/>}/>
-              {/*Telas da Área de Cadastros*/}
+              <Route path='/contratos' element={<Contracts/>}/>
+              <Route path='/contratos/editar' element={<RegSelector/>}/>
+              <Route path='/contratos/editar/curso' element={<Course/>}/>
               <Route path='/cadastros/matriculas' element={<h2 className='text-3xl m-auto font-semibold'>Matriculas</h2>}/>
               <Route path='/cadastros/penitenciarias' element={<RegisterPeni/>}/>
               <Route path='/cadastros/representantes' element={<RegisterRepre/>}/>

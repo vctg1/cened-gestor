@@ -18,7 +18,6 @@ export default function RegisterCourse() {
     const [contentCourse, setContentCourse] = useState('')
     let isDesktop = useMediaQuery('(min-width:800px)')
     useEffect(()=>{
-        console.log(contentCourse)
     }, [contentCourse])
     return (
         <div className='flex justify-center bg-white p-4 rounded-xl'>

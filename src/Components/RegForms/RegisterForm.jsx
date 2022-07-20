@@ -15,7 +15,7 @@ export default function RegisterForm(props) {
   let [muiAlert, setAlert] = useState(false);
   let API = process.env.REACT_APP_API_KEY;
   let [penitenciaria, setPenitenciaria] = useState([]);
-  let [data, setData] = useState({
+  let startData = {
         nome: "",sexo: "",cpf: "",rg: "",orgaoExpedidor: "",dataNascimento: "",
         naturalidade: "",ufNaturalidade: "",nacionalidade: "",endereco: "",
         bairro: "",cidade: "",ufResidencial: "",cep: "", email:'',
@@ -25,7 +25,11 @@ export default function RegisterForm(props) {
         profissao: "",bloco: "",ala: "",cela: "",condicaoPreso: "",
         regime: "",infopen: "",mae: "",pai: "",
       penitenciaria: { idPenitenciaria: "", uf: "" }
-    })
+    }
+  let [data, setData] = useState(startData)
+  function clear(){
+    setData(startData);
+  }
   useEffect(()=>{if(props.selectedStudent){axios.get(`${API}/alunos/${props.selectedStudent}`).then(res=> setSelectedStudent(res.data))}},[])
   useEffect(()=>{setData((data)=>({...data, ...selectedStudent}))},[selectedStudent])
   let keysPenitenciaria = Object.keys(data.penitenciaria ? data.penitenciaria : ''),
@@ -68,7 +72,7 @@ export default function RegisterForm(props) {
     })
   },[data])
   return (
-    <Grid className="bg-white rounded-md p-2" >
+    <Grid>
       <NotificationContainer/>
       <FormControl style={{ fontSize: "20px"}}>
         <h1 className="titles"> 1 - DADOS DO REEDUCANDO</h1>
@@ -83,9 +87,9 @@ export default function RegisterForm(props) {
       <FlexAround>
         <button
           className="lg:w-1/5 h-fit p-2 rounded-sm bg-red-600 text-white font-bold"
-          onClick={() => window.history.back()}
+          onClick={() => clear()}
         >
-          VOLTAR
+          LIMPAR
         </button>
         <button
           type="submit"
