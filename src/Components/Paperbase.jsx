@@ -24,6 +24,7 @@ import RegSelector from '../Pages/RegSelector'
 import PermissionGroup from '../Pages/PermissionGroup';
 import Contracts from '../Pages/Contracts';
 import Course from '../Pages/Course'
+import SpecificRules from '../Pages/SpecificRules';
 
 
 function Copyright() {
@@ -228,6 +229,8 @@ export default function Paperbase() {
               <Route path='/cadastros/etiquetas-de-material' element={<GenerateHangTags/>}/>
               <Route path='/cadastros/grupos-de-provas' element={<TestGroups/>}/>
               <Route path='/cadastros/cursos-autorizados-uf' element={<AuthorizedCourses/>}/>
+              {/*Telas da Área de Configurações */}
+              <Route path='/configuracoes/regras-especificas' element={<SpecificRules/>}/>
               <Route path='/configuracoes/grupo-de-permissoes' element={<PermissionGroup/>} />
             </Routes> 
           </Box>

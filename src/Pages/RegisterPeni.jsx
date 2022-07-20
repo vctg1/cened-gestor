@@ -107,7 +107,7 @@ export default function RegisterPeni() {
             </Grid>
 
             <Grid item xs={20} md={10}>
-                <div className='bg-gray-400 rounded-xl text-lg flex items-center p-2 text-white'>
+                <div className='bg-gray-400 rounded-xl text-xs md:text-lg flex items-center p-2 text-white'>
                     {checked ? <BiCheckboxChecked onClick={()=> setChecked(!checked)} className='cursor-pointer' size={40}/>
                     : 
                     <BiCheckbox className='cursor-pointer' onClick={()=> setChecked(!checked)} size={40}/>}

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import Box from '@mui/material/Box';
@@ -10,7 +9,7 @@ import ListItemText from '@mui/material/ListItemText';
 import HomeIcon from '@mui/icons-material/Home';
 import {IoDocumentTextSharp} from 'react-icons/io5'
 import { Link } from 'react-router-dom';
-import { Collapse, Grid } from '@mui/material';
+import { Collapse } from '@mui/material';
 import { useState } from 'react';
 import MessageIcon from '@mui/icons-material/Message';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
@@ -19,6 +18,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import SwitchAccountIcon from '@mui/icons-material/SwitchAccount';
 import ReceiptIcon from '@mui/icons-material/Receipt';
 import LogoutIcon from '@mui/icons-material/Logout';
+import {FaClipboardList} from 'react-icons/fa'
 import icon from '../images/favicon.ico'
 
 const categories = [
@@ -26,7 +26,7 @@ const categories = [
     id: 'HOME',
     icon: <HomeIcon/>,
     children: [
-      {active: false, id: 'Alertas do dia', route:'/'},
+      {active: false, id: 'Alerta do dia', route:'/'},
       {active: false, id: 'Alunos e cursos', route:'/alunos-e-cursos'}
     ],
   },
@@ -34,84 +34,95 @@ const categories = [
     id: 'ROTINAS AUTOMÁTICAS',
     icon: <CalendarMonthIcon/>,
     children: [
-      {active: false, id: 'Envio de material UFs', route:'/'},
-      {active: false, id: 'Envio de material DF', route:'/'},
-      {active: false, id: 'Gerar Etiquetas', route:'/'},
-      {active: false, id: 'Emitir certificado', route:'/'},
-      {active: false, id: 'Serviços adicionais', route:'/'},
-      {active: false, id: 'Matrículas pendentes', route:'/'},
-      {active: false, id: 'Código de rastreio', route:'/'}
+      {active: false, id: 'Ativar Cursos', route: '/'},
+      {active: false, id: 'Etiquetas dos Cursos', route: '/'},
+      {active: false, id: 'Protocolo dos Cursos', route: '/'},
+      {active: false, id: 'Imprimir Certificados', route: '/'},
+      {active: false, id: 'Etiquetas dos Certificados', route: '/'},
+      {active: false, id: 'Protocolo dos Certificados', route: '/'},
+      {active: false, id: 'Resultado de Provas', route: '/'},
+      {active: false, id: 'Serviços Adicionais', route: '/'},
+      {active: false, id: 'Código de Rastreio', route: '/'},
+      {active: false, id: 'Etiquetas Individuais', route: '/'}
     ],
   },
   {
     id: 'DOCUMENTOS',
     icon: <IoDocumentTextSharp/>,
     children: [
-      {active: false, id: 'Ofício DF', route:'/'},
-      {active: false, id: 'Ofício UFs', route:'/'},
-      {active: false, id: 'Gerar Etiquetas', route:'/'},
-      {active: false, id: 'Atas de provas', route:'/'},
-      {active: false, id: 'Protocolo de certificado', route:'/'},
-      {active: false, id: 'Protocolo de material', route:'/'},
-      {active: false, id: 'Ficha de matrícula', route:'/'},
-      {active: false, id: 'Declaração', route:'/'},
-      {active: false, id: 'Resultado de provas', route:'/'},
-      {active: false, id: 'Emitir certificado', route:'/'},
-      {active: false, id: 'Livro digital de certificados', route:'/'},
-      {active: false, id: 'Autorizações de estudo', route:'/'}
+      {active: false, id: 'Ofício DF', route: '/'},
+      {active: false, id: 'Ofício UFs', route: '/'},
+      {active: false, id: 'Atas de Provas', route: '/'},
+      {active: false, id: 'Ficha de Matrícula', route: '/'},
+      {active: false, id: 'Declaração', route: '/'},
+      {active: false, id: 'Emitir Certificado', route: '/'},
+      {active: false, id: 'Livro de Certificados', route: '/'},
+      {active: false, id: 'Autorizações de Estudo', route: '/'}
     ],
   },
   {
     id: 'RELATÓRIOS',
     icon: <SummarizeIcon/>,
     children: [
-      {active: false, id: 'Transações financeiras', route:'/'},
-      {active: false, id: 'Cursos Sintético', route:'/'},
-      {active: false, id: 'Cursos Analítico', route:'/'}
+      {active: false, id: 'Relatório 1', route:'/'},
+      {active: false, id: 'Relatório 2', route:'/'},
+      {active: false, id: 'Relatório 3', route:'/'}
     ],
   },
   {
     id: 'MENSAGENS',
     icon: <MessageIcon/>,
     children: [
-      {active: false, id: 'Enviar mensagens', route:'/'},
-      {active: false, id: 'Cursos Sintético', route:'/'},
-      {active: false, id: 'Cursos Analítico', route:'/'}
+      {active: false, id: 'Mensagem 1', route:'/'},
+      {active: false, id: 'Mensagem 2', route:'/'},
+      {active: false, id: 'Mensagem 3', route:'/'}
     ],
   },
   {
     id: 'CONFIGURAÇÕES',
     icon: <SettingsIcon/>,
     children: [
-      {active: false, id: 'Autorizar curso por UF', route:'/'},
-      {active: false, id: 'Token de liberação', route:'/'},
-      {active: false, id: 'Permissões do usuário', route:'grupo-de-permissoes'},
+      {active: false, id: 'Regras Gerais', route:'/'},
+      {active: false, id: 'Regras Específicas', route:'regras-especificas'},
+      {active: false, id: 'Token de Liberação', route:'/'},
+      {active: false, id: 'Autorizar Cursos por UF', route: '/'},
+      {active: false, id: 'Permissões de Usuário', route:'grupo-de-permissoes'},
+      {active: false, id: 'Permissão 1', route:'/'},
+      {active: false, id: 'Permissão 2', route:'/'},
     ],
   },
   {
     id: 'CADASTROS',
     icon: <SwitchAccountIcon/>,
     children: [
-      {active: false, id: 'Cad. Alunos e cursos', route:'adicionar-aluno'},
+      {active: false, id: 'Cad. Alunos e Cursos', route:'adicionar-aluno'},
       {active: false, id: 'Cad. CH Diária LEP', route:'carga-diaria'},
       {active: false, id: 'Cad. Cursos', route:'cursos-cened'},
-      {active: false, id: 'Cad. Fiscais de sala', route:'fiscais-de-sala'},
+      {active: false, id: 'Cad. Fiscais de Sala', route:'fiscais-de-sala'},
       {active: false, id: 'Cad. Penitenciárias', route:'penitenciarias'},
       {active: false, id: 'Cad. Representantes', route:'representantes'},
-      {active: false, id: 'Cad. Taxa entrega/frete', route:'taxa-de-entrega'},
+      {active: false, id: 'Cad. Taxa Frete', route:'taxa-de-entrega'},
       {active: false, id: 'Cad. Usuários do Sistema', route:'usuarios-do-sistema'},
-      {active: false, id: 'Cad. Grupos de Provas', route:'grupos-de-provas'},
+      {active: false, id: 'Cad. Grupos de Prova', route:'grupos-de-provas'},
       {active: false, id: 'Cad. Agentes Penitenciários', route:'/'},
-      {active: false, id: 'Cad. Etiquetas de material', route:'etiquetas-de-material'},
-      {active: false, id: 'Cad. Cursos autorizados UF', route:'cursos-autorizados-uf'},
+      {active: false, id: 'Cad. Etiquetas', route:'etiquetas-de-material'},
+      {active: false, id: 'Cad. Cursos Autorizados UF', route:'cursos-autorizados-uf'},
     ],
   },
   {
     id: 'NOTAS FISCAIS',
     icon: <ReceiptIcon/>,
     children: [
-      {active: false, id: 'Emitir notas fiscais', route:'/'},
+      {active: false, id: 'Imprimir NFe', route:'/'},
     ],
+  },
+  {
+    id: 'AUDITORIA',
+    icon: <FaClipboardList/>,
+    children: [
+      {active: false, id:'Token', route: '/'},
+      {active: false, id: 'Desempenho', route: '/'}
+    ]
   },
   {
     id: 'SAIR',
