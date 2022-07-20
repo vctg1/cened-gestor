@@ -66,7 +66,6 @@ export default function ContractsList(){
             </FlexBox>
             {contratos.map((item)=>
             <TableContainer style={{maxHeight:'70vh'}}>
-                {console.log(item)}
                 <FlexBox alignItems={'center'}>
                     <Box>
                     <Typography border='solid 1px' borderRadius='10px' margin='1em' padding={`.5em`} >CONTRATO: <b>{item.numeroMatricula ? item.numeroMatricula : 'N/D'}</b></Typography>
