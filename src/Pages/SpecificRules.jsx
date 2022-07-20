@@ -49,7 +49,7 @@ export default function SpecificRules() {
                 </TextField>
             </Grid>
 
-            <Grid item xs={10} md={8}>
+            <Grid item xs={10} md={8.8}>
                 <TextField value={peni} onChange={(e)=> setPeni(e.target.value)} className='w-full' select label='Penitenciária'>
                         <MenuItem value="PDF 1 - Penitenciária do Distrito Federal I">PDF 1 - Penitenciária do Distrito Federal I</MenuItem>
                         <MenuItem value="PENITENCIARIA DESEMBARGADOR SILVIO PORTO">PENITENCIARIA DESEMBARGADOR SILVIO PORTO</MenuItem>
@@ -61,7 +61,7 @@ export default function SpecificRules() {
             <Grid item xs={12}>
                 <h2 className='text-xl font-bold'>{uf} - {peni}</h2>
             </Grid>
-            <Grid item xs={10} md={5}>
+            <Grid item xs={10} md={4}>
                 <TextField className='w-full' select label='Vincular Representante'>
                         <MenuItem value="1">AAAAAAAAAAAAAAAAAAAAAAAA</MenuItem>
                         <MenuItem value="2">AAAAAAAAAAAAAAAAAAAAAAAA</MenuItem>
@@ -71,7 +71,7 @@ export default function SpecificRules() {
                 </TextField>
             </Grid>
 
-            <Grid item xs={10} md={5}>
+            <Grid item xs={10} md={2.4}>
                 <TextField className='w-full' select label='Local de Envio de Apostila'>
                         <MenuItem value="1">Penitenciária</MenuItem>
                         <MenuItem value="2">Residência</MenuItem>
@@ -79,33 +79,27 @@ export default function SpecificRules() {
                 </TextField>
             </Grid>
 
-            <Grid item xs={10} md={5}>
+            <Grid item xs={10} md={2}>
                 <TextField className='w-full' select label='Local de Envio de Prova'>
                         <MenuItem value="1">Penitenciária</MenuItem>
                         <MenuItem value="2">Residência</MenuItem>
                         <MenuItem value="3">Representante</MenuItem>
                 </TextField>
             </Grid>
-
-            <Grid item xs={10} md={5}>
+            <Grid item xs={10} md={2.4}>
                 <TextField className='w-full' select label='Local de Envio de Certificado'>
                         <MenuItem value="1">Penitenciária</MenuItem>
                         <MenuItem value="2">Residência</MenuItem>
                         <MenuItem value="3">Representante</MenuItem>
                 </TextField>
             </Grid>
-            <Grid item xs={0} md={2}>
-
+            <Grid item xs={10} md={1.5}>
+                <TextField className='w-full' type={'number'} label='Início do Curso'/>
             </Grid>
-                <Grid item xs={10} md={2}>
-                    <TextField className='w-full' type={'number'} label='Início do Curso'/>
-                </Grid>
 
-                <Grid item xs={10} md={2}>
-                    <TextField className='w-full' type={'number'} label='Período do Curso'/> 
-                </Grid>
-            
-
+            <Grid item xs={10} md={1.5}>
+                <TextField className='w-full' type={'number'} label='Período do Curso'/> 
+            </Grid>
         </Grid>
     </div>
   )
