@@ -1,9 +1,11 @@
-import { Box, Grid, Table, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from '@mui/material';
+import { Box, CircularProgress, Grid, Table, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import StudentInfo from '../Contracts/StudentInfo';
 import InputMask from 'react-input-mask';
+import FlexAround 
+from '../flexbox/FlexAround'
 
 
 export default function FinancialForm(params){
@@ -55,11 +57,15 @@ export default function FinancialForm(params){
         <Grid>
             <TableContainer>
                 <Grid display='grid' alignItems='center' gridTemplateColumns='1fr 1fr 1fr 1fr 2fr 2fr 2fr' gap={2} >
-                {fieldsList.map((item, key)=>
+                {fieldsList ? fieldsList.map((item, key)=>
                 <InputMask mask="R$ 999,00"  value={item.value} >{()=>
                 <TextField label={item.label} size='small' />}
                 </InputMask>
-                )}
+                )
+                :<FlexAround>
+                    <CircularProgress/>
+                </FlexAround> 
+                }
                 <StudentInfo bgColor={'rgb(80,80,80)'} titleColor={'lightgray'} infoColor={'white'} title={'TOTAL LÍQUIDO - PAGO:'} info={`R$ ${valorLiquido},00`} />
                 <StudentInfo bgColor={'rgb(80,80,80)'} titleColor={'lightgray'} infoColor={'white'} title={'LIQUIDADO EM:'} info={dataPagamento.toLocaleDateString('pt-BR')} />
                 </Grid>
