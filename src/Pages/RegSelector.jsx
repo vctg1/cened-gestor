@@ -6,6 +6,7 @@ import CoursesList from "../Components/Courses/CoursesList";
 import { KeyboardReturn } from "@mui/icons-material";
 import axios from "axios";
 import StudentInfo from "../Components/Contracts/StudentInfo";
+import FinancialForm from "../Components/Financial/FinancialForm";
 
 export default function RegSelector() {
   let [studentData, setStudentData] = useState({});
@@ -30,7 +31,7 @@ export default function RegSelector() {
       {
         id: 3,
         name: "FINANCEIRO",
-        child: '',
+        child: <FinancialForm selectedStudent={selectedStudent} />,
       },
       {
         id: 4,
