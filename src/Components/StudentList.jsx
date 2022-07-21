@@ -87,6 +87,7 @@ export default function StudentsContent() {
   }
 
   useEffect(()=>{
+    document.getElementById(':r3d:').innerText = 'Linhas por Página'
     axios.get(`${api}/alunos?limit=200`).then(response=>{
       setStudents(response.data.data)
     })

@@ -183,7 +183,7 @@ export default function Navigator(props) {
                 </ListItem>
               </Link>
             ))}
-                </Collapse>
+            </Collapse>
           </Box>
         ))}
       </List>
