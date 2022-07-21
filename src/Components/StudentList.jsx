@@ -87,11 +87,6 @@ export default function StudentsContent() {
   }
 
   useEffect(()=>{
-    if(document.getElementById(':r3d:')){
-      document.getElementById(':r3d:').innerText = 'Linhas por Página'
-    }else{
-      console.log('Elemento não encontrado')
-    }
     axios.get(`${api}/alunos?limit=200`).then(response=>{
       setStudents(response.data.data)
     })
