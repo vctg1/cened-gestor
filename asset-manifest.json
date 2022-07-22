@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/cened-gestor/static/css/main.7ab153c5.css",
-    "main.js": "/cened-gestor/static/js/main.7aed8911.js",
+    "main.css": "/cened-gestor/static/css/main.360709f3.css",
+    "main.js": "/cened-gestor/static/js/main.479201de.js",
     "static/media/favicon.ico": "/cened-gestor/static/media/favicon.3ffa65bfb56898df688c.ico",
     "static/media/notification.svg?s3g3t9": "/cened-gestor/static/media/notification.5d0158671dd860c714c4.svg",
     "static/media/notification.eot": "/cened-gestor/static/media/notification.3657084dc0419605a91c.eot",
     "static/media/notification.woff?s3g3t9": "/cened-gestor/static/media/notification.c392cd33d9d9de730f9d.woff",
     "static/media/notification.ttf?s3g3t9": "/cened-gestor/static/media/notification.c5d9251ea82e42f75381.ttf",
     "index.html": "/cened-gestor/index.html",
-    "main.7ab153c5.css.map": "/cened-gestor/static/css/main.7ab153c5.css.map",
-    "main.7aed8911.js.map": "/cened-gestor/static/js/main.7aed8911.js.map"
+    "main.360709f3.css.map": "/cened-gestor/static/css/main.360709f3.css.map",
+    "main.479201de.js.map": "/cened-gestor/static/js/main.479201de.js.map"
   },
   "entrypoints": [
-    "static/css/main.7ab153c5.css",
-    "static/js/main.7aed8911.js"
+    "static/css/main.360709f3.css",
+    "static/js/main.479201de.js"
   ]
 }
