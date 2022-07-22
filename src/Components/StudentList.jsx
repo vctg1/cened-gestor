@@ -9,6 +9,7 @@ import { Button } from "@mui/material";
 import { Grid } from '@mui/material';
 import FlexBetween from '../Components/flexbox/FlexBetween'
 import {AiOutlineMore} from 'react-icons/ai'
+import {BsFillArrowRightCircleFill, BsFillArrowLeftCircleFill} from 'react-icons/bs'
 import {Add} from '@mui/icons-material'
 import BasicMenu from './BasicMenu';
 import SearchIcon from '../icons/SearchIcon';
@@ -55,13 +56,17 @@ export default function StudentsContent() {
   const api = process.env.REACT_APP_API_KEY
   const Navigate = useNavigate()
   const [rows, setRows] = useState([])
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [students, setStudents] = useState([])
   const [searchValue, setSearchValue] = useState('')
+  const [isSearch, setIsSearch] = useState(false)
   const navigateAddUser = ()=> Navigate('/cadastros/adicionar-aluno')
   const handleChangePage = (event, newPage) => {
-    setPage(newPage);
+    if(newPage !== 0){
+      setPage(newPage);
+    }
+    console.log(newPage)
   };
   
   const addStudentRow = ()=>{
@@ -81,17 +86,36 @@ export default function StudentsContent() {
   }
 
   const searchStudent = ()=>{
-      axios.get(`${api}/alunos?Search=${searchValue}&limit=200`).then(response=>{
+      setPage(1)
+      if(searchValue !== ''){
+        setIsSearch(true)
+      }else{
+        setIsSearch(false)
+      }
+      getUserPage()
+  }
+
+  const getUserPage = ()=>{
+    if(isSearch){
+      axios.get(`${api}/alunos?Search=${searchValue}&Page=${page}`).then(response=>{
         setStudents(response.data.data)
       })
+    }else{
+      axios.get(`${api}/alunos?Page=${page}`).then(response=>{
+        setStudents(response.data.data)
+      })
+    }
   }
 
   useEffect(()=>{
-    axios.get(`${api}/alunos?limit=200`).then(response=>{
+    axios.get(`${api}/alunos?Page=1`).then(response=>{
       setStudents(response.data.data)
     })
   }, [])
 
+  useEffect(()=>{
+    getUserPage()
+  }, [page])
 
   useEffect(()=>{
     addStudentRow()
@@ -154,9 +178,7 @@ export default function StudentsContent() {
               </tr>
             </thead>
             <tbody>
-            {rows
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((row) => {
+            {rows.map((row) => {
                   return (
                     <tr className='border-t border-b text-sm border-gray-300 w-full' tabIndex={-1} key={row.code}>
                       {columns.map((column) => {
@@ -175,6 +197,7 @@ export default function StudentsContent() {
             </tbody>
           </table>
         </TableContainer>
+        {/*
         <TablePagination
           rowsPerPageOptions={[10, 25, 100]}
           component="div"
@@ -184,6 +207,12 @@ export default function StudentsContent() {
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
+        */}
+        
+        <div className='flex justify-end p-2 select-none'>
+          <BsFillArrowLeftCircleFill onClick={(e)=> handleChangePage(e, page-1)} className={`cursor-pointer ${page <= 1 ? 'text-gray-400' : 'text-black'} hover:text-gray-400 transition-colors mr-10`} size={35}/>
+          <BsFillArrowRightCircleFill onClick={(e)=> handleChangePage(e, page+1)} className='cursor-pointer hover:text-gray-400 transition-colors' size={35}/>
+        </div>
       </Paper>
     </Grid>
   );
