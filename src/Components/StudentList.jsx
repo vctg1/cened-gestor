@@ -65,7 +65,6 @@ export default function StudentsContent() {
     if(newPage !== 0 && students.length >= 9){
       setPage(newPage);
     }
-    console.log(newPage)
   };
   
   const addStudentRow = ()=>{
@@ -102,7 +101,6 @@ export default function StudentsContent() {
     }else{
       axios.get(`${api}/alunos?Page=${page}`).then(response=>{
         setStudents(response.data.data)
-        console.log(students)
       })
     }
   }
