@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import Paper from '@mui/material/Paper';
 import TableContainer from '@mui/material/TableContainer';
-import TablePagination from '@mui/material/TablePagination';
 import axios from 'axios';
 import SearchInput from '../Components/input-fields/SearchInput'
 import { Button } from "@mui/material";
@@ -63,7 +62,7 @@ export default function StudentsContent() {
   const [isSearch, setIsSearch] = useState(false)
   const navigateAddUser = ()=> Navigate('/cadastros/adicionar-aluno')
   const handleChangePage = (event, newPage) => {
-    if(newPage !== 0){
+    if(newPage !== 0 && students.length >= 9){
       setPage(newPage);
     }
     console.log(newPage)
@@ -92,10 +91,10 @@ export default function StudentsContent() {
       }else{
         setIsSearch(false)
       }
-      getUserPage()
+      getStudentsPage()
   }
 
-  const getUserPage = ()=>{
+  const getStudentsPage = ()=>{
     if(isSearch){
       axios.get(`${api}/alunos?Search=${searchValue}&Page=${page}`).then(response=>{
         setStudents(response.data.data)
@@ -103,6 +102,7 @@ export default function StudentsContent() {
     }else{
       axios.get(`${api}/alunos?Page=${page}`).then(response=>{
         setStudents(response.data.data)
+        console.log(students)
       })
     }
   }
@@ -114,7 +114,7 @@ export default function StudentsContent() {
   }, [])
 
   useEffect(()=>{
-    getUserPage()
+    getStudentsPage()
   }, [page])
 
   useEffect(()=>{
@@ -211,7 +211,7 @@ export default function StudentsContent() {
         
         <div className='flex justify-end p-2 select-none'>
           <BsFillArrowLeftCircleFill onClick={(e)=> handleChangePage(e, page-1)} className={`cursor-pointer ${page <= 1 ? 'text-gray-400' : 'text-black'} hover:text-gray-400 transition-colors mr-10`} size={35}/>
-          <BsFillArrowRightCircleFill onClick={(e)=> handleChangePage(e, page+1)} className='cursor-pointer hover:text-gray-400 transition-colors' size={35}/>
+          <BsFillArrowRightCircleFill onClick={(e)=> handleChangePage(e, page+1)} className={`cursor-pointer ${students.length <= 9 ? 'text-gray-400' : 'text-black'}  hover:text-gray-400 transition-colors`} size={35}/>
         </div>
       </Paper>
     </Grid>
