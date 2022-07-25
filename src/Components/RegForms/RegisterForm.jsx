@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "../../styles/RegisterForm.css";
 import { useState } from "react";
-import { FormControl, Grid } from "@mui/material";
+import { Button, FormControl, Grid } from "@mui/material";
 import axios from "axios";
 import RegForm1 from "./RegForm1";
 import RegForm2 from "./RegForm2";
@@ -85,19 +85,23 @@ export default function RegisterForm(props) {
         <RegForm3 muiAlert={muiAlert} data={data} setData={setData} penitenciaria={penitenciaria} />
       </FormControl>
       <FlexAround>
-        <button
+        <Button
+          variant="contained"
+          color="error"
           className="lg:w-1/5 h-fit p-2 rounded-sm bg-red-600 text-white font-bold"
           onClick={() => clear()}
         >
           LIMPAR
-        </button>
-        <button
+        </Button>
+        <Button
+          variant="contained"
+          color="warning"
           type="submit"
           className="lg:w-1/5 h-fit p-2 rounded-sm text-white font-bold bg-green-500"
           onClick={() => Submit()}
         >
           SALVAR
-        </button>
+        </Button>
       </FlexAround>
     </Grid>
   );

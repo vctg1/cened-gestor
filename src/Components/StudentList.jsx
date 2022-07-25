@@ -4,7 +4,7 @@ import Paper from '@mui/material/Paper';
 import TableContainer from '@mui/material/TableContainer';
 import axios from 'axios';
 import SearchInput from '../Components/input-fields/SearchInput'
-import { Button } from "@mui/material";
+import { Button, CircularProgress } from "@mui/material";
 import { Grid } from '@mui/material';
 import FlexBetween from '../Components/flexbox/FlexBetween'
 import {AiOutlineMore} from 'react-icons/ai'
@@ -62,7 +62,7 @@ export default function StudentsContent() {
   const [isSearch, setIsSearch] = useState(false)
   const navigateAddUser = ()=> Navigate('/cadastros/adicionar-aluno')
   const handleChangePage = (event, newPage) => {
-    if(newPage !== 0 && students.length >= 9){
+    if(newPage > 0 && students.length >= 9){
       setPage(newPage);
     }
   };
@@ -176,7 +176,7 @@ export default function StudentsContent() {
               </tr>
             </thead>
             <tbody>
-            {rows.map((row) => {
+            {rows ? rows.map((row) => {
                   return (
                     <tr className='border-t border-b text-sm border-gray-300 w-full' tabIndex={-1} key={row.code}>
                       {columns.map((column) => {
@@ -191,7 +191,9 @@ export default function StudentsContent() {
                       })}
                     </tr>
                   );
-                })}
+                }):
+                <CircularProgress/>
+              }
             </tbody>
           </table>
         </TableContainer>

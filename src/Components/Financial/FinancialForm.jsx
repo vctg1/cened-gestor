@@ -1,4 +1,4 @@
-import { Box, CircularProgress, Grid, Table, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from '@mui/material';
+import { Box, Button, CircularProgress, Grid, Table, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
@@ -12,8 +12,8 @@ export default function FinancialForm(params){
     let API = process.env.REACT_APP_API_KEY;
     let [cursos, setCursos] = useState([]);
     let valorLiquido = 0, valorBruto = 0;
-    let [dataPagamento, setDataPagamento] = useState(new Date('0000,01,01'));
     let [fieldsList, setFieldsList] = useState([])
+    let [dataPagamento, setDataPagamento] = useState(new Date('0000,01,01'));
     useEffect(()=>{
         axios.get(`${API}documentos/consultas/matriculas`,
         {params:{IdAluno: params.selectedStudent}})
@@ -48,7 +48,7 @@ export default function FinancialForm(params){
             value:''
             },
             {
-            mask: '',
+            mask: 'R$ 999,00',
             label:'Total bruto',
             value:valorBruto
         }])
@@ -58,7 +58,7 @@ export default function FinancialForm(params){
             <TableContainer>
                 <Grid display='grid' alignItems='center' gridTemplateColumns='1fr 1fr 1fr 1fr 2fr 2fr 2fr' gap={2} >
                 {fieldsList ? fieldsList.map((item, key)=>
-                <InputMask mask="R$ 999,00"  value={item.value} >{()=>
+                <InputMask mask={item.mask}  value={item.value} >{()=>
                 <TextField label={item.label} size='small' />}
                 </InputMask>
                 )
@@ -69,6 +69,7 @@ export default function FinancialForm(params){
                 <StudentInfo bgColor={'rgb(80,80,80)'} titleColor={'lightgray'} infoColor={'white'} title={'TOTAL LÍQUIDO - PAGO:'} info={`R$ ${valorLiquido},00`} />
                 <StudentInfo bgColor={'rgb(80,80,80)'} titleColor={'lightgray'} infoColor={'white'} title={'LIQUIDADO EM:'} info={dataPagamento.toLocaleDateString('pt-BR')} />
                 </Grid>
+                <Button variant="contained" color="warning">SALVAR</Button>
             </TableContainer>
         </Grid>
     )

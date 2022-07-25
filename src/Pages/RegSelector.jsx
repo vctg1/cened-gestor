@@ -7,6 +7,8 @@ import { KeyboardReturn } from "@mui/icons-material";
 import axios from "axios";
 import StudentInfo from "../Components/Contracts/StudentInfo";
 import FinancialForm from "../Components/Financial/FinancialForm";
+import AditionalExpensesForm from "../Components/Aditional-expenses/AditionalExpensesForm";
+import Attachments from "../Components/Attachments/Attachments";
 
 export default function RegSelector() {
   let [studentData, setStudentData] = useState({});
@@ -36,12 +38,12 @@ export default function RegSelector() {
       {
         id: 4,
         name: "DESPESAS ADICIONAIS",
-        child: '',
+        child: <AditionalExpensesForm selectedStudent={selectedStudent} />
       },
       {
         id: 5,
         name: "ANEXOS",
-        child: '',
+        child: <Attachments selectedStudent={selectedStudent} />
       },
     ]);
   }, []);
