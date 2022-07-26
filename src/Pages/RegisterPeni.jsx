@@ -1,12 +1,14 @@
-import { FormControl, useMediaQuery } from '@mui/material'
 import React from 'react'
-import {Grid, TextField, MenuItem} from '@mui/material'
-import {FaBuilding} from 'react-icons/fa'
+import {Grid, TextField, MenuItem, useMediaQuery} from '@mui/material'
 import {BiCheckbox, BiCheckboxChecked} from 'react-icons/bi'
 import InputMask from 'react-input-mask'
 import { useState } from 'react'
+import PopupSuccess from '../Components/PopupSuccess'
+import axios from 'axios'
 
 export default function RegisterPeni() {
+    const api = process.env.REACT_APP_API_KEY
+    const dateObject = new Date()
     const [namePeni, setNamePeni] = useState('')
     const [addresPeni, setAddresPeni] = useState('')
     const [cityPeni, setCityPeni] = useState('')
@@ -17,8 +19,41 @@ export default function RegisterPeni() {
     const [nameRespon, setNameRespon] = useState('')
     const [titleOffice, setTitleOffice] = useState('')
     const [emailContact, setEmailContact] = useState('')
-    const [activePeni, setActivePeni] = useState('')
+    const [activePeni, setActivePeni] = useState(0)
+    const [datePartnership, setDatePartnership] = useState('')
+    const [completeRequirements, setCompleteRequirements] = useState(false)
     let isDesktop = useMediaQuery('(min-width:800px)')
+    const savePeni = ()=>{
+        if(namePeni !== '' && addresPeni !== '' && cityPeni !== ''){
+            if(cepPeni.length === 9 && ufPeni !== '' && nameDepart !== '' && nameRespon !== '' && titleOffice !== '' && emailContact.includes('@')){
+                console.log(`Nome: ${namePeni}, Endereço: ${addresPeni}, Cidade: ${cityPeni}, CEP: ${cepPeni}, UF: ${ufPeni}, Nome Departamento: ${nameDepart}, Nome Responsável: ${nameRespon}, Titulo: ${titleOffice}, E-mail: ${emailContact}, Parceria: ${checked}, Ativo: ${activePeni} `)
+                setCompleteRequirements(true)
+                {/* 
+                    axios.post(`${api}/penitenciarias`, {
+                    nome: namePeni,
+                    endereco: addresPeni,
+                    cidade: cityPeni,
+                    uf:  ufPeni,
+                    cep: cepPeni,
+                    nomeDepartamentoEnsino: nameDepart,
+                    responsavelDepartamentoEnsino: nameRespon,
+                    tituloCargoDepartamentoEnsino: titleOffice,
+                    emailContatoDepartamentoEnsino: emailContact,
+                    ativo:  activePeni,
+                    possuiBolsaParceria: checked,
+                    dataInicioBolsaParceria: datePartnership,
+                    }).then(response=>{
+                        console.log(response)
+                    }).catch(response=>{
+                        console.log(response)
+                    })
+                */}
+            }   
+            }
+            else{
+                setCompleteRequirements(false)
+            }
+        }
   return (
     <div className='flex justify-center bg-white p-4 rounded-xl'>
         <Grid marginLeft={`${isDesktop ? '10%' : '0'}`} container spacing={2}>
@@ -46,41 +81,41 @@ export default function RegisterPeni() {
 
             <Grid item xs={10} md={2}>
                 <TextField value={ufPeni} onChange={(e)=> setUfPeni(e.target.value)} className='w-full' select label='UF'>
-                    <MenuItem value="AC">Acre</MenuItem>
-                    <MenuItem value="AL">Alagoas</MenuItem>
-                    <MenuItem value="AP">Amapá</MenuItem>
-                    <MenuItem value="AM">Amazonas</MenuItem>
-                    <MenuItem value="BA">Bahia</MenuItem>
-                    <MenuItem value="CE">Ceará</MenuItem>
-                    <MenuItem value="DF">Distrito Federal</MenuItem>
-                    <MenuItem value="ES">Espírito Santo</MenuItem>
-                    <MenuItem value="GO">Goiás</MenuItem>
-                    <MenuItem value="MA">Maranhão</MenuItem>
-                    <MenuItem value="MT">Mato Grosso</MenuItem>
-                    <MenuItem value="MS">Mato Grosso do Sul</MenuItem>
-                    <MenuItem value="MG">Minas Gerais</MenuItem>
-                    <MenuItem value="PA">Pará</MenuItem>
-                    <MenuItem value="PB">Paraíba</MenuItem>
-                    <MenuItem value="PR">Paraná</MenuItem>
-                    <MenuItem value="PE">Pernambuco</MenuItem>
-                    <MenuItem value="PI">Piauí</MenuItem>
-                    <MenuItem value="RJ">Rio de Janeiro</MenuItem>
-                    <MenuItem value="RN">Rio Grande do Norte</MenuItem>
-                    <MenuItem value="RS">Rio Grande do Sul</MenuItem>
-                    <MenuItem value="RO">Rondônia</MenuItem>
-                    <MenuItem value="RR">Roraima</MenuItem>
-                    <MenuItem value="SC">Santa Catarina</MenuItem>
-                    <MenuItem value="SP">São Paulo</MenuItem>
-                    <MenuItem value="SE">Sergipe</MenuItem>
-                    <MenuItem value="TO">Tocantins</MenuItem>
+                        <MenuItem value={1}>Acre</MenuItem>
+                        <MenuItem value={2}>Alagoas</MenuItem>
+                        <MenuItem value={4}>Amapá</MenuItem>
+                        <MenuItem value={3}>Amazonas</MenuItem>
+                        <MenuItem value={5}>Bahia</MenuItem>
+                        <MenuItem value={6}>Ceará</MenuItem>
+                        <MenuItem value={7}>Distrito Federal</MenuItem>
+                        <MenuItem value={8}>Espírito Santo</MenuItem>
+                        <MenuItem value={9}>Goiás</MenuItem>
+                        <MenuItem value={10}>Maranhão</MenuItem>
+                        <MenuItem value={13}>Mato Grosso</MenuItem>
+                        <MenuItem value={12}>Mato Grosso do Sul</MenuItem>
+                        <MenuItem value={11}>Minas Gerais</MenuItem>
+                        <MenuItem value={14}>Pará</MenuItem>
+                        <MenuItem value={15}>Paraíba</MenuItem>
+                        <MenuItem value={18}>Paraná</MenuItem>
+                        <MenuItem value={16}>Pernambuco</MenuItem>
+                        <MenuItem value={17}>Piauí</MenuItem>
+                        <MenuItem value={19}>Rio de Janeiro</MenuItem>
+                        <MenuItem value={20}>Rio Grande do Norte</MenuItem>
+                        <MenuItem value={23}>Rio Grande do Sul</MenuItem>
+                        <MenuItem value={21}>Rondônia</MenuItem>
+                        <MenuItem value={22}>Roraima</MenuItem>
+                        <MenuItem value={24}>Santa Catarina</MenuItem>
+                        <MenuItem value={26}>São Paulo</MenuItem>
+                        <MenuItem value={25}>Sergipe</MenuItem>
+                        <MenuItem value={27}>Tocantins</MenuItem>
                 </TextField>
             </Grid>
             <Grid item xs={8} md={1}>
                 <TextField value={activePeni} onChange={(e)=> setActivePeni(e.target.value)} className='bg-white w-full border-none outline-none rounded-xl' label={'Ativo'} select>
-                <MenuItem value={true}>
+                <MenuItem value={0}>
                     Sim
                 </MenuItem>
-                <MenuItem value={false}>
+                <MenuItem value={1}>
                     Não
                 </MenuItem>
                 </TextField>
@@ -103,25 +138,29 @@ export default function RegisterPeni() {
             </Grid>
 
             <Grid item xs={20} md={5}>
-                <TextField className='w-full' value={emailContact} onChange={(e)=> setEmailContact(e.target.value)} label='E-mail de Contato'/>
+                <TextField className='w-full' type={'email'} value={emailContact} onChange={(e)=> setEmailContact(e.target.value)} label='E-mail de Contato'/>
             </Grid>
 
             <Grid item xs={20} md={10}>
                 <div className='bg-gray-400 rounded-xl text-xs md:text-lg flex items-center p-2 text-white'>
-                    {checked ? <BiCheckboxChecked onClick={()=> setChecked(!checked)} className='cursor-pointer' size={40}/>
+                    {checked ? <BiCheckboxChecked onClick={()=> {setChecked(!checked); setDatePartnership('')}} className='cursor-pointer' size={40}/>
                     : 
-                    <BiCheckbox className='cursor-pointer' onClick={()=> setChecked(!checked)} size={40}/>}
+                    <BiCheckbox className='cursor-pointer' onClick={()=> {setChecked(!checked); setDatePartnership(`${dateObject.getDate()}/${dateObject.getMonth() < 10 ? `0${dateObject.getMonth()}` : dateObject.getMonth()}/${dateObject.getFullYear()}`)}} size={40}/>}
                     <p className='mr-3'>Ativar Bolsa Parceria Integral</p>
 
                     |
 
-                    <p className='ml-3'>Data de Início Parceria {}</p>
+                    <p className='ml-3'>Data de Início Parceria {datePartnership}</p>
                 </div>
             </Grid>
 
             <Grid item xs={20} md={10}>
-                <button className='p-4 bg-red-500 hover:bg-red-700 transition-colors text-white rounded-xl'>Cancelar</button>
-                <button className='p-4 px-6 hover:bg-green-700 transition-colors bg-green-400 text-white rounded-xl ml-5'>Salvar</button>
+                <div className='w-full flex'>
+					<button className='p-4 bg-red-500 hover:bg-red-700 transition-colors text-white rounded-xl'>Cancelar</button>
+					<PopupSuccess title={completeRequirements ? 'Nova Penitenciária Adicionada com Sucesso!' : <span className='text-red-600'>Verifique se você preencheu os campos corretamente.</span>}>
+						<button onClick={()=> savePeni()} className='p-4 px-6 hover:bg-green-700 transition-colors bg-green-400 text-white rounded-xl ml-5'>Salvar</button>
+					</PopupSuccess>
+                </div>
             </Grid>
         </Grid>
     </div>

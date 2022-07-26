@@ -8,8 +8,7 @@ import { Box, Button, CircularProgress } from "@mui/material";
 import { Grid } from '@mui/material';
 import FlexBetween from '../Components/flexbox/FlexBetween'
 import {AiOutlineMore} from 'react-icons/ai'
-import {BsFillArrowRightCircleFill, BsFillArrowLeftCircleFill} from 'react-icons/bs'
-import {Add, ArrowBack, ArrowCircleLeft, ArrowForward, ArrowLeft, ArrowRight} from '@mui/icons-material'
+import {Add, ArrowBack, ArrowForward} from '@mui/icons-material'
 import BasicMenu from './BasicMenu';
 import SearchIcon from '../icons/SearchIcon';
 

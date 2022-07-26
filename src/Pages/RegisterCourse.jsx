@@ -8,7 +8,6 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import PopupSuccess from '../Components/PopupSuccess'
 import axios from 'axios'
 
-
 export default function RegisterCourse() {
     const api = process.env.REACT_APP_API_KEY
     const [codeCourse, setCodeCourse] = useState('')
@@ -24,11 +23,9 @@ export default function RegisterCourse() {
     useEffect(()=>{
         setValueTotalCourse(parseInt(valueCourse ? valueCourse : 0) + parseInt(rateCourse ? rateCourse : 0))
     }, [valueCourse, rateCourse])
-
     const saveCourse = ()=>{
         if(codeCourse !== '' && nameCourse !== '' && workloadCourse > 0 && valueCourse > 0 && rateCourse > 0 && contentCourse !== ''){
             setCompleteRequirements(true)
-            
             {/*
                 axios.post(`${api}/cursos`, {
                 codigo: codeCourse,

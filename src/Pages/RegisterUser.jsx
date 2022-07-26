@@ -12,7 +12,6 @@ export default function RegisterUser() {
     const [emailUser, setEmailUser] = useState('')
     const [passwordUser, setPassword] = useState('')
     const [confirmPasswordUser, setConfirmPasswordUser] = useState('')
-
     const [phoneUser, setPhoneUser] = useState('')    
     const [ufUser, setUfUser] = useState('')
     const [activeUser, setActiveUser] = useState(false)
@@ -40,14 +39,14 @@ export default function RegisterUser() {
             </Grid>
 
             <Grid item xs={10} md={5.5}>
-                <TextField className='w-full' value={emailUser} onChange={(e)=> setEmailUser(e.target.value)} label='E-mail'/>
+                <TextField className='w-full' type={'email'} value={emailUser} onChange={(e)=> setEmailUser(e.target.value)} label='E-mail'/>
             </Grid>
             <Grid item xs={10} md={5.5}>
-                <TextField className='w-full' value={passwordUser} onChange={(e)=> setPassword(e.target.value)} label='Senha'/>
+                <TextField className='w-full' type={'password'} value={passwordUser} onChange={(e)=> setPassword(e.target.value)} label='Senha'/>
             </Grid>
 
             <Grid item xs={10} md={5.5}>
-                <TextField className='w-full' value={confirmPasswordUser} onChange={(e)=> setConfirmPasswordUser(e.target.value)} label='Confirmar Senha'/>
+                <TextField className='w-full' type={'password'} value={confirmPasswordUser} onChange={(e)=> setConfirmPasswordUser(e.target.value)} label='Confirmar Senha'/>
             </Grid>
 
             <Grid item xs={10} md={1.5}>
@@ -58,43 +57,43 @@ export default function RegisterUser() {
 
             <Grid item xs={8} md={2}>
                 <TextField value={ufUser} onChange={(e)=> setUfUser(e.target.value)} className='w-11/12 bg-white border-none outline-none rounded-xl' select label='UF'>
-                    <MenuItem value="AC">Acre</MenuItem>
-                    <MenuItem value="AL">Alagoas</MenuItem>
-                    <MenuItem value="AP">Amapá</MenuItem>
-                    <MenuItem value="AM">Amazonas</MenuItem>
-                    <MenuItem value="BA">Bahia</MenuItem>
-                    <MenuItem value="CE">Ceará</MenuItem>
-                    <MenuItem value="DF">Distrito Federal</MenuItem>
-                    <MenuItem value="ES">Espírito Santo</MenuItem>
-                    <MenuItem value="GO">Goiás</MenuItem>
-                    <MenuItem value="MA">Maranhão</MenuItem>
-                    <MenuItem value="MT">Mato Grosso</MenuItem>
-                    <MenuItem value="MS">Mato Grosso do Sul</MenuItem>
-                    <MenuItem value="MG">Minas Gerais</MenuItem>
-                    <MenuItem value="PA">Pará</MenuItem>
-                    <MenuItem value="PB">Paraíba</MenuItem>
-                    <MenuItem value="PR">Paraná</MenuItem>
-                    <MenuItem value="PE">Pernambuco</MenuItem>
-                    <MenuItem value="PI">Piauí</MenuItem>
-                    <MenuItem value="RJ">Rio de Janeiro</MenuItem>
-                    <MenuItem value="RN">Rio Grande do Norte</MenuItem>
-                    <MenuItem value="RS">Rio Grande do Sul</MenuItem>
-                    <MenuItem value="RO">Rondônia</MenuItem>
-                    <MenuItem value="RR">Roraima</MenuItem>
-                    <MenuItem value="SC">Santa Catarina</MenuItem>
-                    <MenuItem value="SP">São Paulo</MenuItem>
-                    <MenuItem value="SE">Sergipe</MenuItem>
-                    <MenuItem value="TO">Tocantins</MenuItem>
+                    <MenuItem value={1}>Acre</MenuItem>
+                    <MenuItem value={2}>Alagoas</MenuItem>
+                    <MenuItem value={4}>Amapá</MenuItem>
+                    <MenuItem value={3}>Amazonas</MenuItem>
+                    <MenuItem value={5}>Bahia</MenuItem>
+                    <MenuItem value={6}>Ceará</MenuItem>
+                    <MenuItem value={7}>Distrito Federal</MenuItem>
+                    <MenuItem value={8}>Espírito Santo</MenuItem>
+                    <MenuItem value={9}>Goiás</MenuItem>
+                    <MenuItem value={10}>Maranhão</MenuItem>
+                    <MenuItem value={13}>Mato Grosso</MenuItem>
+                    <MenuItem value={12}>Mato Grosso do Sul</MenuItem>
+                    <MenuItem value={11}>Minas Gerais</MenuItem>
+                    <MenuItem value={14}>Pará</MenuItem>
+                    <MenuItem value={15}>Paraíba</MenuItem>
+                    <MenuItem value={18}>Paraná</MenuItem>
+                    <MenuItem value={16}>Pernambuco</MenuItem>
+                    <MenuItem value={17}>Piauí</MenuItem>
+                    <MenuItem value={19}>Rio de Janeiro</MenuItem>
+                    <MenuItem value={20}>Rio Grande do Norte</MenuItem>
+                    <MenuItem value={23}>Rio Grande do Sul</MenuItem>
+                    <MenuItem value={21}>Rondônia</MenuItem>
+                    <MenuItem value={22}>Roraima</MenuItem>
+                    <MenuItem value={24}>Santa Catarina</MenuItem>
+                    <MenuItem value={26}>São Paulo</MenuItem>
+                    <MenuItem value={25}>Sergipe</MenuItem>
+                    <MenuItem value={27}>Tocantins</MenuItem>
                 </TextField>
             </Grid>
 
             <Grid item xs={8} md={1}>
               <TextField value={activeUser} onChange={(e)=> setActiveUser(e.target.value)} className='w-full' select label='Ativo'>
-                <MenuItem value={true}>
+                <MenuItem value={0}>
                   Sim
                 </MenuItem>
 
-                <MenuItem value={false}>
+                <MenuItem value={1}>
                   Não
                 </MenuItem>
               </TextField>
