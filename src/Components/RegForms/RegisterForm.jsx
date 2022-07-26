@@ -44,7 +44,8 @@ export default function RegisterForm(props) {
       emptyElements++;
     }
   });
-  function Submit() {
+  let handleSubmit = e =>{
+    e.preventDefault();
     if (!emptyElements > 0) {
       NotificationManager.success('Aluno cadastrado', 'SUCESSO');
       setTimeout(function(){
@@ -74,7 +75,7 @@ export default function RegisterForm(props) {
   return (
     <Grid>
       <NotificationContainer/>
-      <FormControl style={{ fontSize: "20px"}}>
+      <form onSubmit={handleSubmit} style={{ fontSize: "20px"}}>
         <h1 className="titles"> 1 - DADOS DO REEDUCANDO</h1>
         <RegForm1 muiAlert={muiAlert} data={data} setData={setData} />
         <h2 className="titles">
@@ -83,7 +84,6 @@ export default function RegisterForm(props) {
         <RegForm2 muiAlert={muiAlert} data={data} setData={setData} />
         <h3 className="titles">3 - DADOS PRISIONAIS</h3>
         <RegForm3 muiAlert={muiAlert} data={data} setData={setData} penitenciaria={penitenciaria} />
-      </FormControl>
       <FlexAround>
         <Button
           variant="contained"
@@ -98,11 +98,11 @@ export default function RegisterForm(props) {
           color="warning"
           type="submit"
           className="lg:w-1/5 h-fit p-2 rounded-sm text-white font-bold bg-green-500"
-          onClick={() => Submit()}
-        >
+          >
           SALVAR
         </Button>
       </FlexAround>
+      </form>
     </Grid>
   );
 }

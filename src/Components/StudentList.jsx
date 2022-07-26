@@ -9,7 +9,7 @@ import { Grid } from '@mui/material';
 import FlexBetween from '../Components/flexbox/FlexBetween'
 import {AiOutlineMore} from 'react-icons/ai'
 import {BsFillArrowRightCircleFill, BsFillArrowLeftCircleFill} from 'react-icons/bs'
-import {Add} from '@mui/icons-material'
+import {Add, ArrowBack, ArrowCircleLeft, ArrowForward, ArrowLeft, ArrowRight} from '@mui/icons-material'
 import BasicMenu from './BasicMenu';
 import SearchIcon from '../icons/SearchIcon';
 
@@ -53,7 +53,7 @@ const columns = [
 
 export default function StudentsContent() {
   let [loading, setLoading] = useState(true);
-    useEffect(()=>{if(window.location){setTimeout(()=>{setLoading(false)},1000)}},[loading])
+  useEffect(()=>{setTimeout(()=>{setLoading(false)},1000)},[loading])
   const api = process.env.REACT_APP_API_KEY
   const Navigate = useNavigate()
   const [rows, setRows] = useState([])
@@ -215,10 +215,13 @@ export default function StudentsContent() {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
         */}
-        
-        <div className='flex justify-end p-2 select-none'>
-          <BsFillArrowLeftCircleFill onClick={(e)=> handleChangePage(e, page-1)} className={`cursor-pointer ${page <= 1 ? 'text-gray-400' : 'text-black'} hover:text-gray-400 transition-colors mr-10`} size={35}/>
-          <BsFillArrowRightCircleFill onClick={(e)=> handleChangePage(e, page+1)} className={`cursor-pointer ${students.length <= 9 ? 'text-gray-400' : 'text-black'}  hover:text-gray-400 transition-colors`} size={35}/>
+        <div className='flex justify-end p-2 select-none gap-2'>
+          <Button variant='contained' disabled={page <= 1} onClick={(e)=> handleChangePage(e, page-1)}>
+          <ArrowBack/>
+          </Button>
+          <Button variant={students.length <= 9 ? 'outlined' : 'contained'} onClick={(e)=> handleChangePage(e, page+1)}>
+          <ArrowForward/>
+          </Button>
         </div>
       </Paper>
     </Grid>
