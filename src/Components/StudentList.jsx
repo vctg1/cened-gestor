@@ -53,7 +53,6 @@ const columns = [
 
 export default function StudentsContent() {
   let [loading, setLoading] = useState(true);
-  useEffect(()=>{setTimeout(()=>{setLoading(false)},1000)},[loading])
   const api = process.env.REACT_APP_API_KEY
   const Navigate = useNavigate()
   const [rows, setRows] = useState([])
@@ -115,6 +114,7 @@ export default function StudentsContent() {
   }, [])
 
   useEffect(()=>{
+    setTimeout(()=>{setLoading(false)},1000);
     getStudentsPage()
   }, [page])
 
@@ -219,7 +219,7 @@ export default function StudentsContent() {
           <Button variant='contained' disabled={page <= 1} onClick={(e)=> handleChangePage(e, page-1)}>
           <ArrowBack/>
           </Button>
-          <Button variant={students.length <= 9 ? 'outlined' : 'contained'} onClick={(e)=> handleChangePage(e, page+1)}>
+          <Button variant='contained' disabled={students.length <= 9} onClick={(e)=> handleChangePage(e, page+1)}>
           <ArrowForward/>
           </Button>
         </div>
