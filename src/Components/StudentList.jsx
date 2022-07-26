@@ -4,7 +4,7 @@ import Paper from '@mui/material/Paper';
 import TableContainer from '@mui/material/TableContainer';
 import axios from 'axios';
 import SearchInput from '../Components/input-fields/SearchInput'
-import { Button, CircularProgress } from "@mui/material";
+import { Box, Button, CircularProgress } from "@mui/material";
 import { Grid } from '@mui/material';
 import FlexBetween from '../Components/flexbox/FlexBetween'
 import {AiOutlineMore} from 'react-icons/ai'
@@ -52,6 +52,8 @@ const columns = [
 ];
 
 export default function StudentsContent() {
+  let [loading, setLoading] = useState(true);
+    useEffect(()=>{if(window.location){setTimeout(()=>{setLoading(false)},1000)}},[loading])
   const api = process.env.REACT_APP_API_KEY
   const Navigate = useNavigate()
   const [rows, setRows] = useState([])
@@ -63,6 +65,7 @@ export default function StudentsContent() {
   const navigateAddUser = ()=> Navigate('/cadastros/adicionar-aluno')
   const handleChangePage = (event, newPage) => {
     if(newPage > 0 && students.length >= 9){
+      setLoading(true);
       setPage(newPage);
     }
   };
@@ -144,6 +147,7 @@ export default function StudentsContent() {
         </Button>
       </FlexBetween>
       <Paper className='mt-5' sx={{ width: '100%', overflow: 'hidden' }}>
+        {!loading && rows ? 
         <TableContainer sx={{ maxHeight: 740 }}>
           <table className='w-full table-auto'>
             <thead>
@@ -176,7 +180,7 @@ export default function StudentsContent() {
               </tr>
             </thead>
             <tbody>
-            {rows ? rows.map((row) => {
+            {rows.map((row) => {
                   return (
                     <tr className='border-t border-b text-sm border-gray-300 w-full' tabIndex={-1} key={row.code}>
                       {columns.map((column) => {
@@ -191,12 +195,15 @@ export default function StudentsContent() {
                       })}
                     </tr>
                   );
-                }):
-                <CircularProgress/>
-              }
+                })}
             </tbody>
           </table>
         </TableContainer>
+                :
+                <Box width='100%' height='66vh' display='flex' alignItems='center' justifyContent='center' >
+                  <CircularProgress size={90}/>
+                </Box>
+              }
         {/*
         <TablePagination
           rowsPerPageOptions={[10, 25, 100]}
