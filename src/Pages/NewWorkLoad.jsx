@@ -14,7 +14,6 @@ export default function NewWorkLoad() {
     const saveWorkLoad = ()=>{
         if(uf !== '' && workLoad !== ''){
             setCompleteRequirements(true)
-            console.log(`UF: ${uf}, Carga Horária: ${workLoad}`)
             {/* 
             axios.post(`${api}/cargas-horarias-diarias`, {
                 cargaHoraria: workLoad,

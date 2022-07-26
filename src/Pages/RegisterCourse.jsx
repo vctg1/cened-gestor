@@ -28,9 +28,6 @@ export default function RegisterCourse() {
     const saveCourse = ()=>{
         if(codeCourse !== '' && nameCourse !== '' && workloadCourse > 0 && valueCourse > 0 && rateCourse > 0 && contentCourse !== ''){
             setCompleteRequirements(true)
-
-            console.log(`Código: ${codeCourse}, Nome: ${nameCourse}, Carga Horária: ${workloadCourse}, Valor: ${valueCourse}, Taxa: ${rateCourse}, Total: ${valueTotalCourse}`)
-            console.log('Conteúdo: ', contentCourse)
             
             {/*
                 axios.post(`${api}/cursos`, {

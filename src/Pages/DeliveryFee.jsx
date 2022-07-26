@@ -14,7 +14,6 @@ export default function DeliveryFee() {
     let isDesktop = useMediaQuery('(min-width:800px)')
 	const saveDelivery = ()=>{
 		if(rate !== '' && uf !== ''){
-			console.log(`UF: ${uf}, Taxa: ${rate}`)
 			{/*
 				axios.post(`${api}/uf-entregas`, {
 					uf: uf,
