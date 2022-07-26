@@ -67,7 +67,7 @@ export default function RegSelector() {
       </FlexBox>
       <FlexBox marginBottom='1vh' gap='1vw' >
         {forms.map((item) => {
-          return <Button variant={selectedButton !== item.id ? 'outlined' : 'contained'} onClick={()=>setSelectedButton(item.id)}>{item.name}</Button>
+          return <Button variant={selectedButton !== item.id ? 'outlined' : 'contained'} onClick={()=>setSelectedButton(item.id)}><b>{item.name}</b></Button>
         })}
       </FlexBox>
       <Grid>
