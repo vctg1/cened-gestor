@@ -86,11 +86,12 @@ export default function StudentsContent() {
   }
 
   const searchStudent = ()=>{
-      setPage(1)
-      if(searchValue !== ''){
-        setIsSearch(true)
-      }else{
-        setIsSearch(false)
+    setPage(1)
+    if(searchValue !== ''){
+      setIsSearch(true)
+      setLoading(true)
+    }else{
+      setIsSearch(false)
       }
       getStudentsPage()
   }
@@ -114,12 +115,13 @@ export default function StudentsContent() {
   }, [])
 
   useEffect(()=>{
-    setTimeout(()=>{setLoading(false)},1000);
     getStudentsPage()
+    setTimeout(()=>{setLoading(false)},1000);
   }, [page])
-
+  
   useEffect(()=>{
     addStudentRow()
+    setTimeout(()=>{setLoading(false)},1000);
   }, [students])
 
   const handleChangeRowsPerPage = (event) => {
