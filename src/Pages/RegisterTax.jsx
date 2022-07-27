@@ -6,6 +6,7 @@ import InputMask from 'react-input-mask'
 import { useState } from 'react'
 import PopupSuccess from '../Components/PopupSuccess'
 import axios from 'axios'
+import UfsList from './UfsList'
 
 export default function RegisterTax() {
 	const api = process.env.REACT_APP_API_KEY
@@ -53,33 +54,13 @@ export default function RegisterTax() {
 
                 <Grid item xs={8} md={2}>
                     <TextField value={ufTaxWork} onChange={(e)=> setUfTaxWork(e.target.value)} className='w-11/12 bg-white border-none outline-none rounded-xl' select label='UF / Trabalho'>
-						<MenuItem value={1}>Acre</MenuItem>
-                        <MenuItem value={2}>Alagoas</MenuItem>
-                        <MenuItem value={4}>Amapá</MenuItem>
-                        <MenuItem value={3}>Amazonas</MenuItem>
-                        <MenuItem value={5}>Bahia</MenuItem>
-                        <MenuItem value={6}>Ceará</MenuItem>
-                        <MenuItem value={7}>Distrito Federal</MenuItem>
-                        <MenuItem value={8}>Espírito Santo</MenuItem>
-                        <MenuItem value={9}>Goiás</MenuItem>
-                        <MenuItem value={10}>Maranhão</MenuItem>
-                        <MenuItem value={13}>Mato Grosso</MenuItem>
-                        <MenuItem value={12}>Mato Grosso do Sul</MenuItem>
-                        <MenuItem value={11}>Minas Gerais</MenuItem>
-                        <MenuItem value={14}>Pará</MenuItem>
-                        <MenuItem value={15}>Paraíba</MenuItem>
-                        <MenuItem value={18}>Paraná</MenuItem>
-                        <MenuItem value={16}>Pernambuco</MenuItem>
-                        <MenuItem value={17}>Piauí</MenuItem>
-                        <MenuItem value={19}>Rio de Janeiro</MenuItem>
-                        <MenuItem value={20}>Rio Grande do Norte</MenuItem>
-                        <MenuItem value={23}>Rio Grande do Sul</MenuItem>
-                        <MenuItem value={21}>Rondônia</MenuItem>
-                        <MenuItem value={22}>Roraima</MenuItem>
-                        <MenuItem value={24}>Santa Catarina</MenuItem>
-                        <MenuItem value={26}>São Paulo</MenuItem>
-                        <MenuItem value={25}>Sergipe</MenuItem>
-                        <MenuItem value={27}>Tocantins</MenuItem>
+                        {UfsList.map((uf, key)=>{
+                         return(
+                            <MenuItem key={key} value={uf.value}>
+                                {uf.name}
+                            </MenuItem>
+                        )
+                    })}
                     </TextField>
                 </Grid>
 
@@ -97,33 +78,13 @@ export default function RegisterTax() {
 
                 <Grid item xs={8} md={2}>
                     <TextField value={ufTax} onChange={(e)=> setUfTax(e.target.value)} className='w-11/12 bg-white border-none outline-none rounded-xl' select label='UF'>
-						<MenuItem value={1}>Acre</MenuItem>
-                        <MenuItem value={2}>Alagoas</MenuItem>
-                        <MenuItem value={4}>Amapá</MenuItem>
-                        <MenuItem value={3}>Amazonas</MenuItem>
-                        <MenuItem value={5}>Bahia</MenuItem>
-                        <MenuItem value={6}>Ceará</MenuItem>
-                        <MenuItem value={7}>Distrito Federal</MenuItem>
-                        <MenuItem value={8}>Espírito Santo</MenuItem>
-                        <MenuItem value={9}>Goiás</MenuItem>
-                        <MenuItem value={10}>Maranhão</MenuItem>
-                        <MenuItem value={13}>Mato Grosso</MenuItem>
-                        <MenuItem value={12}>Mato Grosso do Sul</MenuItem>
-                        <MenuItem value={11}>Minas Gerais</MenuItem>
-                        <MenuItem value={14}>Pará</MenuItem>
-                        <MenuItem value={15}>Paraíba</MenuItem>
-                        <MenuItem value={18}>Paraná</MenuItem>
-                        <MenuItem value={16}>Pernambuco</MenuItem>
-                        <MenuItem value={17}>Piauí</MenuItem>
-                        <MenuItem value={19}>Rio de Janeiro</MenuItem>
-                        <MenuItem value={20}>Rio Grande do Norte</MenuItem>
-                        <MenuItem value={23}>Rio Grande do Sul</MenuItem>
-                        <MenuItem value={21}>Rondônia</MenuItem>
-                        <MenuItem value={22}>Roraima</MenuItem>
-                        <MenuItem value={24}>Santa Catarina</MenuItem>
-                        <MenuItem value={26}>São Paulo</MenuItem>
-                        <MenuItem value={25}>Sergipe</MenuItem>
-                        <MenuItem value={27}>Tocantins</MenuItem>
+                        {UfsList.map((uf, key)=>{
+                        return(
+                            <MenuItem key={key} value={uf.value}>
+                            {uf.name}
+                            </MenuItem>
+                        )
+                        })}
                     </TextField>
                 </Grid>
 

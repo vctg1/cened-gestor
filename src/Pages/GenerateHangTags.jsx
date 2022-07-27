@@ -3,10 +3,11 @@ import SearchIcon from '@mui/icons-material/Search';
 import React, { useState } from 'react'
 import {AiFillTag} from 'react-icons/ai'
 import {FaMinus, FaPlus} from 'react-icons/fa'
+import UfsList from './UfsList';
 
 export default function GenerateHangTags() {
     let isDesktop = useMediaQuery('(min-width:800px)')
-    const [uf, setUf] = useState('')
+    const [ufTag, setUf] = useState('')
     const [typeHangtag, setTypeHangtag] = useState('')
     const [valueSearch1, setValueSearch1] = useState('')
     const [valueSearch2, setValueSearch2] = useState('')
@@ -18,34 +19,14 @@ export default function GenerateHangTags() {
                 <h1 className='text-xl font-bold'>Gerar Etiquetas</h1>
             </Grid>
             <Grid item xs={10} md={2}>
-                <TextField value={uf} onChange={(e)=> setUf(e.target.value)} className='w-full' select label='UF'>
-                        <MenuItem value="AC">Acre</MenuItem>
-                        <MenuItem value="AL">Alagoas</MenuItem>
-                        <MenuItem value="AP">Amapá</MenuItem>
-                        <MenuItem value="AM">Amazonas</MenuItem>
-                        <MenuItem value="BA">Bahia</MenuItem>
-                        <MenuItem value="CE">Ceará</MenuItem>
-                        <MenuItem value="DF">Distrito Federal</MenuItem>
-                        <MenuItem value="ES">Espírito Santo</MenuItem>
-                        <MenuItem value="GO">Goiás</MenuItem>
-                        <MenuItem value="MA">Maranhão</MenuItem>
-                        <MenuItem value="MT">Mato Grosso</MenuItem>
-                        <MenuItem value="MS">Mato Grosso do Sul</MenuItem>
-                        <MenuItem value="MG">Minas Gerais</MenuItem>
-                        <MenuItem value="PA">Pará</MenuItem>
-                        <MenuItem value="PB">Paraíba</MenuItem>
-                        <MenuItem value="PR">Paraná</MenuItem>
-                        <MenuItem value="PE">Pernambuco</MenuItem>
-                        <MenuItem value="PI">Piauí</MenuItem>
-                        <MenuItem value="RJ">Rio de Janeiro</MenuItem>
-                        <MenuItem value="RN">Rio Grande do Norte</MenuItem>
-                        <MenuItem value="RS">Rio Grande do Sul</MenuItem>
-                        <MenuItem value="RO">Rondônia</MenuItem>
-                        <MenuItem value="RR">Roraima</MenuItem>
-                        <MenuItem value="SC">Santa Catarina</MenuItem>
-                        <MenuItem value="SP">São Paulo</MenuItem>
-                        <MenuItem value="SE">Sergipe</MenuItem>
-                        <MenuItem value="TO">Tocantins</MenuItem>
+                <TextField value={ufTag} onChange={(e)=> setUf(e.target.value)} className='w-full' select label='UF'>
+                    {UfsList.map((uf, key)=>{
+                      return(
+                        <MenuItem key={key} value={uf.value}>
+                          {uf.name}
+                        </MenuItem>
+                      )
+                    })}
                 </TextField>
             </Grid>
 
