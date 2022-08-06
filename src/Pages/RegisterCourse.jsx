@@ -40,7 +40,6 @@ export default function RegisterCourse() {
                 console.log(response)
                 })
             */}
-            
         }else{
             setCompleteRequirements(false)
         }
