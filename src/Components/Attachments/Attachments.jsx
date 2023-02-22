@@ -18,7 +18,7 @@ export default function Attachments(params){
         dtPagamento: new Date()
     });
     useEffect(()=>{
-        axios.get(`${API}documentos/consultas/matriculas`,
+        axios.get(`${API}/documentos/consultas/matriculas`,
         {params:{IdAluno: params.selectedStudent}})
         .then(res=>{setCursos(res.data)});
         setData(initialData)

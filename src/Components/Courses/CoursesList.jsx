@@ -35,7 +35,7 @@ export default function CousesList(params){
     let [cursos,setCursos] = useState(falseCourses);
     /* let API = process.env.REACT_APP_API_KEY
     useEffect(()=>{
-        axios.get(`${API}documentos/consultas/matriculas`,
+        axios.get(`${API}/documentos/consultas/matriculas`,
         {params:{IdAluno: params.selectedStudent}})
         .then(res=>{setCursos(res.data)});
     },[]) */

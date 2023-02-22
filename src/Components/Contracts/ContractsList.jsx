@@ -44,7 +44,7 @@ export default function ContractsList(){
     ])
     let API = process.env.REACT_APP_API_KEY
     useEffect(()=>{
-        axios.get(`${API}documentos/consultas/matriculas`,
+        axios.get(`${API}/documentos/consultas/matriculas`,
         {params:{IdAluno: selectedStudent}})
         .then(res=>{setContratos(res.data)});
     },[selectedStudent])

@@ -19,7 +19,7 @@ export default function AditionalExpensesForm(params){
         dtPagamento: new Date('0000,01,01')
     });
     useEffect(()=>{
-        axios.get(`${API}documentos/consultas/matriculas`,
+        axios.get(`${API}/documentos/consultas/matriculas`,
         {params:{IdAluno: params.selectedStudent}})
         .then(res=>{setCursos(res.data)});
         setData(initialData)

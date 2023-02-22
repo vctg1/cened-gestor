@@ -4,7 +4,7 @@ import Paper from '@mui/material/Paper';
 import TableContainer from '@mui/material/TableContainer';
 import axios from 'axios';
 import SearchInput from '../Components/input-fields/SearchInput'
-import { Box, Button, CircularProgress } from "@mui/material";
+import { Box, Button, CircularProgress, Typography } from "@mui/material";
 import { Grid } from '@mui/material';
 import FlexBetween from '../Components/flexbox/FlexBetween'
 import {AiOutlineMore} from 'react-icons/ai'
@@ -52,26 +52,53 @@ const columns = [
 
 export default function StudentsContent() {
   let [loading, setLoading] = useState(true);
-  const api = process.env.REACT_APP_API_KEY
-  const Navigate = useNavigate()
-  const [rows, setRows] = useState([])
+  const api = process.env.REACT_APP_API_KEY;
+  const Navigate = useNavigate();
+  const [rows, setRows] = useState([]);
   const [page, setPage] = useState(1);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
-  const [students, setStudents] = useState([])
-  const [searchValue, setSearchValue] = useState('')
-  const [isSearch, setIsSearch] = useState(false)
-  const navigateAddUser = ()=> Navigate('/cadastros/adicionar-aluno')
+  const [students, setStudents] = useState([]);
+  const [searchValue, setSearchValue] = useState('');
+  const navigateAddUser = ()=> Navigate('/cadastros/adicionar-aluno');
+  let [pageNumbers, setPageNumbers] = useState([]);
+
+  useEffect(()=>{
+    axios.get(`${api}/alunos?Page=1`).then(response=>{
+      setStudents(response.data.data)
+    });
+  }, [])
+
+  const searchStudent = ()=>{
+    setPage(1)
+      if(searchValue !== ''){
+      axios.get(`${api}/alunos?Search=${searchValue}`).then(response=>{
+        setStudents(response.data.data)
+      })
+    }
+    else{axios.get(`${api}/alunos?Page=1`).then(response=>{
+      setStudents(response.data.data)
+    });}
+  }
+
   const handleChangePage = (event, newPage) => {
-    if(newPage > 0 && students.length >= 9){
-      setLoading(true);
+    if(students.length >= 9){
       setPage(newPage);
+      if(searchValue!== ''){
+        axios.get(`${api}/alunos?Search=${searchValue}&Page=${newPage}`).then(response=>{
+          setStudents(response.data.data)
+        })
+      }
+      else{
+      axios.get(`${api}/alunos?Page=${newPage}`).then(response=>{
+        setStudents(response.data.data)
+      })}
     }
   };
-  
-  const addStudentRow = ()=>{
-    let rowsProvisory = []
+
+  useEffect(()=>{
+    setLoading(true);
+    let rowsPrev = []
     students.forEach((st)=>{
-      rowsProvisory.push({
+      rowsPrev.push({
         name: st.nome,
         id: st.id,
         cpf: st.cpf,
@@ -81,52 +108,33 @@ export default function StudentsContent() {
         more: <BasicMenu id={st.id}><AiOutlineMore size={25} color='black'/></BasicMenu>
       })
     })
-    setRows(rowsProvisory)
-  }
-
-  const searchStudent = ()=>{
-    setPage(1)
-    if(searchValue !== ''){
-      setIsSearch(true)
-      setLoading(true)
-    }else{
-      setIsSearch(false)
-      }
-      getStudentsPage()
-  }
-
-  const getStudentsPage = ()=>{
-    if(isSearch){
-      axios.get(`${api}/alunos?Search=${searchValue}&Page=${page}`).then(response=>{
-        setStudents(response.data.data)
-      })
-    }else{
-      axios.get(`${api}/alunos?Page=${page}`).then(response=>{
-        setStudents(response.data.data)
-      })
-    }
-  }
-
-  useEffect(()=>{
-    axios.get(`${api}/alunos?Page=1`).then(response=>{
-      setStudents(response.data.data)
-    })
-  }, [])
-
-  useEffect(()=>{
-    getStudentsPage()
-    setTimeout(()=>{setLoading(false)},1000);
-  }, [page])
-  
-  useEffect(()=>{
-    addStudentRow()
-    setTimeout(()=>{setLoading(false)},1000);
+    setRows(rowsPrev)
+    setTimeout(()=>{setLoading(false)},2000);
   }, [students])
 
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
-  };
+  useEffect(()=>{
+    setLoading(true);
+    if(page > 4){
+      let numbersPrev = [];
+      let i = page-4;
+      while (i <= page+5) {
+        numbersPrev.push(i);
+        i++;
+      }
+      setPageNumbers(numbersPrev);
+    }
+    else{
+      let numbersPrev = []
+      let i = 1;
+      while(i <= 10){
+        numbersPrev.push(i);
+        i++
+      }
+      setPageNumbers(numbersPrev);
+    }
+    setTimeout(()=>{setLoading(false)},2000);
+  }, [page])
+  
 
   return (
     <Grid>
@@ -220,6 +228,12 @@ export default function StudentsContent() {
           <Button variant='contained' disabled={page <= 1} onClick={(e)=> handleChangePage(e, page-1)}>
           <ArrowBack/>
           </Button>
+          {pageNumbers.map((number)=>
+          <Button variant={page===number?'contained' : 'outlined'} onClick={(e)=> handleChangePage(e, number)}>
+            <Typography>
+            {number}
+            </Typography>
+          </Button>)}
           <Button variant='contained' disabled={students.length <= 9} onClick={(e)=> handleChangePage(e, page+1)}>
           <ArrowForward/>
           </Button>
