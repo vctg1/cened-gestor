@@ -98,6 +98,7 @@ export default function StudentsContent() {
   };
 
   useEffect(()=>{
+    setLoading(true);
     let rowsPrev = []
     students.forEach((st)=>{
       rowsPrev.push({
@@ -112,13 +113,17 @@ export default function StudentsContent() {
     })
     setRows(rowsPrev)
   }, [students])
+  useEffect(()=>{
+    setTimeout(()=>{setLoading(false)}, 1500);
+  }, [rows])
 
   useEffect(()=>{
+    setLoading(true);
     if (searchLength){
       let numbersPrev = [];
       let i = 1;
       if(searchLength/10+1 < 10){
-      while(i <= searchLength){
+      while(i <= searchLength/10+1){
           numbersPrev.push(i);
           i++
       }}
