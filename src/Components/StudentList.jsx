@@ -60,6 +60,7 @@ export default function StudentsContent() {
   const [searchValue, setSearchValue] = useState('');
   const navigateAddUser = ()=> Navigate('/cadastros/adicionar-aluno');
   let [pageNumbers, setPageNumbers] = useState([]);
+  let [searchLength, setSearchLength] = useState();
 
   useEffect(()=>{
     axios.get(`${api}/alunos?Page=1`).then(response=>{
@@ -68,11 +69,15 @@ export default function StudentsContent() {
   }, [])
 
   const searchStudent = ()=>{
-    setPage(1)
-      if(searchValue !== ''){
+    setSearchLength(null);
+    setPage(1);
+    if(searchValue !== ''){
       axios.get(`${api}/alunos?Search=${searchValue}`).then(response=>{
         setStudents(response.data.data)
-      })
+      });
+      axios.get(`${api}/alunos?Search=${searchValue}&Limit=300`).then(response=>{
+        setSearchLength(response.data.data.length);
+      });
     }
     else{axios.get(`${api}/alunos?Page=1`).then(response=>{
       setStudents(response.data.data)
@@ -80,7 +85,6 @@ export default function StudentsContent() {
   }
 
   const handleChangePage = (event, newPage) => {
-    if(students.length >= 9){
       setPage(newPage);
       if(searchValue!== ''){
         axios.get(`${api}/alunos?Search=${searchValue}&Page=${newPage}`).then(response=>{
@@ -91,11 +95,9 @@ export default function StudentsContent() {
       axios.get(`${api}/alunos?Page=${newPage}`).then(response=>{
         setStudents(response.data.data)
       })}
-    }
   };
 
   useEffect(()=>{
-    setLoading(true);
     let rowsPrev = []
     students.forEach((st)=>{
       rowsPrev.push({
@@ -109,15 +111,40 @@ export default function StudentsContent() {
       })
     })
     setRows(rowsPrev)
-    setTimeout(()=>{setLoading(false)},2000);
   }, [students])
 
   useEffect(()=>{
-    setLoading(true);
-    if(page > 4){
+    if (searchLength){
+      let numbersPrev = [];
+      let i = 1;
+      if(searchLength/10+1 < 10){
+      while(i <= searchLength){
+          numbersPrev.push(i);
+          i++
+      }}
+      else if(page > 4){
+        i=page-4
+        let j = page-5
+        while(numbersPrev.length<10 && i <= searchLength/10+1){
+          numbersPrev.push(i);
+          i++}
+          while(numbersPrev.length<10){
+            numbersPrev.unshift(j);
+            j--;
+          }
+      }
+      else{
+        while(i <= 10){
+          numbersPrev.push(i);
+          i++
+        }
+      }
+      setPageNumbers(numbersPrev);
+    }
+    else if(page > 4){
       let numbersPrev = [];
       let i = page-4;
-      while (i <= page+5) {
+      while (numbersPrev.length <10) {
         numbersPrev.push(i);
         i++;
       }
@@ -126,14 +153,13 @@ export default function StudentsContent() {
     else{
       let numbersPrev = []
       let i = 1;
-      while(i <= 10){
-        numbersPrev.push(i);
-        i++
-      }
+        while(i <= 10){
+          numbersPrev.push(i);
+          i++
+        }
       setPageNumbers(numbersPrev);
     }
-    setTimeout(()=>{setLoading(false)},2000);
-  }, [page])
+  }, [page, searchLength])
   
 
   return (
