@@ -68,7 +68,8 @@ export default function StudentsContent() {
     });
   }, [])
 
-  const searchStudent = ()=>{
+  const searchStudent =e=>{
+    e.preventDefault();
     setSearchLength(null);
     setPage(1);
     if(searchValue !== ''){
@@ -170,17 +171,17 @@ export default function StudentsContent() {
   return (
     <Grid>
       <FlexBetween>
-        <div className='flex items-center w-3/4'>
+        <form onSubmit={searchStudent} className='flex items-center w-3/4'>
           <SearchInput
             value={searchValue}
             placeholder="Pesquisar por Nome ou CPF"
             onChange={(e) => setSearchValue(e.target.value)}/>
             <div className='ml-5'>
-              <Button startIcon={<SearchIcon/>} onClick={searchStudent} className='ml-10' variant='contained'>
+              <Button type='submit' startIcon={<SearchIcon/>} className='ml-10' variant='contained'>
                 Buscar
               </Button>
             </div>
-        </div>
+        </form>
 
         <Button onClick={navigateAddUser} startIcon={<Add/>} variant="contained">
           Adicionar Novo Usuário
